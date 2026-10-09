@@ -1,0 +1,64 @@
+---
+import { NUMEROS_LZBA } from '../data/empreendimentos';
+
+interface Props {
+  className?: string;
+}
+
+const { className = '' } = Astro.props;
+---
+
+<div class={`w-full max-w-6xl mx-auto ${className}`}>
+  <div class="glass-panel rounded-2xl p-6 sm:p-8 shadow-2xl border border-white/10 relative overflow-hidden">
+    <!-- Efeito sutil de brilho superior -->
+    <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-gradient-to-r from-transparent via-[#c5a880]/20 to-transparent blur-xl pointer-events-none"></div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 divide-y sm:divide-y-0 sm:divide-x divide-white/10 text-center">
+      
+      <!-- Métrica 1 -->
+      <div class="pt-4 sm:pt-0 sm:px-4 flex flex-col items-center justify-center">
+        <span class="text-3xl sm:text-4xl lg:text-5xl font-extrabold gold-gradient-text tracking-tight font-heading">
+          {NUMEROS_LZBA.anosCarreira}
+        </span>
+        <span class="text-xs sm:text-sm font-semibold text-slate-300 mt-1 uppercase tracking-wider">
+          Anos de História
+        </span>
+        <span class="text-[11px] text-slate-500 mt-0.5">Solidez & Tradição</span>
+      </div>
+
+      <!-- Métrica 2 -->
+      <div class="pt-4 sm:pt-0 sm:px-4 flex flex-col items-center justify-center">
+        <span class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight font-heading">
+          {NUMEROS_LZBA.aptosEntregues}
+        </span>
+        <span class="text-xs sm:text-sm font-semibold text-slate-300 mt-1 uppercase tracking-wider">
+          Apartamentos Entregues
+        </span>
+        <span class="text-[11px] text-slate-500 mt-0.5">Lares realizados</span>
+      </div>
+
+      <!-- Métrica 3 -->
+      <div class="pt-4 sm:pt-0 sm:px-4 flex flex-col items-center justify-center">
+        <span class="text-3xl sm:text-4xl lg:text-5xl font-extrabold gold-gradient-text tracking-tight font-heading">
+          {NUMEROS_LZBA.obrasEntregues}
+        </span>
+        <span class="text-xs sm:text-sm font-semibold text-slate-300 mt-1 uppercase tracking-wider">
+          Empreendimentos
+        </span>
+        <span class="text-[11px] text-slate-500 mt-0.5">100% concluídos</span>
+      </div>
+
+      <!-- Métrica 4 -->
+      <div class="pt-4 sm:pt-0 sm:px-4 flex flex-col items-center justify-center">
+        <span class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-emerald-400 tracking-tight font-heading">
+          100%
+        </span>
+        <span class="text-xs sm:text-sm font-semibold text-slate-300 mt-1 uppercase tracking-wider">
+          Compromisso no Prazo
+        </span>
+        <span class="text-[11px] text-slate-500 mt-0.5">Rigor na execução</span>
+      </div>
+
+    </div>
+  </div>
+</div>

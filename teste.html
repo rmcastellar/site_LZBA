@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo Hero com Quick-Bar</title>
+    <style>
+        /* Configurações Gerais do Layout */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        
+        /* Seção Hero (Primeira Dobra) */
+        .hero-section {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #ffffff;
+            min-height: 100vh; /* Garante que ocupa a dobra inteira */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Empurra a Quick-Bar para a base */
+            padding: 40px 20px 0 20px;
+        }
+
+        /* Conteúdo Central do Hero */
+        .hero-content {
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 span { color: #38bdf8; } /* Destaque azul */
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: #94a3b8;
+            margin-bottom: 35px;
+        }
+
+        /* Botão de Chamada para Ação (CTA) */
+        .cta-button {
+            display: inline-block;
+            background-color: #3b82f6;
+            color: white;
+            padding: 16px 32px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+        .cta-button:hover { background-color: #2563eb; }
+
+        /* --- SOCIAL PROOF QUICK-BAR (A BARRA DE MÉTRICAS) --- */
+        .quick-bar {
+            background-color: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(8px); /* Efeito de vidro fosco moderno */
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px;
+            border-radius: 16px 16px 0 0; /* Arredondado apenas no topo */
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 colunas no desktop */
+            gap: 20px;
+            text-align: center;
+        }
+
+        .metric-item .number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #f8fafc;
+            margin-bottom: 4px;
+        }
+
+        .metric-item .label {
+            font-size: 0.875rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Responsividade para Celulares (Mobile) */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.2rem; }
+            .hero-content p { font-size: 1.1rem; }
+            
+            /* Transforma as colunas em 2x2 no mobile para não achatar */
+            .quick-bar {
+                grid-template-columns: repeat(2, 1fr);
+                border-radius: 0;
+                padding: 20px 10px;
+            }
+            .metric-item .number { font-size: 1.5rem; }
+            .metric-item .label { font-size: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero-section">
+        <!-- Conteúdo Principal do Topo -->
+        <div class="hero-content">
+            <h1>Escale suas Vendas no Digital com <span>Estratégias de Validação</span></h1>
+            <p>O método definitivo para destravar o crescimento do seu negócio sem depender de sorte ou orçamentos milionários.</p>
+            <a href="#" class="cta-button">Quero Começar Agora</a>
+        </div>
+
+        <!-- Social Proof Quick-Bar na Base da Dobra -->
+        <div class="quick-bar">
+            <div class="metric-item">
+                <span class="number">+15k</span>
+                <span class="label">Alunos Ativos</span>
+            </div>
+            <div class="metric-item">
+                <span class="number">Nota 4.9/5</span>
+                <span class="label">Avaliação Geral</span>
+            </div>
+            <div class="metric-item">
+                <span class="number">+R$ 25M</span>
+                <span class="label">Faturados</span>
+            </div>
+            <div class="metric-item">
+                <span class="number">100%</span>
+                <span class="label">Seguro e Validado</span>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

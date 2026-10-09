@@ -1,0 +1,279 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { CONTATO_LZBA } from '../data/empreendimentos';
+---
+
+<Layout
+  title="Contato | Construtora e Incorporadora LZBA"
+  description="Entre em contato com a Construtora LZBA. Canais de atendimento via WhatsApp, telefone (11) 2691-9059, e-mail e formulário direto de atendimento."
+  currentPath="/contato"
+>
+  <!-- Cabeçalho -->
+  <section class="relative pt-20 pb-14 bg-gradient-to-b from-[#111827] to-[#0b0f17] border-b border-white/5">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="text-xs font-bold uppercase tracking-widest text-[#e5c07b]">
+        Canais Oficiais
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-white font-heading mt-2 mb-4">
+        Fale com a LZBA
+      </h1>
+      <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
+        Nossa equipe de especialistas está pronta para orientar sua escolha de imóvel, agendar visitas ou iniciar novas parcerias comerciais.
+      </p>
+    </div>
+  </section>
+
+  <!-- Seção Principal: Cards de Contato + Formulário + Mapa -->
+  <section class="py-16 sm:py-24 bg-[#0b0f17]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Cards de Atendimento Rápido -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        
+        <!-- Telefone -->
+        <a 
+          href={`tel:${CONTATO_LZBA.telefone.replace(/\D/g, '')}`} 
+          class="glass-panel p-6 rounded-2xl border border-white/10 hover:border-[#c5a880]/50 transition-all duration-300 group block"
+        >
+          <div class="w-12 h-12 rounded-xl bg-[#c5a880]/15 flex items-center justify-center text-[#e5c07b] group-hover:scale-110 transition-transform mb-4">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+          </div>
+          <span class="text-xs uppercase text-slate-400 font-semibold block">Telefone Comercial</span>
+          <span class="text-lg font-bold text-white group-hover:text-[#e5c07b] transition-colors mt-1 block">
+            {CONTATO_LZBA.telefone}
+          </span>
+          <span class="text-[11px] text-slate-500 mt-1 block">Ligação direta</span>
+        </a>
+
+        <!-- WhatsApp -->
+        <a 
+          href={CONTATO_LZBA.whatsappLink} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="glass-panel p-6 rounded-2xl border border-white/10 hover:border-emerald-500/50 transition-all duration-300 group block"
+        >
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/15 flex items-center justify-center text-emerald-400 group-hover:scale-110 transition-transform mb-4">
+            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.149.929 3.182 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.768-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.288.043.088.072.189.014.305-.058.115-.087.188-.173.289l-.26.309c-.087.086-.179.18-.077.355.101.173.45 0.742.966 1.202.665.592 1.226.776 1.399.863.173.086.275.072.376-.044.101-.116.433-.506.549-.679.116-.173.231-.144.39-.086s1.011.477 1.184.564.289.13.332.202c.044.073.044.419-.1 0.824z"/>
+            </svg>
+          </div>
+          <span class="text-xs uppercase text-slate-400 font-semibold block">Plantão WhatsApp</span>
+          <span class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors mt-1 block">
+            {CONTATO_LZBA.whatsapp}
+          </span>
+          <span class="text-[11px] text-slate-500 mt-1 block">Resposta ágil</span>
+        </a>
+
+        <!-- E-mail -->
+        <a 
+          href={`mailto:${CONTATO_LZBA.email}`} 
+          class="glass-panel p-6 rounded-2xl border border-white/10 hover:border-[#c5a880]/50 transition-all duration-300 group block"
+        >
+          <div class="w-12 h-12 rounded-xl bg-[#c5a880]/15 flex items-center justify-center text-[#e5c07b] group-hover:scale-110 transition-transform mb-4">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <span class="text-xs uppercase text-slate-400 font-semibold block">E-mail Comercial</span>
+          <span class="text-sm font-bold text-white group-hover:text-[#e5c07b] transition-colors mt-1 block truncate">
+            {CONTATO_LZBA.email}
+          </span>
+          <span class="text-[11px] text-slate-500 mt-1 block">Atendimento por escrito</span>
+        </a>
+
+        <!-- Horário -->
+        <div class="glass-panel p-6 rounded-2xl border border-white/10 block">
+          <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-slate-300 mb-4">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <span class="text-xs uppercase text-slate-400 font-semibold block">Horário de Funcionamento</span>
+          <span class="text-sm font-bold text-white mt-1 block">
+            Seg à Sex, 9h às 18h
+          </span>
+          <span class="text-[11px] text-slate-500 mt-1 block">Atendimento corporativo</span>
+        </div>
+
+      </div>
+
+      <!-- Formulário de Mensagem & Informações -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- Formulário de Envio -->
+        <div class="lg:col-span-7">
+          <div class="glass-panel p-8 sm:p-10 rounded-3xl border border-white/10 shadow-2xl">
+            <div class="mb-6">
+              <span class="text-xs font-bold uppercase tracking-wider text-[#e5c07b]">
+                Mensagem Online
+              </span>
+              <h2 class="text-2xl sm:text-3xl font-bold text-white font-heading mt-1">
+                Envie sua Mensagem
+              </h2>
+              <p class="text-xs text-slate-400 mt-1">
+                Retornaremos o contato em horário comercial com todas as informações solicitadas.
+              </p>
+            </div>
+
+            <!-- Feedback de Sucesso (Controlado via JS simples) -->
+            <div id="form-success" class="hidden p-4 rounded-xl bg-emerald-950/80 border border-emerald-500/50 text-emerald-200 text-sm mb-6 text-center">
+              ✓ Mensagem recebida com sucesso! Em breve entraremos em contato com você.
+            </div>
+
+            <form id="contact-form" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="f-nome" class="block text-xs font-medium text-slate-300 mb-1">Nome Completo *</label>
+                  <input
+                    type="text"
+                    id="f-nome"
+                    name="nome"
+                    required
+                    placeholder="Seu nome"
+                    class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-[#c5a880] transition-colors"
+                  />
+                </div>
+
+                <div>
+                  <label for="f-email" class="block text-xs font-medium text-slate-300 mb-1">E-mail *</label>
+                  <input
+                    type="email"
+                    id="f-email"
+                    name="email"
+                    required
+                    placeholder="seu@email.com"
+                    class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-[#c5a880] transition-colors"
+                  />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="f-telefone" class="block text-xs font-medium text-slate-300 mb-1">Telefone / WhatsApp *</label>
+                  <input
+                    type="tel"
+                    id="f-telefone"
+                    name="telefone"
+                    required
+                    placeholder="(11) 90000-0000"
+                    class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-[#c5a880] transition-colors"
+                  />
+                </div>
+
+                <div>
+                  <label for="f-assunto" class="block text-xs font-medium text-slate-300 mb-1">Assunto</label>
+                  <select
+                    id="f-assunto"
+                    name="assunto"
+                    class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-white/10 text-white text-sm focus:outline-none focus:border-[#c5a880] transition-colors"
+                  >
+                    <option value="Dúvidas sobre Empreendimentos">Dúvidas sobre Empreendimentos</option>
+                    <option value="Agendar Visita ao Decorado">Agendar Visita ao Decorado</option>
+                    <option value="Parceria de Corretores / Imobiliárias">Parceria de Corretores / Imobiliárias</option>
+                    <option value="Venda de Terreno">Venda de Terreno para Incorporação</option>
+                    <option value="Fornecedores e Suprimentos">Fornecedores e Suprimentos</option>
+                    <option value="Outros">Outros assuntos</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label for="f-mensagem" class="block text-xs font-medium text-slate-300 mb-1">Mensagem *</label>
+                <textarea
+                  id="f-mensagem"
+                  name="mensagem"
+                  rows="4"
+                  required
+                  placeholder="Escreva sua mensagem com detalhes..."
+                  class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-[#c5a880] transition-colors resize-none"
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                id="f-submit"
+                class="w-full py-4 px-6 rounded-xl text-sm font-bold text-slate-950 bg-gradient-to-r from-[#e5c07b] to-[#c5a880] hover:from-[#f3cf8e] hover:to-[#d4b58b] shadow-xl shadow-[#c5a880]/20 transition-all cursor-pointer"
+              >
+                Enviar Mensagem
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Informações Institucionais & Localização -->
+        <div class="lg:col-span-5 space-y-8">
+          
+          <div class="glass-panel p-8 rounded-3xl border border-white/10 space-y-6">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-[#e5c07b]">
+                Localização Corporativa
+              </span>
+              <h3 class="text-xl font-bold text-white font-heading mt-1">
+                Sede LZBA em São Paulo
+              </h3>
+              <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+                A Construtora e Incorporadora LZBA está localizada na capital paulista, atendendo empreendimentos e clientes em toda a Região Metropolitana com foco especial na Zona Norte.
+              </p>
+            </div>
+
+            <div class="space-y-4 pt-2 border-t border-white/10 text-sm">
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-[#c5a880] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+                <div>
+                  <span class="font-bold text-white block">Atendimento Presencial e Plantões</span>
+                  <span class="text-xs text-slate-400">São Paulo - SP</span>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.149.929 3.182 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.768-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.288.043.088.072.189.014.305-.058.115-.087.188-.173.289l-.26.309c-.087.086-.179.18-.077.355.101.173.45 0.742.966 1.202.665.592 1.226.776 1.399.863.173.086.275.072.376-.044.101-.116.433-.506.549-.679.116-.173.231-.144.39-.086s1.011.477 1.184.564.289.13.332.202c.044.073.044.419-.1 0.824z"/>
+                </svg>
+                <div>
+                  <span class="font-bold text-white block">WhatsApp Plantão</span>
+                  <a href={CONTATO_LZBA.whatsappLink} target="_blank" rel="noopener noreferrer" class="text-xs text-emerald-400 hover:underline">
+                    Iniciar conversa agora
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Box Destaque de Resposta Imediata -->
+            <div class="p-4 rounded-xl bg-white/5 border border-white/5 text-xs text-slate-300">
+              <strong class="text-white block mb-1">Prefere atendimento imediato?</strong>
+              Clique no botão de WhatsApp para ser direcionado ao consultor de plantão.
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Script simples para simular envio com feedback visual -->
+  <script is:inline>
+    const form = document.getElementById('contact-form');
+    const successMsg = document.getElementById('form-success');
+    const submitBtn = document.getElementById('f-submit');
+
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (submitBtn) submitBtn.textContent = 'Enviando...';
+
+        setTimeout(() => {
+          form.reset();
+          if (successMsg) successMsg.classList.remove('hidden');
+          if (submitBtn) submitBtn.textContent = 'Enviar Mensagem';
+        }, 600);
+      });
+    }
+  </script>
+</Layout>

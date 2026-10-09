@@ -1,23 +1,69 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+interface Props {
+  title?: string;
+  description?: string;
+  currentPath?: string;
+  image?: string;
+}
+
+const {
+  title = 'LZBA Incorporadora e Construtora | 34 Anos de Excelência',
+  description = 'Com mais de 3 décadas de expertise no mercado imobiliário, a LZBA consolida-se como referência em inovação, qualidade e pontualidade na entrega de apartamentos.',
+  currentPath = '/',
+  image = '/images/hero-building.jpg',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://lzba.com.br');
+---
+
+<!doctype html>
+<html lang="pt-BR" class="scroll-smooth bg-[#0b0f17] text-slate-100 antialiased selection:bg-[#c5a880] selection:text-slate-950">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Google Fonts: Outfit (Títulos) & Plus Jakarta Sans (Texto) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- SEO Primário -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:site_name" content="LZBA Construtora e Incorporadora" />
+    <meta property="og:locale" content="pt_BR" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={image} />
+  </head>
+  <body class="min-h-screen flex flex-col bg-[#0b0f17] text-slate-100">
+    <Header currentPath={currentPath} />
+    
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>
