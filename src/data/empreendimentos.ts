@@ -3,6 +3,8 @@ export interface Empreendimento {
   slug: string;
   titulo: string;
   subtitulo: string;
+  /** Categoria arquitetônica do card (ex: 'Architecture – Luxury Living', 'Residencial Exclusivo') */
+  categoria?: string;
   status: 'lancamento' | 'em_obras' | 'entregue';
   statusLabel: string;
   bairro: string;
@@ -33,58 +35,154 @@ export interface Empreendimento {
   };
 }
 
+/**
+ * ============================================================================
+ * BASE DE DADOS CENTRAL DE EMPREENDIMENTOS DA LZBA
+ * Para cadastrar um novo empreendimento, basta adicionar um novo objeto ao array abaixo.
+ * Todas as páginas, cards, rotas dinâmicas (/empreendimentos/[slug]) e filtros
+ * serão gerados e atualizados automaticamente.
+ * ============================================================================
+ */
 export const EMPREENDIMENTOS: Empreendimento[] = [
   {
     id: 'residencial-season',
     slug: 'residencial-season',
     titulo: 'Residencial Season',
     subtitulo: 'A exclusividade que o seu estilo de vida merece',
+    status: 'entregue',
+    statusLabel: 'Concluído',
+    bairro: 'Jardim São Paulo',
+    cidade: 'São Paulo',
+    estado: 'SP',
+    endereco: 'Av. Mazzei, 326 - Vila Mazzei - São Paulo',
+    metragem: '35m² a 52m²',
+    dormitorios: '1 e 2 dormitórios',
+    suites: 'com ou sem suíte',
+    vagas: 'com ou sem vaga',
+    destaque: true,
+    imagemCapa: '/images/img_season_capa.jpg',
+    galeria: [
+      '/images/img_season_capa.jpg',
+      '/images/hero-building.jpg'
+    ],
+    descricaoCurta: 'Um projeto de alto padrão que une sofisticação, conforto e localização privilegiada. Desfrute de ambientes planejados para o seu bem-estar e de uma experiência de moradia exclusiva.',
+    descricaoCompleta: 'O Residencial Season foi concebido para redefinir o conceito de viver bem. Localizado em uma das regiões mais desejadas, o empreendimento traduz o compromisso da Construtora Lzba com a excelência arquitetônica, o rigor técnico e o acabamento de alto padrão. Cada detalhe foi pensado para proporcionar máxima funcionalidade, iluminação natural e conforto térmico, entregando espaços amplos e integrados que atendem às necessidades de famílias que valorizam exclusividade e sofisticação.',
+    diferenciais: [
+      'Piscina adulto e infantil',
+      'Espaço Gourmet',
+      'Academia',
+      'Brinquedoteca',
+      'Playground',
+      'Salão de Festas',
+      'Salão de Jogos',
+      'Espaço Grill',
+      'Sauna'
+    ],
+    plantas: [
+      {
+        titulo: 'Apartamento Tipo 1 - 2 Dorms',
+        metragem: '52,76m²',
+        descricao: '2 dormitórios (1 suíte), varanda Gourmet e 1 vaga.'
+      },
+      {
+        titulo: 'Apartamento Tipo 2 - 2 Dorms',
+        metragem: '44,16 m²',
+        descricao: '2 dormitórios (1 suíte), varanda Gourmet e 1 vaga.'
+      },
+            {
+        titulo: 'Apartamento Tipo 3 - 2 Dorms',
+        metragem: '45,31 m²',
+        descricao: '2 dormitórios (1 suíte), varanda Gourmet e 1 vaga.'
+      },
+      {
+        titulo: 'Apartamento Tipo 4 - 2 Dorms',
+        metragem: '45,94 m²',
+        descricao: '2 dormitórios (1 suíte) e 1 vaga.'
+      },
+      {
+        titulo: 'Apartamento Tipo 5 - 2 Dorms',
+        metragem: '35,04 m²',
+        descricao: '2 dormitórios'
+      },
+      {
+        titulo: 'Apartamento Tipo 6 - 2 Dorms',
+        metragem: '46,16 m²',
+        descricao: '2 dormitórios (1 suíte) e 1 vaga.'
+      }
+    ],
+    estagioObras: {
+      geral: 100,
+      fundacao: 100,
+      estrutura: 100,
+      alvenaria: 100,
+      acabamento: 100
+    }
+  },
+    {
+    id: 'residencial-arbore',
+    slug: 'residencial-arbore',
+    titulo: 'Residencial Arbore',
+    subtitulo: 'Viva em sintonia com a natureza, a poucos passos de tudo',
     status: 'lancamento',
     statusLabel: 'Lançamento',
     bairro: 'Jardim São Paulo',
     cidade: 'São Paulo',
     estado: 'SP',
-    endereco: 'Rua Pedro Doll, 550 - Santana / Jardim São Paulo',
-    metragem: '52m² a 87m²',
-    dormitorios: '2 e 3 dormitórios',
-    suites: '1 a 2 suítes',
-    vagas: '1 a 2 vagas demarcadas',
+    endereco: 'Rua Parque Domingos Luís, 654 — Jardim São Paulo',
+    metragem: '37m² a 58m²',
+    dormitorios: '1 e 2 dormitórios',
+    suites: 'com ou sem suíte',
+    vagas: 'com ou sem vaga',
     destaque: true,
-    imagemCapa: '/images/season-facade.jpg',
+    imagemCapa: '/images/img-arbore-capa.webp',
     galeria: [
-      '/images/season-facade.jpg',
+      '/images/img-arbore-capa.webp',
       '/images/hero-building.jpg'
     ],
-    descricaoCurta: 'Empreendimento de alto padrão com arquitetura contemporânea e lazer completo em localização nobre.',
-    descricaoCompleta: 'O Residencial Season é a celebração do equilíbrio entre sofisticação, mobilidade e bem-estar. Projetado nos mínimos detalhes pela Construtora LZBA, cada apartamento possui plantas inteligentes pensadas para valorizar a iluminação natural e o conforto térmico. Com varanda gourmet integrada à cozinha e área de lazer equipada e decorada com requinte.',
+    descricaoCurta: 'O Residencial Arbore traduz a essência daquilo que permanece: raízes profundas, tradição e crescimento constante. Um conceito que valoriza a solidez, o bem-estar e a conexão com uma vida mais equilibrada.',
+    descricaoCompleta: 'O Residencial Arbore traduz a essência daquilo que permanece: raízes profundas, tradição e crescimento constante. Um conceito que valoriza a solidez, o bem-estar e a conexão com uma vida mais equilibrada. Localizado em uma região arborizada e consolidada, o empreendimento combina a tranquilidade de um bairro tradicional com a conveniência de estar próximo a importantes centros comerciais, culturais e gastronômicos. Cada detalhe foi pensado para refletir solidez, qualidade e respeito ao espaço de quem deseja viver com equilíbrio e bem-estar.',
     diferenciais: [
-      'Piscina aquecida com solarium e deck molhado',
-      'Espaço Gourmet com churrasqueira a carvão e forno de pizza',
-      'Fitness Center com equipamentos de ponta',
-      'Coworking integrado para trabalho remoto',
-      'Salão de Festas com pé-direito duplo',
-      'Portaria blindada com controle de acesso biométrico',
-      'Infraestrutura para tomada de carro elétrico',
-      'Pet Place e Playground lúdico'
+      'Piscina adulto e infantil',
+      'Academia'
     ],
     plantas: [
       {
-        titulo: 'Apartamento Tipo - 2 Dorms',
-        metragem: '52 m²',
-        descricao: 'Living integrado à varanda, 1 suíte espaçosa, cozinha americana e área de serviço ventilada.'
+        titulo: 'Apartamento Tipo 1 - 2 Dorms',
+        metragem: '52,76m²',
+        descricao: '2 dormitórios (1 suíte), varanda Gourmet e 1 vaga.'
       },
       {
-        titulo: 'Apartamento Família - 3 Dorms',
-        metragem: '87 m²',
-        descricao: 'Opção de living ampliado, varanda gourmet com churrasqueira, suíte master com closet.'
+        titulo: 'Apartamento Tipo 2 - 2 Dorms',
+        metragem: '44,16 m²',
+        descricao: '2 dormitórios (1 suíte), varanda Gourmet e 1 vaga.'
+      },
+            {
+        titulo: 'Apartamento Tipo 3 - 2 Dorms',
+        metragem: '45,31 m²',
+        descricao: '2 dormitórios (1 suíte), varanda Gourmet e 1 vaga.'
+      },
+      {
+        titulo: 'Apartamento Tipo 4 - 2 Dorms',
+        metragem: '45,94 m²',
+        descricao: '2 dormitórios (1 suíte) e 1 vaga.'
+      },
+      {
+        titulo: 'Apartamento Tipo 5 - 2 Dorms',
+        metragem: '35,04 m²',
+        descricao: '2 dormitórios'
+      },
+      {
+        titulo: 'Apartamento Tipo 6 - 2 Dorms',
+        metragem: '46,16 m²',
+        descricao: '2 dormitórios (1 suíte) e 1 vaga.'
       }
     ],
     estagioObras: {
-      geral: 15,
-      fundacao: 85,
-      estrutura: 20,
-      alvenaria: 5,
-      acabamento: 0
+      geral: 100,
+      fundacao: 100,
+      estrutura: 100,
+      alvenaria: 100,
+      acabamento: 100
     }
   },
   {
@@ -281,6 +379,6 @@ export const CONTATO_LZBA = {
   whatsapp: '(11) 99961-8125',
   whatsappLink: 'https://wa.me/5511999618125?text=Ol%C3%A1%2C+gostaria+de+informa%C3%A7%C3%B5es+sobre+os+empreendimentos+da+LZBA',
   email: 'atendimento@lzba.com.br',
-  endereco: 'São Paulo - SP',
+  endereco: 'Rua Capitão Rabelo, 560 - Jardim São Paulo - São Paulo',
   horario: 'Segunda a Sexta, das 9h às 18h'
 };

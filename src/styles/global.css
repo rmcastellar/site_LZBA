@@ -1,52 +1,222 @@
 @import "tailwindcss";
 
+/* ==========================================================================
+   PALETA DE CORES CENTRALIZADA - CONSTRUTORA LZBA
+   Controle todas as cores da aplicação exclusivamente neste arquivo.
+   ========================================================================== */
+
+@theme {
+  /* --------------------------------------------------------------------------
+     CORES OFICIAIS DA MARCA LZBA (Definidas no Manual da Marca) ALTERE AQUI FUTURAMENTE
+     -------------------------------------------------------------------------- */
+  --color-lzba-red: #66000B;     /* HEX #66000B - Bordô / Vinho Nobre LZBA */
+  --color-lzba-gold: #DBA725;    /* HEX #DBA725 - Dourado / Âmbar Arquitetônico */
+  --color-lzba-light: #EDEDED;   /* HEX #EDEDED - Cinza Claro / Superfície */
+  --color-lzba-border: #DADADA;  /* HEX #DADADA - Cinza Contorno / Separador */
+  --color-lzba-muted: #B2B2B2;   /* HEX #B2B2B2 - Cinza Médio / Legendas */
+  --color-lzba-dark: #1A1A1A;    /* HEX #1A1A1A - Preto Carvão / Base Escura */
+
+  /* Mapeamento Semântico para Classes Tailwind */
+  --color-brand-primary: var(--color-lzba-red);
+  --color-brand-gold: var(--color-lzba-gold);
+  --color-brand-dark: var(--color-lzba-dark);
+  --color-brand-light: var(--color-lzba-light);
+  --color-brand-border: var(--color-lzba-border);
+  --color-brand-muted: var(--color-lzba-muted);
+
+  /* Tipografia Inter */
+  --font-heading: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
 @layer base {
   :root {
-    --font-heading: 'Outfit', sans-serif;
-    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    /* ------------------------------------------------------------------------
+       VARIÁVEIS CSS NATIVAS (Acesso direto em qualquer componente ou estilo)
+       ------------------------------------------------------------------------ */
+    --lzba-red: #66000B;
+    --lzba-gold: #DBA725;
+    --lzba-light: #EDEDED;
+    --lzba-border: #DADADA;
+    --lzba-muted: #B2B2B2;
+    --lzba-dark: #1A1A1A;
+
+    /* Semântica Global */
+    --bg-page: #ffffff;
+    --bg-dark: var(--lzba-dark);
+    --bg-surface: var(--lzba-light);
+    --border-color: var(--lzba-border);
+    --text-main: var(--lzba-dark);
+    --text-muted: var(--lzba-muted);
+    --accent-gold: var(--lzba-gold);
+    --brand-red: var(--lzba-red);
+
+    /* Header Glassmorphism & Hero Overlay */
+    --header-glass-bg: rgba(26, 26, 26, 0.22);
+    --header-glass-border: rgba(255, 255, 255, 0.12);
+    --header-scrolled-bg: rgba(26, 26, 26, 0.94);
   }
 
   html {
     scroll-behavior: smooth;
     font-family: var(--font-sans);
-    color: #1e293b;
-    background-color: #0b0f17;
+    color: var(--lzba-dark);
+    background-color: #ffffff;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
+    font-weight: 700; /* Inter Bold */
+  }
+
+  p {
+    font-family: var(--font-sans);
+    font-weight: 300; /* Inter Light */
   }
 }
 
-/* Utilitários visuais de alto padrão (Luxury Real Estate) */
-.glass-panel {
-  background: rgba(15, 23, 42, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+/* ==========================================================================
+   CLASSES UTILITÁRIAS CENTRALIZADAS DA PALETA LZBA
+   Permitem aplicar as cores diretamente com classes semânticas.
+   ========================================================================== */
+
+/* Planos de Fundo */
+.bg-lzba-red { background-color: var(--lzba-red); }
+.bg-lzba-gold { background-color: var(--lzba-gold); }
+.bg-lzba-light { background-color: var(--lzba-light); }
+.bg-lzba-border { background-color: var(--lzba-border); }
+.bg-lzba-muted { background-color: var(--lzba-muted); }
+.bg-lzba-dark { background-color: var(--lzba-dark); }
+
+/* Cores de Texto */
+.text-lzba-red { color: var(--lzba-red); }
+.text-lzba-gold { color: var(--lzba-gold); }
+.text-lzba-light { color: var(--lzba-light); }
+.text-lzba-border { color: var(--lzba-border); }
+.text-lzba-muted { color: var(--lzba-muted); }
+.text-lzba-dark { color: var(--lzba-dark); }
+
+/* Cores de Borda */
+.border-lzba-red { border-color: var(--lzba-red); }
+.border-lzba-gold { border-color: var(--lzba-gold); }
+.border-lzba-light { border-color: var(--lzba-light); }
+.border-lzba-border { border-color: var(--lzba-border); }
+.border-lzba-muted { border-color: var(--lzba-muted); }
+.border-lzba-dark { border-color: var(--lzba-dark); }
+
+/* Efeitos Especiais de Gradiente e Overlays */
+.lzba-dark-overlay {
+  background: linear-gradient(to right, rgba(26, 26, 26, 0.94) 0%, rgba(26, 26, 26, 0.82) 50%, rgba(26, 26, 26, 0.65) 100%);
 }
 
-.glass-panel-light {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(226, 232, 240, 0.8);
+.lzba-gold-gradient {
+  background: linear-gradient(135deg, #DBA725 0%, #C4921A 100%);
 }
 
 .gold-gradient-text {
-  background: linear-gradient(135deg, #e5c07b 0%, #c5a880 50%, #dfb76c 100%);
+  background: linear-gradient(135deg, #DBA725 0%, #E6BA4A 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.gold-gradient-bg {
-  background: linear-gradient(135deg, #d4af37 0%, #c5a880 100%);
+/* Header Transparente com Efeito Glassmorphism sobre o Hero */
+.header-glass-transparent {
+  background-color: var(--header-glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--header-glass-border);
 }
 
-.gold-gradient-hover:hover {
-  background: linear-gradient(135deg, #e5c07b 0%, #b89758 100%);
+.header-glass-scrolled {
+  background-color: var(--header-scrolled-bg) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 }
 
-.navy-gradient {
-  background: linear-gradient(180deg, #0b0f17 0%, #111827 50%, #0b0f17 100%);
+/* Overlay do Hero com gradiente arquitetônico balanceado */
+.hero-overlay {
+  background: 
+    linear-gradient(to bottom, rgba(26, 26, 26, 0.10) 0%, transparent 35%, rgba(26, 26, 26, 0.55) 100%),
+    linear-gradient(to right, rgba(26, 26, 26, 0.82) 0%, rgba(26, 26, 26, 0.45) 55%, rgba(26, 26, 26, 0.10) 100%);
+}
+
+/* ==========================================================================
+   CARDS DA SEÇÃO PROJETOS (DESIGN FIEL AO MOCKUP COM PALETA OFICIAL LZBA)
+   ========================================================================== */
+
+/* Estado Inativo (Cards 2 e 3) */
+.project-card {
+  border-color: transparent;
+}
+.project-card .card-inner {
+  background-color: var(--lzba-dark);
+}
+.project-card .card-img {
+  opacity: 0.95;
+  filter: brightness(0.85) contrast(1.05);
+  transform: scale(1);
+}
+.project-card .card-overlay {
+  background: linear-gradient(to top, rgba(26, 26, 26, 0.98) 0%, rgba(26, 26, 26, 0.6) 45%, rgba(26, 26, 26, 0.1) 85%);
+}
+.project-card .card-top-content {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  pointer-events: none;
+}
+.project-card .card-action-btn {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  pointer-events: none;
+}
+.project-card .card-bottom-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Hover em card inativo */
+.project-card:not(.is-active):hover {
+  border-color: var(--lzba-border);
+}
+.project-card:not(.is-active):hover .card-img {
+  transform: scale(1.04);
+}
+
+/* Estado Ativo (.is-active) - Exato como Card 1 do Mockup */
+.project-card.is-active {
+  border-color: var(--lzba-border);
+}
+.project-card.is-active .card-inner {
+  background-color: var(--lzba-dark);
+}
+.project-card.is-active .card-img {
+  opacity: 0.08;
+  filter: brightness(0.2) grayscale(100%);
+  transform: scale(1);
+}
+.project-card.is-active .card-overlay {
+  background-color: rgba(26, 26, 26, 0.92);
+}
+.project-card.is-active .card-top-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.project-card.is-active .card-action-btn {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.project-card.is-active .card-bottom-content {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  pointer-events: none;
 }

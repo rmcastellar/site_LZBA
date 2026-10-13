@@ -1,0 +1,396 @@
+---
+import { EMPREENDIMENTOS } from "../../data/empreendimentos";
+import ProjectCard from "../ProjectCard.astro";
+
+const todosProjetos = EMPREENDIMENTOS;
+---
+
+<!-- 3. SEÇÃO PROJETOS (LAYOUT FIEL AO MOCKUP COM PALETA OFICIAL LZBA) -->
+<section
+  id="projetos"
+  class="py-16 sm:py-20 lg:py-28 bg-lzba-light text-lzba-dark border-t border-lzba-border scroll-mt-20 overflow-hidden"
+>
+  <div class="max-w-360 mx-auto px-4 sm:px-6 lg:px-12">
+    <!-- Layout Principal: Coluna Esquerda (Marca d'água + Filtros) e Coluna Direita (Cards) -->
+    <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-14">
+      
+      <!-- Coluna Esquerda: Marca d'água vertical PROJETOS + Timeline com Filtros -->
+      <div class="w-full lg:w-auto shrink-0 flex flex-col sm:flex-row items-start sm:items-center justify-start gap-4 sm:gap-10">
+        
+        <!-- Marca d'água PROJETOS vertical -->
+        <div class="hidden sm:flex items-center justify-center select-none w-16 lg:w-20 h-75 relative shrink-0">
+          <span
+            class="text-5xl lg:text-6xl xl:text-7xl font-black tracking-[0.2em] text-lzba-border font-heading uppercase -rotate-90 origin-center whitespace-nowrap block"
+          >
+            PROJETOS
+          </span>
+        </div>
+
+        <!-- Título para dispositivos móveis pequenos -->
+        <div class="block sm:hidden text-2xl font-black tracking-widest text-lzba-muted font-heading uppercase mb-2">
+          PROJETOS
+        </div>
+
+        <!-- Linha da Timeline e Filtros -->
+        <div class="relative py-4 pl-6 sm:pl-7 select-none">
+          <!-- Linha vertical contínua conectando os pontos -->
+          <div class="absolute left-0 top-0 bottom-0 w-px -translate-x-1/2 bg-lzba-border"></div>
+
+          <div class="flex flex-col space-y-7" id="projects-filter-bar">
+            <!-- Item 1: Todos os Projetos (Ativo por padrão) -->
+            <button
+              type="button"
+              data-filter="todos"
+              class="project-filter-btn group relative flex items-center text-left cursor-pointer transition-colors"
+            >
+              <!-- Ponto centralizado na linha vertical -->
+              <span class="absolute -left-6 sm:-left-7 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-3 h-3 z-10 pointer-events-none">
+                <span class="filter-dot w-2.5 h-2.5 rounded-full bg-lzba-gold ring-4 ring-lzba-light shrink-0 transition-all"></span>
+              </span>
+              <!-- Conector horizontal para o item ativo -->
+              <span class="absolute -left-6 sm:-left-7 top-1/2 -translate-y-1/2 flex items-center pointer-events-none">
+                <span class="filter-connector w-3 h-[1.5px] bg-lzba-gold transition-all"></span>
+              </span>
+              <span class="filter-text text-xs sm:text-sm font-bold text-lzba-dark transition-colors ml-2.5">
+                Todos os Projetos
+              </span>
+            </button>
+
+            <!-- Item 2: Lançamentos -->
+            <button
+              type="button"
+              data-filter="lancamento"
+              class="project-filter-btn group relative flex items-center text-left cursor-pointer transition-colors"
+            >
+              <!-- Ponto centralizado na linha vertical -->
+              <span class="absolute -left-6 sm:-left-7 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-3 h-3 z-10 pointer-events-none">
+                <span class="filter-dot w-2 h-2 rounded-full bg-lzba-muted ring-4 ring-lzba-light shrink-0 transition-all"></span>
+              </span>
+              <!-- Conector horizontal inativo -->
+              <span class="absolute -left-6 sm:-left-7 top-1/2 -translate-y-1/2 flex items-center pointer-events-none">
+                <span class="filter-connector w-0 h-[1.5px] bg-transparent transition-all"></span>
+              </span>
+              <span class="filter-text text-xs sm:text-sm font-medium text-lzba-muted hover:text-lzba-dark transition-colors ml-2.5">
+                Lançamentos
+              </span>
+            </button>
+
+            <!-- Item 3: Em obras -->
+            <button
+              type="button"
+              data-filter="em_obras"
+              class="project-filter-btn group relative flex items-center text-left cursor-pointer transition-colors"
+            >
+              <!-- Ponto centralizado na linha vertical -->
+              <span class="absolute -left-6 sm:-left-7 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-3 h-3 z-10 pointer-events-none">
+                <span class="filter-dot w-2 h-2 rounded-full bg-lzba-muted ring-4 ring-lzba-light shrink-0 transition-all"></span>
+              </span>
+              <!-- Conector horizontal inativo -->
+              <span class="absolute -left-6 sm:-left-7 top-1/2 -translate-y-1/2 flex items-center pointer-events-none">
+                <span class="filter-connector w-0 h-[1.5px] bg-transparent transition-all"></span>
+              </span>
+              <span class="filter-text text-xs sm:text-sm font-medium text-lzba-muted hover:text-lzba-dark transition-colors ml-2.5">
+                Em obras
+              </span>
+            </button>
+
+            <!-- Item 4: Entregues -->
+            <button
+              type="button"
+              data-filter="entregue"
+              class="project-filter-btn group relative flex items-center text-left cursor-pointer transition-colors"
+            >
+              <!-- Ponto centralizado na linha vertical -->
+              <span class="absolute -left-6 sm:-left-7 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-3 h-3 z-10 pointer-events-none">
+                <span class="filter-dot w-2 h-2 rounded-full bg-lzba-muted ring-4 ring-lzba-light shrink-0 transition-all"></span>
+              </span>
+              <!-- Conector horizontal inativo -->
+              <span class="absolute -left-6 sm:-left-7 top-1/2 -translate-y-1/2 flex items-center pointer-events-none">
+                <span class="filter-connector w-0 h-[1.5px] bg-transparent transition-all"></span>
+              </span>
+              <span class="filter-text text-xs sm:text-sm font-medium text-lzba-muted hover:text-lzba-dark transition-colors ml-2.5">
+                Entregues
+              </span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Coluna Direita: Trilho Horizontal de Cards de Projetos -->
+      <div class="w-full flex-1 min-w-0">
+        <!-- Controles de Navegação (Pequenos, discretos e alinhados à direita) -->
+        <div class="flex items-center justify-end gap-2 mb-3 pr-1">
+          <button
+            id="projects-prev-btn"
+            type="button"
+            aria-label="Projetos anteriores"
+            class="w-8 h-8 rounded-full border border-lzba-border bg-white/80 hover:bg-white text-lzba-dark hover:text-lzba-gold hover:border-lzba-gold flex items-center justify-center transition-all duration-200 cursor-pointer shadow-2xs disabled:opacity-25 disabled:pointer-events-none hover:scale-105 active:scale-95"
+          >
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button
+            id="projects-next-btn"
+            type="button"
+            aria-label="Próximos projetos"
+            class="w-8 h-8 rounded-full border border-lzba-border bg-white/80 hover:bg-white text-lzba-dark hover:text-lzba-gold hover:border-lzba-gold flex items-center justify-center transition-all duration-200 cursor-pointer shadow-2xs disabled:opacity-25 disabled:pointer-events-none hover:scale-105 active:scale-95"
+          >
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Trilho Horizontal de Cards -->
+        <div
+          id="projects-track"
+          class="flex gap-5 sm:gap-6 overflow-x-auto pb-4 pt-1 scrollbar-none snap-x snap-mandatory scroll-smooth min-h-105 sm:min-h-115 items-stretch"
+          style="scrollbar-width: none; -ms-overflow-style: none;"
+        >
+          <!-- Mensagem para categoria sem projetos -->
+          <div
+            id="projects-empty-message"
+            class="hidden w-full py-16 px-6 text-center flex-col items-center justify-center my-auto min-w-70"
+          >
+            <p class="text-base font-semibold text-lzba-dark font-heading mb-1">
+              Nenhum projeto nesta categoria no momento
+            </p>
+            <p class="text-xs text-lzba-muted font-light">
+              Em breve novos empreendimentos serão anunciados pela LZBA.
+            </p>
+          </div>
+          {
+            todosProjetos.map((item, index) => (
+              <ProjectCard item={item} index={index} />
+            ))
+          }
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Script de interatividade encapsulado da seção Projetos -->
+<script>
+  function setupProjects() {
+    const filterBar = document.getElementById("projects-filter-bar");
+    const filterButtons = document.querySelectorAll<HTMLButtonElement>(
+      ".project-filter-btn",
+    );
+    const cards = document.querySelectorAll<HTMLElement>(".project-card");
+    const track = document.getElementById("projects-track");
+
+    // Filtro ativo padrão: 'todos'
+    let activeFilter = "todos";
+
+    // Atualiza classes visuais de um botão de filtro
+    function setFilterButtonState(btn: HTMLButtonElement, isActive: boolean) {
+      const dot = btn.querySelector<HTMLElement>(".filter-dot");
+      const connector = btn.querySelector<HTMLElement>(".filter-connector");
+      const text = btn.querySelector<HTMLElement>(".filter-text");
+
+      if (isActive) {
+        if (dot) {
+          dot.className =
+            "filter-dot w-2.5 h-2.5 rounded-full bg-lzba-gold ring-4 ring-lzba-light shrink-0 transition-all";
+        }
+        if (connector) {
+          connector.className =
+            "filter-connector w-3 h-[1.5px] bg-lzba-gold transition-all";
+        }
+        if (text) {
+          text.className =
+            "filter-text text-xs sm:text-sm font-bold text-lzba-dark transition-colors ml-2.5";
+        }
+      } else {
+        if (dot) {
+          dot.className =
+            "filter-dot w-2 h-2 rounded-full bg-lzba-muted ring-4 ring-lzba-light shrink-0 transition-all";
+        }
+        if (connector) {
+          connector.className =
+            "filter-connector w-0 h-[1.5px] bg-transparent transition-all";
+        }
+        if (text) {
+          text.className =
+            "filter-text text-xs sm:text-sm font-medium text-lzba-muted hover:text-lzba-dark transition-colors ml-2.5";
+        }
+      }
+    }
+
+    const emptyMsg = document.getElementById("projects-empty-message");
+
+    // Ativar um filtro específico
+    function applyFilter(filter: string) {
+      filterButtons.forEach((btn) => {
+        const isCurrent = btn.getAttribute("data-filter") === filter;
+        setFilterButtonState(btn, isCurrent);
+      });
+
+      let visibleCount = 0;
+      cards.forEach((card) => {
+        const status = card.getAttribute("data-status");
+        if (filter === "todos" || status === filter) {
+          card.style.display = "";
+          visibleCount++;
+        } else {
+          card.style.display = "none";
+          card.classList.remove("is-active");
+        }
+      });
+
+      if (emptyMsg) {
+        if (visibleCount === 0) {
+          emptyMsg.classList.remove("hidden");
+          emptyMsg.classList.add("flex");
+        } else {
+          emptyMsg.classList.add("hidden");
+          emptyMsg.classList.remove("flex");
+        }
+      }
+
+      if (track) {
+        track.scrollTo({ left: 0, behavior: "smooth" });
+      }
+
+      setTimeout(updateNavButtons, 150);
+    }
+
+    // Eventos de clique nos botões de filtro (estável, sem piscamento)
+    filterButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const filter = btn.getAttribute("data-filter") || "todos";
+        activeFilter = filter;
+        applyFilter(filter);
+      });
+    });
+
+    // Interações com os Cards: hover seleciona, sair deseleciona
+    cards.forEach((card) => {
+      card.addEventListener("mouseenter", () => {
+        cards.forEach((c) => c.classList.remove("is-active"));
+        card.classList.add("is-active");
+      });
+
+      card.addEventListener("mouseleave", () => {
+        card.classList.remove("is-active");
+      });
+
+      card.addEventListener("click", (e) => {
+        const target = e.target as HTMLElement;
+        if (target.closest("a")) return; // Link navega normalmente
+        const slug = card.getAttribute("data-slug");
+        if (slug) {
+          window.location.href = `/empreendimentos/${slug}`;
+        }
+      });
+    });
+
+    // Quando o mouse sair da área do trilho de cards, garantir deseleção
+    if (track) {
+      track.addEventListener("mouseleave", () => {
+        cards.forEach((c) => c.classList.remove("is-active"));
+      });
+    }
+
+    // Interceptar cliques no botão Oportunidades (Header ou Drawer)
+    const oportunidadeTriggers = document.querySelectorAll<HTMLAnchorElement>(
+      '[data-filter-trigger="lancamento"], #header-btn-oportunidades',
+    );
+    oportunidadeTriggers.forEach((trigger) => {
+      trigger.addEventListener("click", (e) => {
+        const currentPath = window.location.pathname;
+        if (currentPath === "/" || currentPath === "") {
+          e.preventDefault();
+          activeFilter = "lancamento";
+          applyFilter("lancamento");
+          const targetSection = document.getElementById("projetos");
+          if (targetSection) {
+            targetSection.scrollIntoView({ behavior: "smooth" });
+          }
+          history.pushState(null, "", "/#projetos?status=lancamento");
+        }
+      });
+    });
+
+    // Checar se a página foi aberta com parâmetro status=lancamento
+    const params = new URLSearchParams(window.location.search);
+    const hash = window.location.hash;
+    if (params.get("status") === "lancamento" || hash.includes("lancamento")) {
+      activeFilter = "lancamento";
+      applyFilter("lancamento");
+      setTimeout(() => {
+        const targetSection = document.getElementById("projetos");
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 150);
+    }
+    // Botões de navegação do carrossel
+    const prevBtn = document.getElementById("projects-prev-btn") as HTMLButtonElement | null;
+    const nextBtn = document.getElementById("projects-next-btn") as HTMLButtonElement | null;
+
+    function updateNavButtons() {
+      if (!track || !prevBtn || !nextBtn) return;
+      const scrollLeft = Math.round(track.scrollLeft);
+      const maxScroll = Math.round(track.scrollWidth - track.clientWidth);
+
+      // Se todo o conteúdo couber na tela sem scroll, esconde ambas as setas
+      if (maxScroll <= 5) {
+        prevBtn.classList.add("opacity-0", "pointer-events-none");
+        nextBtn.classList.add("opacity-0", "pointer-events-none");
+        return;
+      } else {
+        prevBtn.classList.remove("opacity-0");
+        nextBtn.classList.remove("opacity-0");
+      }
+
+      // Seta Anterior
+      if (scrollLeft <= 10) {
+        prevBtn.disabled = true;
+        prevBtn.classList.add("opacity-25", "pointer-events-none");
+      } else {
+        prevBtn.disabled = false;
+        prevBtn.classList.remove("opacity-25", "pointer-events-none");
+      }
+
+      // Seta Próximo
+      if (scrollLeft >= maxScroll - 10) {
+        nextBtn.disabled = true;
+        nextBtn.classList.add("opacity-25", "pointer-events-none");
+      } else {
+        nextBtn.disabled = false;
+        nextBtn.classList.remove("opacity-25", "pointer-events-none");
+      }
+    }
+
+    if (prevBtn && track) {
+      prevBtn.addEventListener("click", () => {
+        const firstCard = track.querySelector<HTMLElement>(".project-card");
+        const scrollAmount = firstCard ? firstCard.offsetWidth + 24 : 340;
+        track.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+      });
+    }
+
+    if (nextBtn && track) {
+      nextBtn.addEventListener("click", () => {
+        const firstCard = track.querySelector<HTMLElement>(".project-card");
+        const scrollAmount = firstCard ? firstCard.offsetWidth + 24 : 340;
+        track.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      });
+    }
+
+    track?.addEventListener("scroll", updateNavButtons, { passive: true });
+    window.addEventListener("resize", updateNavButtons, { passive: true });
+
+    // Inicialização da visibilidade dos botões
+    setTimeout(updateNavButtons, 200);
+  }
+
+  // Executar após renderização
+  setupProjects();
+  document.addEventListener("astro:page-load", setupProjects);
+</script>

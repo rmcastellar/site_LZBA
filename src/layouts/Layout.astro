@@ -21,7 +21,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://lzba.com
 ---
 
 <!doctype html>
-<html lang="pt-BR" class="scroll-smooth bg-[#0b0f17] text-slate-100 antialiased selection:bg-[#c5a880] selection:text-slate-950">
+<html lang="pt-BR" class="scroll-smooth bg-[#161616] text-neutral-900 antialiased selection:bg-neutral-800 selection:text-white">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -30,10 +30,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://lzba.com
     <link rel="canonical" href={canonicalURL} />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- Google Fonts: Outfit (Títulos) & Plus Jakarta Sans (Texto) -->
+    <!-- Google Fonts: Inter (300 Light para parágrafos, 700 Bold para títulos) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
     <!-- SEO Primário -->
     <title>{title}</title>
@@ -57,7 +57,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://lzba.com
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={image} />
   </head>
-  <body class="min-h-screen flex flex-col bg-[#0b0f17] text-slate-100">
+  <body class="min-h-screen flex flex-col bg-white text-neutral-900">
     <Header currentPath={currentPath} />
     
     <main class="flex-grow">

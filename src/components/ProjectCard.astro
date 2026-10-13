@@ -1,0 +1,87 @@
+---
+import type { Empreendimento } from "../data/empreendimentos";
+
+interface Props {
+  item: Empreendimento;
+  index: number;
+}
+
+const { item, index } = Astro.props;
+const numberFormatted = String(index + 1).padStart(2, "0");
+---
+
+<div
+  class="project-card group relative p-1.5 sm:p-2 border transition-all duration-300 shrink-0 w-70 sm:w-77.5 lg:w-82.5 snap-start"
+  data-status={item.status}
+  data-slug={item.slug}
+  data-index={index}
+>
+  <div
+    class="card-inner relative aspect-[3/4.3] w-full overflow-hidden flex flex-col justify-between p-6 sm:p-7 select-none transition-all duration-300 cursor-pointer"
+  >
+    <!-- Imagem de Fundo -->
+    <img
+      src={item.imagemCapa}
+      alt={item.titulo}
+      class="card-img absolute inset-0 w-full h-full object-cover transition-all duration-700"
+      loading={index < 3 ? "eager" : "lazy"}
+    />
+    <!-- Overlay com gradiente arquitetônico -->
+    <div class="card-overlay absolute inset-0 transition-all duration-500">
+    </div>
+
+    <!-- CONTEÚDO DO TOPO (Exibido no estado ATIVO - Card 1 do Mockup) -->
+    <div class="card-top-content relative z-10 transition-all duration-300">
+      <h3
+        class="text-lg sm:text-xl font-bold font-heading text-white leading-tight"
+      >
+        {item.titulo}
+      </h3>
+      <div class="text-xs text-lzba-muted font-light mt-1">
+        {item.bairro} • {item.cidade}
+      </div>
+    </div>
+
+    <!-- CONTEÚDO DA BASE (Exibido no estado INATIVO - Ancorado na base do Card) -->
+    <div
+      class="card-bottom-content absolute left-6 right-6 sm:left-7 sm:right-7 bottom-6 sm:bottom-7 z-10 transition-all duration-300 pointer-events-none"
+    >
+      <h3
+        class="text-lg sm:text-xl font-bold font-heading text-white leading-tight"
+      >
+        {item.titulo}
+      </h3>
+      <div class="text-xs text-lzba-muted font-light mt-1">
+        {item.bairro} • {item.cidade}
+      </div>
+    </div>
+
+    <!-- BOTÃO CIRCULAR COM SETA (Exibido no estado ATIVO - Canto inferior do Card 1) -->
+    <div
+      class="card-action-btn relative z-10 transition-all duration-300 mt-auto"
+    >
+      <a
+        href={`/empreendimentos/${item.slug}`}
+        class="inline-flex items-center justify-center p-1 rounded-full border border-white/70 hover:border-white transition-all group/btn"
+        aria-label={`Ver detalhes de ${item.titulo}`}
+      >
+        <span
+          class="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white flex items-center justify-center shadow-md transition-transform duration-300 group-hover/btn:scale-105"
+        >
+          <svg
+            class="w-5 h-5 text-lzba-gold"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.8"
+              d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          </svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</div>

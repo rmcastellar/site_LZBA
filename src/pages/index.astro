@@ -1,330 +1,37 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import QuickBar from '../components/QuickBar.astro';
-import BuildingCard from '../components/BuildingCard.astro';
-import { EMPREENDIMENTOS, CONTATO_LZBA } from '../data/empreendimentos';
-
-const destaques = EMPREENDIMENTOS.slice(0, 3);
-const season = EMPREENDIMENTOS.find(e => e.slug === 'residencial-season') || EMPREENDIMENTOS[0];
+import Layout from "../layouts/Layout.astro";
+import HeroSection from "../components/sections/HeroSection.astro";
+import DiferenciaisSection from "../components/sections/DiferenciaisSection.astro";
+import ProjetosSection from "../components/sections/ProjetosSection.astro";
+import PrevisibilidadeSection from "../components/sections/PrevisibilidadeSection.astro";
+import NumerosSection from "../components/sections/NumerosSection.astro";
+import FaqSection from "../components/sections/FaqSection.astro";
+import CtaSection from "../components/sections/CtaSection.astro";
 ---
 
 <Layout
-  title="LZBA Construtora e Incorporadora | 34 Anos de Excelência"
-  description="Construtora e Incorporadora LZBA: 34 anos de tradição, mais de 1.343 apartamentos entregues e 31 empreendimentos concluídos com alto padrão e compromisso no prazo."
+  title="LZBA Construtora e Incorporadora | Tradição, Solidez e Excelência"
+  description="Solidez técnica e tradição que valorizam o patrimônio da sua família. Há 34 anos transformando projetos em lares funcionais de alta consistência executiva."
   currentPath="/"
 >
-  <!-- 1. HERO SECTION IMPONENTE -->
-  <section class="relative min-h-[92vh] flex flex-col justify-between pt-12 pb-16 overflow-hidden">
-    <!-- Imagem de Fundo com Overlay Gradiente Luxo -->
-    <div class="absolute inset-0 z-0">
-      <img 
-        src="/images/hero-building.jpg" 
-        alt="Fachada Empreendimento LZBA" 
-        class="w-full h-full object-cover object-center brightness-[0.35] scale-105 transform motion-safe:animate-pulse motion-safe:duration-[10000ms]"
-        loading="eager"
-      />
-      <div class="absolute inset-0 bg-gradient-to-b from-[#0b0f17]/90 via-[#0b0f17]/70 to-[#0b0f17]"></div>
-      <!-- Luz ambiente suave dourada -->
-      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#c5a880]/10 blur-[130px] rounded-full pointer-events-none"></div>
-    </div>
+  <!-- 1. Hero Principal -->
+  <HeroSection />
 
-    <!-- Conteúdo Central do Hero -->
-    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center my-auto pt-8 sm:pt-14">
-      
-      <!-- Selo de Tradição -->
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-[#c5a880]/30 backdrop-blur-md mb-6">
-        <span class="w-2 h-2 rounded-full bg-[#e5c07b]"></span>
-        <span class="text-xs sm:text-sm font-semibold tracking-wide text-slate-200">
-          34 ANOS DE TRADIÇÃO E SOLIDEZ CONSTRUTIVA
-        </span>
-      </div>
+  <!-- 2. Como Fazemos / Diferenciais e Pilares -->
+  <DiferenciaisSection />
 
-      <!-- Título Principal -->
-      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.1] mb-6 font-heading">
-        Projetamos espaços que <br class="hidden sm:inline" />
-        <span class="gold-gradient-text">transcendem o comum</span>
-      </h1>
+  <!-- 3. Projetos (Mockup com Timeline e Cards Interativos) -->
+  <ProjetosSection />
 
-      <!-- Subtítulo de Impacto -->
-      <p class="text-base sm:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed font-light">
-        Com mais de três décadas de excelência em São Paulo, unimos design inteligente, sofisticação e pontualidade rigorosa para transformar seus sonhos no melhor endereço.
-      </p>
+  <!-- 4. Previsibilidade e Jornada de Compra -->
+  <PrevisibilidadeSection />
 
-      <!-- Botões de Ação (CTAs) -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a
-          href="/empreendimentos"
-          class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-bold text-slate-950 bg-gradient-to-r from-[#e5c07b] to-[#c5a880] hover:from-[#f3cf8e] hover:to-[#d4b58b] shadow-xl shadow-[#c5a880]/20 transition-all duration-300 transform hover:-translate-y-0.5"
-        >
-          Ver Nossos Empreendimentos
-        </a>
+  <!-- 5. Faixa Escura de Métricas -->
+  <NumerosSection />
 
-        <a
-          href={CONTATO_LZBA.whatsappLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-bold text-white bg-white/10 hover:bg-white/15 border border-white/20 backdrop-blur-md transition-all duration-300 flex items-center justify-center gap-2"
-        >
-          <svg class="w-5 h-5 fill-emerald-400" viewBox="0 0 24 24">
-            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.149.929 3.182 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.768-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.288.043.088.072.189.014.305-.058.115-.087.188-.173.289l-.26.309c-.087.086-.179.18-.077.355.101.173.45 0.742.966 1.202.665.592 1.226.776 1.399.863.173.086.275.072.376-.044.101-.116.433-.506.549-.679.116-.173.231-.144.39-.086s1.011.477 1.184.564.289.13.332.202c.044.073.044.419-.1 0.824z"/>
-          </svg>
-          <span>Falar com Especialista</span>
-        </a>
-      </div>
+  <!-- 6. Dúvidas Frequentes e Esclarecimentos Técnicos -->
+  <FaqSection />
 
-    </div>
-
-    <!-- Quick-Bar de Métricas na Base da Dobra -->
-    <div class="relative z-10 px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16">
-      <QuickBar />
-    </div>
-  </section>
-
-  <!-- 2. DESTAQUE ESPECIAL: RESIDENCIAL SEASON -->
-  <section class="py-20 lg:py-28 bg-[#0e1422] relative border-t border-white/5">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        
-        <!-- Imagem e Banner do Empreendimento -->
-        <div class="lg:col-span-7 relative group">
-          <div class="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 aspect-[16/10]">
-            <img 
-              src={season.imagemCapa} 
-              alt={season.titulo} 
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
-            
-            <!-- Logo do Residencial Season sobreposto -->
-            <div class="absolute top-6 left-6 bg-slate-950/80 backdrop-blur-md px-5 py-3 rounded-2xl border border-white/10">
-              <img 
-                src="/images/logo_season.png" 
-                alt="Logo Residencial Season" 
-                class="h-9 sm:h-11 w-auto object-contain"
-              />
-            </div>
-
-            <!-- Tag de Status -->
-            <div class="absolute bottom-6 left-6">
-              <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-500/20 text-amber-300 border border-amber-500/40 backdrop-blur-md">
-                <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
-                Grande Lançamento na Zona Norte
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Conteúdo do Destaque -->
-        <div class="lg:col-span-5 space-y-6">
-          <div class="space-y-2">
-            <span class="text-xs font-bold uppercase tracking-widest text-[#e5c07b]">
-              Empreendimento em Foco
-            </span>
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-white font-heading">
-              {season.titulo}
-            </h2>
-            <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
-              {season.descricaoCompleta}
-            </p>
-          </div>
-
-          <!-- Atributos -->
-          <div class="grid grid-cols-2 gap-4 py-4 border-y border-white/10 text-sm">
-            <div class="bg-white/5 p-3.5 rounded-xl border border-white/5">
-              <span class="block text-xs text-slate-400 uppercase">Metragem</span>
-              <span class="font-bold text-white text-base">{season.metragem}</span>
-            </div>
-            <div class="bg-white/5 p-3.5 rounded-xl border border-white/5">
-              <span class="block text-xs text-slate-400 uppercase">Configuração</span>
-              <span class="font-bold text-white text-base">{season.dormitorios}</span>
-            </div>
-            <div class="bg-white/5 p-3.5 rounded-xl border border-white/5">
-              <span class="block text-xs text-slate-400 uppercase">Localização</span>
-              <span class="font-bold text-white text-base">{season.bairro}</span>
-            </div>
-            <div class="bg-white/5 p-3.5 rounded-xl border border-white/5">
-              <span class="block text-xs text-slate-400 uppercase">Vagas</span>
-              <span class="font-bold text-white text-base">{season.vagas}</span>
-            </div>
-          </div>
-
-          <!-- CTAs do Season -->
-          <div class="flex flex-col sm:flex-row gap-3 pt-2">
-            <a
-              href={`/empreendimentos/${season.slug}`}
-              class="px-6 py-3.5 rounded-xl text-center text-sm font-bold text-slate-950 bg-gradient-to-r from-[#e5c07b] to-[#c5a880] hover:from-[#f3cf8e] hover:to-[#d4b58b] transition-all shadow-lg shadow-[#c5a880]/15"
-            >
-              Conhecer o Projeto Completo
-            </a>
-            <a
-              href={CONTATO_LZBA.whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="px-6 py-3.5 rounded-xl text-center text-sm font-semibold text-slate-200 bg-white/5 hover:bg-white/10 border border-white/10 transition-all flex items-center justify-center gap-2"
-            >
-              <span>Conhecer o Decorado</span>
-            </a>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- 3. PORTFÓLIO DE EMPREENDIMENTOS EM DESTAQUE -->
-  <section class="py-20 lg:py-28 bg-[#0b0f17]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-        <div>
-          <span class="text-xs font-bold uppercase tracking-widest text-[#e5c07b]">
-            Portfólio Selecionado
-          </span>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-white font-heading mt-2">
-            Empreendimentos LZBA
-          </h2>
-          <p class="text-slate-400 text-sm max-w-xl mt-2">
-            Do projeto na planta à chave na mão: conheça lançamentos e obras entregues com o selo de qualidade que marcou gerações.
-          </p>
-        </div>
-
-        <a
-          href="/empreendimentos"
-          class="inline-flex items-center gap-2 text-sm font-bold text-[#e5c07b] hover:text-[#f3cf8e] transition-colors group"
-        >
-          <span>Ver catálogo completo ({EMPREENDIMENTOS.length} projetos)</span>
-          <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-          </svg>
-        </a>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {destaques.map((item) => (
-          <BuildingCard item={item} />
-        ))}
-      </div>
-
-    </div>
-  </section>
-
-  <!-- 4. SOBRE RESUMIDO & PILARES DE VALOR -->
-  <section class="py-20 lg:py-28 bg-[#0e1422] border-t border-white/5 relative overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      
-      <div class="max-w-3xl mx-auto text-center mb-16">
-        <span class="text-xs font-bold uppercase tracking-widest text-[#e5c07b]">
-          Nossa Proposta de Valor
-        </span>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white font-heading mt-2">
-          Mais de 3 décadas construindo histórias reais
-        </h2>
-        <p class="text-slate-400 text-base mt-4 leading-relaxed font-light">
-          A Construtora e Incorporadora LZBA consolida-se como referência por honrar o compromisso com o cliente desde o planejamento arquitetônico até o suporte pós-entrega.
-        </p>
-      </div>
-
-      <!-- 3 Pilares -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        
-        <!-- Pilar 1 -->
-        <div class="glass-panel p-8 rounded-2xl border border-white/10 hover:border-[#c5a880]/40 transition-all duration-300">
-          <div class="w-12 h-12 rounded-xl bg-[#c5a880]/10 flex items-center justify-center text-[#e5c07b] mb-6">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-white font-heading mb-3">
-            Design Inteligente e Funcional
-          </h3>
-          <p class="text-sm text-slate-400 leading-relaxed">
-            Valorizamos a união entre estética sofisticada e praticidade. Nossos empreendimentos traduzem o estilo de vida contemporâneo, criando espaços que transcendem o comum.
-          </p>
-        </div>
-
-        <!-- Pilar 2 -->
-        <div class="glass-panel p-8 rounded-2xl border border-white/10 hover:border-[#c5a880]/40 transition-all duration-300">
-          <div class="w-12 h-12 rounded-xl bg-[#c5a880]/10 flex items-center justify-center text-[#e5c07b] mb-6">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"/>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-white font-heading mb-3">
-            Experiência Exclusiva e Próxima
-          </h3>
-          <p class="text-sm text-slate-400 leading-relaxed">
-            Cada cliente tem uma jornada única conosco. Do primeiro contato à entrega solene das chaves, garantimos atendimento individualizado e transparência absoluta.
-          </p>
-        </div>
-
-        <!-- Pilar 3 -->
-        <div class="glass-panel p-8 rounded-2xl border border-white/10 hover:border-[#c5a880]/40 transition-all duration-300">
-          <div class="w-12 h-12 rounded-xl bg-[#c5a880]/10 flex items-center justify-center text-[#e5c07b] mb-6">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-white font-heading mb-3">
-            Solidez e Pontualidade Rigorosa
-          </h3>
-          <p class="text-sm text-slate-400 leading-relaxed">
-            Com 31 obras entregues, nosso histórico fala por si: respeito inabalável aos cronogramas pactuados e garantias sólidas para o seu patrimônio.
-          </p>
-        </div>
-
-      </div>
-
-      <div class="text-center mt-12">
-        <a
-          href="/sobre"
-          class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-slate-200 bg-white/5 hover:bg-white/10 border border-white/10 transition-colors"
-        >
-          <span>Conheça toda a nossa trajetória e valores</span>
-          <span>›</span>
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- 5. CALL TO ACTION FINAL: CANAIS DE ATENDIMENTO & CORRETORES -->
-  <section class="py-20 bg-gradient-to-b from-[#0b0f17] to-[#080c14] border-t border-white/5">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      
-      <div class="glass-panel rounded-3xl p-8 sm:p-14 border border-[#c5a880]/20 relative overflow-hidden">
-        <div class="space-y-4 max-w-2xl mx-auto">
-          <span class="text-xs font-bold uppercase tracking-widest text-[#e5c07b]">
-            Dê o Primeiro Passo
-          </span>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-white font-heading">
-            Pronto para encontrar o seu próximo imóvel ou ser um corretor parceiro?
-          </h2>
-          <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
-            Nossos consultores estão disponíveis para esclarecer dúvidas, apresentar tabelas de vendas e agendar visitas exclusivas.
-          </p>
-        </div>
-
-        <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
-            href={CONTATO_LZBA.whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="w-full sm:w-auto px-8 py-4 rounded-xl text-sm font-bold text-slate-950 bg-gradient-to-r from-[#e5c07b] to-[#c5a880] hover:from-[#f3cf8e] hover:to-[#d4b58b] shadow-xl shadow-[#c5a880]/20 transition-all"
-          >
-            Falar com Atendimento no WhatsApp
-          </a>
-          <a
-            href="/trabalhe-conosco"
-            class="w-full sm:w-auto px-8 py-4 rounded-xl text-sm font-bold text-white bg-white/10 hover:bg-white/15 border border-white/10 transition-all"
-          >
-            Acesso para Corretores e Imobiliárias
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </section>
+  <!-- 7. CTA Final -->
+  <CtaSection />
 </Layout>

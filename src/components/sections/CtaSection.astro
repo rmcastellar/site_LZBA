@@ -1,0 +1,56 @@
+---
+import { CONTATO_LZBA } from "../../data/empreendimentos";
+---
+
+<!-- 7. CTA BANNER FINAL (ESTILO QUENTE / SAND ARQUITETÔNICO DO MOCKUP) -->
+<section
+  class="py-20 lg:py-24 bg-lzba-light text-lzba-dark border-t border-lzba-border"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl">
+      <!-- Logo / Eyebrow LZBA -->
+      <div class="flex items-center gap-3 mb-6">
+        <img
+          src="/images/logo.png"
+          alt="Logo LZBA"
+          class="h-8 w-auto object-contain brightness-0 opacity-80"
+        />
+      </div>
+
+      <!-- Headline Forte -->
+      <h2
+        class="text-3xl sm:text-4xl lg:text-5xl font-bold text-lzba-dark tracking-tight font-heading leading-[1.15]"
+      >
+        Planeje o futuro da sua<br />
+        família sobre alicerces<br />
+        sólidos.
+      </h2>
+
+      <!-- Descrição -->
+      <p
+        class="text-sm sm:text-base text-neutral-700 max-w-xl mt-6 leading-relaxed font-light"
+      >
+        Converse com nossos consultores técnicos e conheça as oportunidades
+        residenciais que combinam tradição construtiva e valorização contínua.
+      </p>
+
+      <!-- Botões de Ação -->
+      <div class="mt-8 flex flex-col sm:flex-row gap-4">
+        <a
+          href={CONTATO_LZBA.whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center px-8 py-4 bg-lzba-dark hover:bg-lzba-red text-white text-xs sm:text-sm font-semibold tracking-wider uppercase transition-colors"
+        >
+          Falar com Consultores Técnicos
+        </a>
+        <a
+          href="#projetos"
+          class="inline-flex items-center justify-center px-8 py-4 border border-lzba-dark/30 hover:border-lzba-dark text-lzba-dark text-xs sm:text-sm font-semibold tracking-wider uppercase transition-colors"
+        >
+          Ver Oportunidades
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
