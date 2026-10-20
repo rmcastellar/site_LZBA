@@ -147,7 +147,7 @@ const artigosRelacionados = ARTIGOS_BLOG.filter(
           alt={artigo.imagemAlt}
           width="1200"
           height="675"
-          class="w-full h-auto max-h-[520px] object-cover object-center"
+          class="w-full h-auto max-h-130 object-cover object-center"
           loading="eager"
         />
         <figcaption
@@ -261,7 +261,7 @@ const artigosRelacionados = ARTIGOS_BLOG.filter(
       <!-- Empreendimento Relacionado Vinculado ao Artigo -->
       {
         artigo.empreendimentoVinculado && (
-          <aside class="my-12 p-6 sm:p-8 bg-gradient-to-br from-neutral-50 to-neutral-100 rounded-2xl border border-neutral-200">
+          <aside class="my-12 p-6 sm:p-8 bg-linear-to-br from-neutral-50 to-neutral-100 rounded-2xl border border-neutral-200">
             <div class="flex flex-col sm:flex-row items-center gap-6">
               <img
                 src={artigo.empreendimentoVinculado.imagemCapa}
@@ -270,7 +270,7 @@ const artigosRelacionados = ARTIGOS_BLOG.filter(
                 height="160"
                 class="w-full sm:w-48 h-36 object-cover rounded-xl shadow-xs shrink-0"
               />
-              <div class="flex-grow text-center sm:text-left">
+              <div class="grow text-center sm:text-left">
                 <span class="text-xs font-semibold uppercase tracking-wider text-lzba-gold block mb-1">
                   Empreendimento em Destaque
                 </span>

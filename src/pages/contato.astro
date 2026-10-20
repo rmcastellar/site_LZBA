@@ -58,7 +58,7 @@ const description =
         >
           <a
             href={`tel:${CONTATO_LZBA.telefone.replace(/\D/g, "")}`}
-            class="h-full bg-white p-6 border border-lzba-border/80 hover:border-lzba-gold/60 transition-all duration-300 shadow-xs flex flex-col justify-between block"
+            class="h-full bg-white p-6 border border-lzba-border/80 hover:border-lzba-gold/60 transition-all duration-300 shadow-xs flex flex-col justify-between"
           >
             <div>
               <div
@@ -117,7 +117,7 @@ const description =
             href={CONTATO_LZBA.whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            class="h-full bg-white p-6 border border-lzba-border/80 hover:border-lzba-gold/60 transition-all duration-300 shadow-xs flex flex-col justify-between block"
+            class="h-full bg-white p-6 border border-lzba-border/80 hover:border-lzba-gold/60 transition-all duration-300 shadow-xs flex flex-col justify-between"
           >
             <div>
               <div
@@ -166,7 +166,7 @@ const description =
         >
           <a
             href={`mailto:${CONTATO_LZBA.email}`}
-            class="h-full bg-white p-6 border border-lzba-border/80 hover:border-lzba-gold/60 transition-all duration-300 shadow-xs flex flex-col justify-between block"
+            class="h-full bg-white p-6 border border-lzba-border/80 hover:border-lzba-gold/60 transition-all duration-300 shadow-xs flex flex-col justify-between"
           >
             <div>
               <div
@@ -298,7 +298,8 @@ const description =
             <!-- Feedback de Sucesso -->
             <div
               id="form-success"
-              class="hidden p-5 bg-emerald-50 border border-emerald-300 text-emerald-800 text-sm mb-6 flex items-center gap-3"
+              style="display: none;"
+              class="p-5 bg-emerald-50 border border-emerald-300 text-emerald-800 text-sm mb-6 flex items-center gap-3"
             >
               <svg
                 class="w-5 h-5 text-emerald-600 shrink-0"
@@ -557,7 +558,7 @@ const description =
                 allowfullscreen=""
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
-                class="w-full h-full grayscale-[50%] contrast-[1.05]"></iframe>
+                class="w-full h-full grayscale-50 contrast-[1.05]"></iframe>
             </div>
           </div>
         </div>
@@ -581,7 +582,7 @@ const description =
 
         setTimeout(() => {
           form.reset();
-          if (successMsg) successMsg.classList.remove("hidden");
+          if (successMsg) successMsg.style.display = "flex";
           if (submitBtn) {
             submitBtn.textContent = "MENSAGEM ENVIADA";
             setTimeout(() => {

@@ -4,7 +4,7 @@
 
 <section
   id="Destaque"
-  class="relative w-full h-[70vh] sm:h-[80vh] min-h-130 overflow-hidden bg-[#EAE5DF]"
+  class="relative w-full h-[56vh] sm:h-[80vh] min-h-104 sm:min-h-130 overflow-hidden bg-[#EAE5DF]"
 >
   <!-- Camada de Fundo com Parallax -->
   <div
@@ -19,12 +19,14 @@
       loading="lazy"
     />
 
-    <!-- Fachada com Parallax (no mobile posicionada do lado esquerdo apenas 30% dentro da tela) -->
-    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+    <!-- Fachada com Parallax (alinhada à base; no mobile posicionada do lado esquerdo apenas 30% dentro da tela) -->
+    <div
+      class="absolute inset-0 pointer-events-none overflow-hidden flex items-end"
+    >
       <img
         src="/images/empreendimentos/arbore/img-arbore.webp"
         alt="Fachada LZBA - Residencial Árbore"
-        class="h-full w-auto object-contain object-left -translate-x-[70%] lg:translate-x-0 transition-transform duration-300"
+        class="h-full w-auto object-contain object-left-bottom translate-x-[-70%] lg:translate-x-0 transition-transform duration-300"
         loading="lazy"
       />
     </div>
@@ -38,12 +40,10 @@
       <!-- Coluna Esquerda: Espaço reservado para a Fachada visível no fundo -->
       <div class="hidden lg:block lg:col-span-6 pointer-events-none"></div>
 
-      <!-- Coluna Direita: Logo Árbore e Botão CTA deslocados à direita no mobile para não conflitar com a fachada -->
-      <div
-        class="lg:col-span-6 flex flex-col items-end lg:items-center justify-center text-right lg:text-center"
-      >
+      <!-- Coluna Direita: Logo Árbore e Botão CTA centralizados -->
+      <div class="lg:col-span-6 flex flex-col items-center justify-center text-center">
         <div
-          class="reveal-scale flex flex-col items-end lg:items-center justify-center text-right lg:text-center gap-5 sm:gap-8 lg:gap-10 max-w-[280px] sm:max-w-md ml-auto mr-1 sm:mr-4 lg:mx-auto"
+          class="reveal-scale flex flex-col items-center justify-center text-center gap-5 sm:gap-8 lg:gap-10 max-w-xs sm:max-w-md mx-auto"
         >
           <!-- Frase de Topo -->
           <div>
