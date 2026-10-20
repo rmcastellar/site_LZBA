@@ -57,10 +57,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://lzba.com
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={image} />
   </head>
-  <body class="min-h-screen flex flex-col bg-white text-neutral-900">
+  <body class="min-h-screen flex flex-col bg-white text-neutral-900 overflow-x-hidden max-w-full">
     <Header currentPath={currentPath} />
     
-    <main class="flex-grow">
+    <main class="flex-grow w-full max-w-full overflow-x-hidden">
       <slot />
     </main>
 

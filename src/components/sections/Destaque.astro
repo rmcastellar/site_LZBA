@@ -19,12 +19,12 @@
       loading="lazy"
     />
 
-    <!-- Fachada com Parallax (opcional de profundidade) -->
-    <div class="absolute inset-0 pointer-events-none">
+    <!-- Fachada com Parallax (no mobile posicionada do lado esquerdo apenas 30% dentro da tela) -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
       <img
         src="/images/empreendimentos/arbore/img-arbore.webp"
         alt="Fachada LZBA - Residencial Árbore"
-        class="h-full w-auto object-contain object-left"
+        class="h-full w-auto object-contain object-left -translate-x-[70%] lg:translate-x-0 transition-transform duration-300"
         loading="lazy"
       />
     </div>
@@ -38,12 +38,12 @@
       <!-- Coluna Esquerda: Espaço reservado para a Fachada visível no fundo -->
       <div class="hidden lg:block lg:col-span-6 pointer-events-none"></div>
 
-      <!-- Coluna Direita: Logo Árbore e Botão CTA -->
+      <!-- Coluna Direita: Logo Árbore e Botão CTA deslocados à direita no mobile para não conflitar com a fachada -->
       <div
-        class="lg:col-span-6 flex flex-col items-center justify-center text-center"
+        class="lg:col-span-6 flex flex-col items-end lg:items-center justify-center text-right lg:text-center"
       >
         <div
-          class="reveal-scale flex flex-col items-center justify-center text-center gap-6 sm:gap-8 lg:gap-10 max-w-md mx-auto"
+          class="reveal-scale flex flex-col items-end lg:items-center justify-center text-right lg:text-center gap-5 sm:gap-8 lg:gap-10 max-w-[280px] sm:max-w-md ml-auto mr-1 sm:mr-4 lg:mx-auto"
         >
           <!-- Frase de Topo -->
           <div>
@@ -58,7 +58,7 @@
           <img
             src="/images/empreendimentos/arbore/logo-arbore.svg"
             alt="Logo Residencial Árbore"
-            class="h-24 sm:h-32 lg:h-44 w-auto object-contain drop-shadow-sm"
+            class="h-20 sm:h-32 lg:h-44 w-auto object-contain drop-shadow-sm"
           />
 
           <!-- CTA -->
@@ -66,7 +66,7 @@
             <a
               href="https://residencialarbore.com.br/"
               target="_blank"
-              class="inline-flex items-center justify-center px-10 py-4 bg-[#08372F] hover:bg-[#0c4e43] text-white text-xs sm:text-sm font-semibold tracking-widest uppercase transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5"
+              class="inline-flex items-center justify-center px-8 sm:px-10 py-3.5 sm:py-4 bg-[#08372F] hover:bg-[#0c4e43] text-white text-xs sm:text-sm font-semibold tracking-widest uppercase transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5"
             >
               SAIBA MAIS
             </a>

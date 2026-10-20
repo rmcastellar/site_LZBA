@@ -273,11 +273,15 @@ const navLinksDrawer = [
   /* Controle do Drawer lateral com transição suave */
   .drawer-panel {
     transform: translateX(100%);
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .drawer-checkbox:checked ~ .drawer-panel {
     transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
   }
 
   .drawer-checkbox:checked ~ .drawer-backdrop {

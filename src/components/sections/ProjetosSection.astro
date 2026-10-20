@@ -10,12 +10,12 @@ const todosProjetos = EMPREENDIMENTOS;
   id="projetos"
   class="py-16 sm:py-20 lg:py-28 bg-lzba-light text-lzba-dark scroll-mt-20 overflow-hidden"
 >
-  <div class="max-w-360 mx-auto px-4 sm:px-6 lg:px-12">
+  <div class="max-w-360 mx-auto pl-6 sm:pl-8 lg:px-12 pr-4 sm:pr-6">
     <!-- Layout Principal: Coluna Esquerda (Marca d'água + Filtros) e Coluna Direita (Cards) -->
     <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-14">
-      <!-- Coluna Esquerda: Marca d'água vertical PROJETOS + Timeline com Filtros -->
+      <!-- Coluna Esquerda: Marca d'água vertical PROJETOS + Timeline com Filtros (com margem esquerda reforçada no mobile) -->
       <div
-        class="reveal-left w-full lg:w-auto shrink-0 flex flex-col sm:flex-row items-start sm:items-center justify-start gap-4 sm:gap-10"
+        class="reveal-left w-full lg:w-auto shrink-0 flex flex-col sm:flex-row items-start sm:items-center justify-start gap-4 sm:gap-10 pl-2 sm:pl-0"
       >
         <!-- Marca d'água PROJETOS vertical -->
         <div
@@ -28,15 +28,15 @@ const todosProjetos = EMPREENDIMENTOS;
           </span>
         </div>
 
-        <!-- Título para dispositivos móveis pequenos -->
+        <!-- Título para dispositivos móveis pequenos com margem esquerda generosa -->
         <div
-          class="block sm:hidden text-2xl font-black tracking-widest text-lzba-muted font-heading uppercase mb-2"
+          class="block sm:hidden text-2xl font-black tracking-widest text-lzba-muted font-heading uppercase mb-2 pl-2"
         >
           PROJETOS
         </div>
 
         <!-- Linha da Timeline e Filtros -->
-        <div class="relative py-4 pl-6 sm:pl-7 select-none">
+        <div class="relative py-4 pl-8 sm:pl-7 select-none ml-1 sm:ml-0">
           <!-- Linha vertical contínua conectando os pontos -->
           <div
             class="absolute left-0 top-0 bottom-0 w-px -translate-x-1/2 bg-lzba-border"
@@ -193,8 +193,8 @@ const todosProjetos = EMPREENDIMENTOS;
         </div>
       </div>
 
-      <!-- Coluna Direita: Trilho Horizontal de Cards de Projetos -->
-      <div class="reveal-right w-full flex-1 min-w-0">
+      <!-- Coluna Direita: Trilho Horizontal de Cards de Projetos com contenção de overflow -->
+      <div class="reveal-right w-full flex-1 min-w-0 max-w-full overflow-hidden">
         <!-- Controles de Navegação (Pequenos, discretos e alinhados à direita) -->
         <div class="flex items-center justify-end gap-2 mb-3 pr-1">
           <button
@@ -240,7 +240,7 @@ const todosProjetos = EMPREENDIMENTOS;
         <!-- Trilho Horizontal de Cards -->
         <div
           id="projects-track"
-          class="flex gap-5 sm:gap-6 overflow-x-auto pb-4 pt-1 scrollbar-none snap-x snap-mandatory scroll-smooth min-h-105 sm:min-h-115 items-stretch"
+          class="flex gap-5 sm:gap-6 overflow-x-auto pb-4 pt-1 scrollbar-none snap-x snap-mandatory scroll-smooth min-h-105 sm:min-h-115 items-stretch pl-1 sm:pl-0"
           style="scrollbar-width: none; -ms-overflow-style: none;"
         >
           <!-- Mensagem para categoria sem projetos -->
