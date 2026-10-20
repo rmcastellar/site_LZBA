@@ -1,144 +1,247 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import BuildingCard from '../../components/BuildingCard.astro';
-import { EMPREENDIMENTOS, CONTATO_LZBA } from '../../data/empreendimentos';
+import Layout from "../../layouts/Layout.astro";
+import BuildingCard from "../../components/BuildingCard.astro";
+import CtaSection from "../../components/sections/CtaSection.astro";
+import { EMPREENDIMENTOS } from "../../data/empreendimentos";
 
 const totalProjetos = EMPREENDIMENTOS.length;
-const totalLancamentos = EMPREENDIMENTOS.filter(e => e.status === 'lancamento').length;
-const totalEmObras = EMPREENDIMENTOS.filter(e => e.status === 'em_obras').length;
-const totalEntregues = EMPREENDIMENTOS.filter(e => e.status === 'entregue').length;
+const totalDestaques = EMPREENDIMENTOS.filter((e) => e.destaque).length;
+const totalLancamentos = EMPREENDIMENTOS.filter(
+  (e) => e.status === "lancamento",
+).length;
+const totalEmObras = EMPREENDIMENTOS.filter(
+  (e) => e.status === "em_obras",
+).length;
+const totalEntregues = EMPREENDIMENTOS.filter(
+  (e) => e.status === "entregue",
+).length;
 ---
 
 <Layout
   title="Empreendimentos | Construtora e Incorporadora LZBA"
   description="Catálogo de empreendimentos LZBA: lançamentos, edifícios em construção e apartamentos entregues na Zona Norte e regiões nobres de São Paulo."
   currentPath="/empreendimentos"
+  image="/images/02023-scaled-1.jpg"
 >
-  <!-- Cabeçalho da Página -->
-  <section class="relative pt-16 pb-12 bg-gradient-to-b from-[#111827] to-[#0b0f17] border-b border-white/5">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <span class="text-xs font-bold uppercase tracking-widest text-[#e5c07b]">
-        Portfólio Imobiliário
-      </span>
-      <h1 class="text-4xl sm:text-5xl font-extrabold text-white font-heading mt-2 mb-4">
-        Nossos Empreendimentos
-      </h1>
-      <p class="text-slate-400 text-base max-w-2xl mx-auto font-light leading-relaxed">
-        Conheça nossos projetos desenhados para proporcionar exclusividade, conveniência e alta valorização patrimonial.
-      </p>
+  <!-- 1. HERO INSTITUCIONAL DE EMPREENDIMENTOS (PADRÃO ESTÉTICO DA HOME) -->
+  <section
+    class="relative pt-20 sm:pt-16 pb-16 overflow-hidden bg-lzba-dark text-white"
+  >
+    <!-- Imagem de Fundo com Overlay Arquitetônico -->
+    <div class="absolute inset-0 z-0">
+      <img
+        src="/images/02023-scaled-1.jpg"
+        alt="Empreendimentos LZBA na Zona Norte"
+        class="w-full h-full object-cover object-top sm:object-center brightness-[0.4] scale-100"
+        loading="eager"
+      />
+      <div class="absolute inset-0 hero-overlay"></div>
+    </div>
 
-      <!-- Barra de Filtros por Status -->
-      <div class="mt-10 flex flex-wrap items-center justify-center gap-2 sm:gap-3" id="filters-container">
+    <div
+      class="relative z-10 max-w-7xl mx-[10%] px-4 sm:px-6 lg:px-8 w-full my-auto"
+    >
+      <div class="max-w-3xl">
+        <span
+          class="animate-hero-1 text-xs uppercase font-bold tracking-widest text-lzba-gold block mb-3 font-sans"
+        >
+          PORTFÓLIO IMOBILIÁRIO • TRADIÇÃO NA ZONA NORTE
+        </span>
+        <h1
+          class="animate-hero-2 text-3xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight uppercase leading-[1.12] font-heading"
+        >
+          Nossos Empreendimentos.
+        </h1>
+        <p
+          class="animate-hero-3 text-sm sm:text-base lg:text-lg text-neutral-300 max-w-2xl mt-6 font-light leading-relaxed"
+        >
+          Projetos concebidos para proporcionar sofisticação, conforto acústico,
+          funcionalidade real de plantas e valorização patrimonial consistente
+          em endereços consolidados de São Paulo.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. BARRA DE FILTROS ARQUITETÔNICA -->
+  <section
+    class="bg-lzba-light border-b border-lzba-border/80 sticky top-20 z-30 shadow-2xs"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+      <div
+        class="flex flex-wrap items-center justify-center sm:justify-start gap-2 sm:gap-3"
+        id="filters-container"
+      >
+        <button
+          type="button"
+          data-filter="destaques"
+          class="filter-btn active px-5 py-2.5 text-xs sm:text-sm font-semibold tracking-wider uppercase transition-all duration-200 border border-lzba-gold bg-lzba-gold text-lzba-dark shadow-xs cursor-pointer"
+        >
+          Oportunidades em Destaque ({totalDestaques})
+        </button>
+
         <button
           type="button"
           data-filter="todos"
-          class="filter-btn active px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 bg-[#c5a880] text-slate-950 shadow-md"
+          class="filter-btn px-5 py-2.5 text-xs sm:text-sm font-semibold tracking-wider uppercase transition-all duration-200 border border-lzba-border bg-white text-neutral-700 hover:border-neutral-400 hover:text-neutral-900 shadow-2xs cursor-pointer"
         >
           Todos ({totalProjetos})
         </button>
+
         <button
           type="button"
           data-filter="lancamento"
-          class="filter-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10"
+          class="filter-btn px-5 py-2.5 text-xs sm:text-sm font-semibold tracking-wider uppercase transition-all duration-200 border border-lzba-border bg-white text-neutral-700 hover:border-neutral-400 hover:text-neutral-900 shadow-2xs cursor-pointer"
         >
           Lançamentos ({totalLancamentos})
         </button>
+
         <button
           type="button"
           data-filter="em_obras"
-          class="filter-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10"
+          class="filter-btn px-5 py-2.5 text-xs sm:text-sm font-semibold tracking-wider uppercase transition-all duration-200 border border-lzba-border bg-white text-neutral-700 hover:border-neutral-400 hover:text-neutral-900 shadow-2xs cursor-pointer"
         >
           Em Obras ({totalEmObras})
         </button>
+
         <button
           type="button"
           data-filter="entregue"
-          class="filter-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10"
+          class="filter-btn px-5 py-2.5 text-xs sm:text-sm font-semibold tracking-wider uppercase transition-all duration-200 border border-lzba-border bg-white text-neutral-700 hover:border-neutral-400 hover:text-neutral-900 shadow-2xs cursor-pointer"
         >
           Prontos / Entregues ({totalEntregues})
         </button>
       </div>
-
     </div>
   </section>
 
-  <!-- Grid de Empreendimentos -->
-  <section class="py-16 sm:py-20 bg-[#0b0f17]">
+  <!-- 3. GRID DE EMPREENDIMENTOS -->
+  <section class="py-16 sm:py-24 bg-white min-h-[50vh]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="buildings-grid">
-        {EMPREENDIMENTOS.map((item) => (
-          <div class="building-item" data-status={item.status}>
-            <BuildingCard item={item} />
-          </div>
-        ))}
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        id="buildings-grid"
+      >
+        {
+          EMPREENDIMENTOS.map((item) => (
+            <div
+              class="building-item"
+              data-status={item.status}
+              data-destaque={item.destaque ? "true" : "false"}
+              style={item.destaque ? "display: block;" : "display: none;"}
+            >
+              <BuildingCard item={item} />
+            </div>
+          ))
+        }
       </div>
 
       <!-- Estado Vazio (fallback dinâmico) -->
-      <div id="no-results" class="hidden text-center py-20">
-        <p class="text-slate-400 text-lg">Nenhum empreendimento encontrado para esta categoria.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- CTA de Atendimento Personalizado -->
-  <section class="py-16 bg-[#0e1422] border-t border-white/5">
-    <div class="max-w-4xl mx-auto px-4 text-center space-y-6">
-      <h2 class="text-2xl sm:text-3xl font-bold text-white font-heading">
-        Procurando um imóvel com características específicas?
-      </h2>
-      <p class="text-slate-400 text-sm sm:text-base">
-        Fale diretamente com nossa equipe de atendimento para receber opções personalizadas de acordo com o seu perfil e orçamento.
-      </p>
-      <div class="pt-2">
-        <a
-          href={CONTATO_LZBA.whatsappLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl text-sm font-bold text-slate-950 bg-gradient-to-r from-[#e5c07b] to-[#c5a880] hover:from-[#f3cf8e] hover:to-[#d4b58b] shadow-xl shadow-[#c5a880]/20 transition-all"
-        >
-          <span>Consultar Especialista pelo WhatsApp</span>
-        </a>
+      <div
+        id="no-results"
+        class="hidden text-center py-20 p-8 border border-dashed border-lzba-border max-w-lg mx-auto"
+      >
+        <p class="text-neutral-500 text-base font-light">
+          Nenhum empreendimento encontrado para a categoria selecionada.
+        </p>
       </div>
     </div>
   </section>
+
+  <!-- 4. CTA BANNER OFICIAL DA HOME -->
+  <CtaSection />
 
   <!-- Script Leve de Filtragem (Zero dependências externas) -->
   <script is:inline>
-    const buttons = document.querySelectorAll('.filter-btn');
-    const items = document.querySelectorAll('.building-item');
-    const noResults = document.getElementById('no-results');
+    const setupFilters = () => {
+      const buttons = document.querySelectorAll(".filter-btn");
+      const items = document.querySelectorAll(".building-item");
+      const noResults = document.getElementById("no-results");
 
-    buttons.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const filter = btn.getAttribute('data-filter');
+      if (!buttons.length || !items.length) return;
 
-        // Atualizar botões
-        buttons.forEach((b) => {
-          b.classList.remove('active', 'bg-[#c5a880]', 'text-slate-950', 'shadow-md');
-          b.classList.add('bg-white/5', 'text-slate-300', 'border', 'border-white/10');
-        });
+      buttons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const filter = btn.getAttribute("data-filter");
 
-        btn.classList.add('active', 'bg-[#c5a880]', 'text-slate-950', 'shadow-md');
-        btn.classList.remove('bg-white/5', 'text-slate-300', 'border-white/10');
+          // Resetar todos os botões para o estado neutro
+          buttons.forEach((b) => {
+            b.classList.remove(
+              "active",
+              "bg-lzba-gold",
+              "border-lzba-gold",
+              "text-lzba-dark",
+              "bg-lzba-dark",
+              "text-white",
+              "border-lzba-dark",
+            );
+            b.classList.add(
+              "bg-white",
+              "text-neutral-700",
+              "border-lzba-border",
+            );
+          });
 
-        // Filtrar cards
-        let visibleCount = 0;
-        items.forEach((item) => {
-          const status = item.getAttribute('data-status');
-          if (filter === 'todos' || status === filter) {
-            item.style.display = 'block';
-            visibleCount++;
+          // Ativar o botão clicado
+          btn.classList.remove(
+            "bg-white",
+            "text-neutral-700",
+            "border-lzba-border",
+          );
+          if (filter === "destaques") {
+            btn.classList.add(
+              "active",
+              "bg-lzba-gold",
+              "border-lzba-gold",
+              "text-lzba-dark",
+              "shadow-xs",
+            );
           } else {
-            item.style.display = 'none';
+            btn.classList.add(
+              "active",
+              "bg-lzba-dark",
+              "border-lzba-dark",
+              "text-white",
+              "shadow-xs",
+            );
+          }
+
+          // Filtrar os cards
+          let visibleCount = 0;
+          items.forEach((item) => {
+            const status = item.getAttribute("data-status");
+            const isDestaque = item.getAttribute("data-destaque") === "true";
+
+            let matches = false;
+            if (filter === "todos") {
+              matches = true;
+            } else if (filter === "destaques") {
+              matches = isDestaque;
+            } else {
+              matches = status === filter;
+            }
+
+            if (matches) {
+              item.style.display = "block";
+              visibleCount++;
+            } else {
+              item.style.display = "none";
+            }
+          });
+
+          if (noResults) {
+            noResults.style.display = visibleCount === 0 ? "block" : "none";
           }
         });
-
-        if (noResults) {
-          noResults.style.display = visibleCount === 0 ? 'block' : 'none';
-        }
       });
-    });
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", setupFilters);
+    } else {
+      setupFilters();
+    }
+
+    document.addEventListener("astro:page-load", setupFilters);
   </script>
 </Layout>

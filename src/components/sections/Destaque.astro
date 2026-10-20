@@ -1,0 +1,146 @@
+---
+
+---
+
+<section
+  id="Destaque"
+  class="relative w-full h-[70vh] sm:h-[80vh] min-h-130 overflow-hidden bg-[#EAE5DF]"
+>
+  <!-- Camada de Fundo com Parallax -->
+  <div
+    id="parallax-destaque-wrapper"
+    class="absolute top-[-15%] left-0 w-full h-[130%] will-change-transform pointer-events-none z-0"
+  >
+    <img
+      id="parallax-destaque-img"
+      src="/images/empreendimentos/arbore/img-banner-Arbore.webp"
+      alt="Banner LZBA - Residencial Árbore"
+      class="w-full h-full object-cover object-[75%_center] sm:object-right md:object-center"
+      loading="lazy"
+    />
+
+    <!-- Fachada com Parallax (opcional de profundidade) -->
+    <div class="absolute inset-0 pointer-events-none">
+      <img
+        src="/images/empreendimentos/arbore/img-arbore.webp"
+        alt="Fachada LZBA - Residencial Árbore"
+        class="h-full w-auto object-contain object-left"
+        loading="lazy"
+      />
+    </div>
+  </div>
+
+  <!-- Camada de Conteúdo Superior (Logo e CTA Interativos) -->
+  <div
+    class="relative z-10 w-full h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-end"
+  >
+    <div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <!-- Coluna Esquerda: Espaço reservado para a Fachada visível no fundo -->
+      <div class="hidden lg:block lg:col-span-6 pointer-events-none"></div>
+
+      <!-- Coluna Direita: Logo Árbore e Botão CTA -->
+      <div
+        class="lg:col-span-6 flex flex-col items-center justify-center text-center"
+      >
+        <div
+          class="reveal-scale flex flex-col items-center justify-center text-center gap-12 max-w-md mx-auto"
+        >
+          <!-- Frase de Topo -->
+          <div>
+            <p
+              class="text-sm sm:text-sm lg:text-sm font-light tracking-[0.25em] text-[#08372F] uppercase font-heading"
+            >
+              CONHEÇA O
+            </p>
+          </div>
+
+          <!-- Logo Arbore -->
+          <img
+            src="/images/empreendimentos/arbore/logo-arbore.svg"
+            alt="Logo Residencial Árbore"
+            class="h-28 sm:h-36 lg:h-44 w-auto object-contain drop-shadow-sm"
+          />
+
+          <!-- CTA -->
+          <div class="pt-2">
+            <a
+              href="https://residencialarbore.com.br/"
+              target="_blank"
+              class="inline-flex items-center justify-center px-10 py-4 bg-[#08372F] hover:bg-[#0c4e43] text-white text-xs sm:text-sm font-semibold tracking-widest uppercase transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5"
+            >
+              SAIBA MAIS
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initParallax() {
+    const section = document.getElementById("Destaque");
+    const wrapper = document.getElementById("parallax-destaque-wrapper");
+
+    if (!section || !wrapper) return;
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (prefersReducedMotion) return;
+
+    let isVisible = false;
+    let ticking = false;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          isVisible = entry.isIntersecting;
+          if (isVisible) {
+            requestUpdate();
+          }
+        });
+      },
+      { rootMargin: "100px 0px 100px 0px" },
+    );
+
+    observer.observe(section);
+
+    function updateParallax() {
+      if (!isVisible || !section || !wrapper) {
+        ticking = false;
+        return;
+      }
+
+      const rect = section.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+
+      // Distância do centro da seção em relação ao centro da viewport
+      const sectionCenter = rect.top + rect.height / 2;
+      const viewportCenter = viewportHeight / 2;
+      const distanceFromCenter = sectionCenter - viewportCenter;
+
+      // Fator de velocidade do parallax (ajustado para suavidade sem cortes na imagem)
+      const speed = 0.2;
+      const translateY = distanceFromCenter * speed;
+
+      wrapper.style.transform = `translate3d(0, ${translateY.toFixed(1)}px, 0)`;
+      ticking = false;
+    }
+
+    function requestUpdate() {
+      if (!ticking) {
+        requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate, { passive: true });
+
+    requestUpdate();
+  }
+
+  initParallax();
+  document.addEventListener("astro:page-load", initParallax);
+</script>

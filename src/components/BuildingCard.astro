@@ -1,5 +1,5 @@
 ---
-import type { Empreendimento } from '../data/empreendimentos';
+import type { Empreendimento } from "../data/empreendimentos";
 
 interface Props {
   item: Empreendimento;
@@ -8,96 +8,145 @@ interface Props {
 const { item } = Astro.props;
 
 const statusStyles = {
-  lancamento: 'bg-amber-500/20 text-amber-300 border-amber-500/40',
-  em_obras: 'bg-sky-500/20 text-sky-300 border-sky-500/40',
-  entregue: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40',
+  lancamento: "bg-lzba-red/90 text-lzba-light border-lzba-red/30",
+  em_obras: "bg-lzba-gold/90 text-lzba-dark border-lzba-gold/30",
+  entregue: "bg-lzba-light/95 text-lzba-dark border-lzba-light/30",
 };
 ---
 
-<article class="group bg-[#111827] rounded-2xl overflow-hidden border border-white/10 hover:border-[#c5a880]/50 transition-all duration-300 flex flex-col h-full shadow-lg hover:shadow-2xl hover:shadow-[#c5a880]/5">
-  
-  <!-- Imagem com Badge de Status -->
-  <div class="relative aspect-[16/10] overflow-hidden bg-slate-900">
-    <img 
-      src={item.imagemCapa} 
-      alt={item.titulo} 
-      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-      loading="lazy"
-    />
-    <div class="absolute inset-0 bg-gradient-to-t from-[#111827] via-transparent to-black/30"></div>
-    
-    <!-- Badge de Status -->
-    <div class="absolute top-4 left-4">
-      <span class={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border backdrop-blur-md ${statusStyles[item.status]}`}>
-        {item.statusLabel}
-      </span>
-    </div>
-
-    <!-- Localização no canto inferior -->
-    <div class="absolute bottom-3 left-4 right-4 flex items-center gap-1.5 text-xs text-slate-300">
-      <svg class="w-4 h-4 text-[#c5a880] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-      </svg>
-      <span class="font-medium truncate">{item.bairro}, {item.cidade}</span>
-    </div>
-  </div>
-
-  <!-- Corpo do Card -->
-  <div class="p-5 sm:p-6 flex flex-col flex-grow">
-    
-    <h3 class="text-xl font-bold text-white group-hover:text-[#e5c07b] transition-colors font-heading mb-1.5">
-      <a href={`/empreendimentos/${item.slug}`}>
-        {item.titulo}
+<!-- Wrapper com a moldura e respiro arquitetônico característico da LZBA -->
+<div
+  class="building-card-frame group relative p-1.5 sm:p-2 border border-transparent hover:border-lzba-border transition-all duration-300 h-full"
+>
+  <article
+    class="bg-white border border-lzba-border/80 group-hover:border-neutral-300 group-hover:shadow-xl transition-all duration-300 flex flex-col h-full overflow-hidden shadow-xs"
+  >
+    <!-- Imagem com Badge de Status e Localização -->
+    <div class="relative aspect-16/10 overflow-hidden bg-neutral-900">
+      <a href={`/empreendimentos/${item.slug}`} class="block w-full h-full">
+        <img
+          src={item.imagemCapa}
+          alt={item.titulo}
+          class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          loading="lazy"
+          width="600"
+          height="375"
+        />
       </a>
-    </h3>
-    
-    <p class="text-xs text-slate-400 line-clamp-2 mb-4 leading-relaxed">
-      {item.descricaoCurta}
-    </p>
-
-    <!-- Barra de Evolução (se aplicável) -->
-    {item.estagioObras && item.status !== 'entregue' && (
-      <div class="mb-4 bg-slate-800/80 p-2.5 rounded-lg border border-white/5">
-        <div class="flex justify-between items-center text-xs mb-1">
-          <span class="text-slate-400">Evolução da Obra</span>
-          <span class="font-bold text-[#e5c07b]">{item.estagioObras.geral}%</span>
-        </div>
-        <div class="w-full bg-slate-700 h-1.5 rounded-full overflow-hidden">
-          <div class="bg-gradient-to-r from-[#c5a880] to-[#e5c07b] h-1.5 rounded-full" style={`width: ${item.estagioObras.geral}%`}></div>
-        </div>
-      </div>
-    )}
-
-    <!-- Atributos Chave: Metragem, Dormitórios, Vagas -->
-    <div class="grid grid-cols-3 gap-2 py-3 border-y border-white/10 text-center text-xs text-slate-300 mt-auto">
-      <div>
-        <span class="block text-[10px] text-slate-500 uppercase">Área</span>
-        <span class="font-semibold">{item.metragem}</span>
-      </div>
-      <div>
-        <span class="block text-[10px] text-slate-500 uppercase">Quartos</span>
-        <span class="font-semibold">{item.dormitorios.replace(' dormitórios', ' dorms')}</span>
-      </div>
-      <div>
-        <span class="block text-[10px] text-slate-500 uppercase">Vagas</span>
-        <span class="font-semibold">{item.vagas}</span>
-      </div>
-    </div>
-
-    <!-- Botão de Ação -->
-    <div class="pt-4">
-      <a
-        href={`/empreendimentos/${item.slug}`}
-        class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-bold uppercase tracking-wider text-slate-100 bg-white/5 hover:bg-[#c5a880] hover:text-slate-950 border border-white/10 hover:border-transparent transition-all duration-300"
+      <div
+        class="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent pointer-events-none"
       >
-        <span>Ver Detalhes</span>
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+      </div>
+
+      <!-- Badge de Status -->
+      <div class="absolute top-4 left-4">
+        <span
+          class={`inline-flex items-center px-3 py-1 text-xs font-semibold uppercase tracking-wider border backdrop-blur-md shadow-xs ${statusStyles[item.status]}`}
+        >
+          {item.statusLabel}
+        </span>
+      </div>
+
+      <!-- Localização no canto inferior -->
+      <div
+        class="absolute bottom-3 left-4 right-4 flex items-center gap-1.5 text-xs text-white drop-shadow-sm font-medium"
+      >
+        <svg
+          class="w-4 h-4 text-lzba-gold shrink-0"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+          ></path>
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
         </svg>
-      </a>
+        <span class="truncate">{item.bairro}, {item.cidade}</span>
+      </div>
     </div>
 
-  </div>
+    <!-- Corpo do Card -->
+    <div class="p-6 flex flex-col grow justify-between">
+      <div>
+        <h3
+          class="text-xl font-bold text-lzba-dark group-hover:text-neutral-700 transition-colors font-heading mb-2 leading-snug"
+        >
+          <a href={`/empreendimentos/${item.slug}`}>
+            {item.titulo}
+          </a>
+        </h3>
 
-</article>
+        <p
+          class="text-xs sm:text-sm text-neutral-600 line-clamp-2 mb-5 leading-relaxed font-light"
+        >
+          {item.descricaoCurta}
+        </p>
+      </div>
+
+      <!-- Atributos Chave: Metragem, Dormitórios, Vagas -->
+      <div class="mt-auto">
+        <div
+          class="grid grid-cols-3 gap-2 py-3 border-y border-neutral-100 bg-neutral-50/50 text-center text-xs text-neutral-700"
+        >
+          <div>
+            <span
+              class="block text-[10px] text-neutral-400 uppercase font-semibold"
+              >Área</span
+            >
+            <span class="font-bold text-lzba-dark mt-0.5 block"
+              >{item.metragem}</span
+            >
+          </div>
+          <div>
+            <span
+              class="block text-[10px] text-neutral-400 uppercase font-semibold"
+              >Quartos</span
+            >
+            <span class="font-bold text-lzba-dark mt-0.5 block"
+              >{item.dormitorios.replace(" dormitórios", " dorms")}</span
+            >
+          </div>
+          <div>
+            <span
+              class="block text-[10px] text-neutral-400 uppercase font-semibold"
+              >Vagas</span
+            >
+            <span class="font-bold text-lzba-dark mt-0.5 block"
+              >{item.vagas}</span
+            >
+          </div>
+        </div>
+
+        <!-- Botão de Ação -->
+        <div class="pt-5">
+          <a
+            href={`/empreendimentos/${item.slug}`}
+            class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 text-xs font-semibold uppercase tracking-wider text-neutral-900 group-hover:bg-neutral-900 group-hover:text-white border border-neutral-300 group-hover:border-neutral-900 transition-all duration-300 shadow-2xs"
+          >
+            <span>Ver Detalhes do Projeto</span>
+            <svg
+              class="w-3.5 h-3.5 transform transition-transform group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </article>
+</div>

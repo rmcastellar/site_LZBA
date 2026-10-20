@@ -1,148 +1,327 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import CtaSection from '../components/sections/CtaSection.astro';
 import { CONTATO_LZBA } from '../data/empreendimentos';
 
 const dataAtualizacao = 'Outubro de 2026';
 ---
 
 <Layout
-  title="Política de Privacidade e LGPD | LZBA Incorporadora"
-  description="Conheça a Política de Privacidade e Proteção de Dados Pessoais da Construtora e Incorporadora LZBA, em conformidade com a LGPD (Lei nº 13.709/2018)."
+  title="Política de Privacidade e LGPD | Construtora e Incorporadora LZBA"
+  description="Conheça a Política de Privacidade e Proteção de Dados da Construtora e Incorporadora LZBA, em conformidade com a LGPD (Lei nº 13.709/2018)."
   currentPath="/politica-de-privacidade"
 >
-  <!-- Cabeçalho -->
-  <section class="relative pt-20 pb-12 bg-gradient-to-b from-[#111827] to-[#0b0f17] border-b border-white/5">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <span class="text-xs font-bold uppercase tracking-widest text-[#e5c07b]">
-        Termos Legais e Governança
-      </span>
-      <h1 class="text-3xl sm:text-5xl font-extrabold text-white font-heading mt-2 mb-4">
-        Política de Privacidade
-      </h1>
-      <p class="text-slate-400 text-sm max-w-xl mx-auto font-light">
-        Em total conformidade com a Lei Geral de Proteção de Dados Pessoais (LGPD - Lei Federal nº 13.709/2018).
-      </p>
-      <div class="mt-4 text-xs text-slate-500">
-        Última atualização: {dataAtualizacao}
+  <!-- 1. HERO INSTITUCIONAL (PADRÃO LZBA) -->
+  <section class="relative pt-24 pb-16 sm:pb-20 overflow-hidden bg-lzba-dark text-white">
+    <!-- Imagem de Fundo com Overlay Arquitetônico -->
+    <div class="absolute inset-0 z-0">
+      <div class="absolute inset-0 hero-overlay"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-[10%] px-4 sm:px-6 lg:px-8 w-full my-auto">
+      <div class="max-w-3xl">
+        <span class="animate-hero-1 text-xs uppercase font-bold tracking-widest text-lzba-gold block mb-3 font-sans">
+          GOVERNANÇA • LGPD • TRANSPARÊNCIA
+        </span>
+        <h1 class="animate-hero-2 text-3xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight uppercase leading-[1.12] font-heading">
+          Política de<br />Privacidade
+        </h1>
+        <p class="animate-hero-3 text-sm sm:text-base lg:text-lg text-neutral-300 max-w-2xl mt-4 font-light leading-relaxed">
+          Em total conformidade com a Lei Geral de Proteção de Dados Pessoais (LGPD - Lei Federal nº 13.709/2018). Conheça nossas diretrizes de governança, sigilo e tratamento de dados.
+        </p>
+
+        <div class="animate-hero-4 inline-flex items-center gap-2.5 mt-6 px-4 py-2 bg-white/10 border border-white/15 text-xs text-neutral-300 backdrop-blur-xs font-sans tracking-wide">
+          <svg class="w-3.5 h-3.5 text-lzba-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span>Última atualização: <strong>{dataAtualizacao}</strong></span>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Conteúdo Jurídico Estruturado -->
-  <section class="py-16 sm:py-20 bg-[#0b0f17]">
+  <!-- 2. RESUMO DE DIRETRIZES (MOLDURA ARQUITETÔNICA ELEGANTE) -->
+  <section class="relative z-20 -mt-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="reveal-up bg-white border border-lzba-border shadow-xl p-6 sm:p-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-lzba-border/80">
+        <div class="pt-2 md:pt-0">
+          <span class="block text-[11px] uppercase tracking-widest text-neutral-500 font-semibold font-sans">Finalidade Legítima</span>
+          <span class="text-base sm:text-lg font-bold text-lzba-dark font-heading mt-1 block">Não comercializamos dados</span>
+          <p class="text-xs text-neutral-600 mt-1 font-light">Uso restrito para atendimento e contratos</p>
+        </div>
+        <div class="pt-4 md:pt-0">
+          <span class="block text-[11px] uppercase tracking-widest text-neutral-500 font-semibold font-sans">Direitos do Titular</span>
+          <span class="text-base sm:text-lg font-bold text-lzba-dark font-heading mt-1 block">Controle e Transparência</span>
+          <p class="text-xs text-neutral-600 mt-1 font-light">Acesso, correção ou exclusão a qualquer momento</p>
+        </div>
+        <div class="pt-4 md:pt-0">
+          <span class="block text-[11px] uppercase tracking-widest text-neutral-500 font-semibold font-sans">Segurança Técnica</span>
+          <span class="text-base sm:text-lg font-bold text-lzba-dark font-heading mt-1 block">Sigilo & Proteção</span>
+          <p class="text-xs text-neutral-600 mt-1 font-light">Padrões rígidos de infraestrutura e criptografia</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. CONTEÚDO JURÍDICO ESTRUTURADO -->
+  <section class="py-16 sm:py-24 bg-neutral-50/60">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-white/10 space-y-10 text-slate-300 text-sm leading-relaxed">
+      <div class="bg-white border border-lzba-border shadow-xs p-8 sm:p-14 space-y-12">
         
         <!-- 1. Introdução -->
-        <div class="space-y-3">
-          <h2 class="text-xl font-bold text-white font-heading">
+        <article class="reveal-up space-y-4">
+          <span class="text-xs uppercase font-bold tracking-widest text-lzba-gold block font-sans">
+            SEÇÃO 01
+          </span>
+          <h2 class="text-xl sm:text-2xl font-bold text-lzba-dark font-heading tracking-tight">
             1. Introdução e Compromisso com a Privacidade
           </h2>
-          <p>
-            A <strong>LZBA Incorporadora de Imóveis Ltda.</strong> ("LZBA"), pessoa jurídica de direito privado inscrita no CNPJ e com sede em São Paulo - SP, reconhece a extrema importância da privacidade e da proteção de dados dos seus clientes, parceiros comerciais, corretores e visitantes do website.
+          <div class="w-10 h-0.5 bg-lzba-gold"></div>
+          <p class="text-neutral-700 leading-relaxed font-light text-sm sm:text-base">
+            A <strong>LZBA Incorporadora de Imóveis Ltda.</strong> ("LZBA"), pessoa jurídica de direito privado com sede na cidade de São Paulo - SP, reconhece a extrema importância da privacidade e da proteção de dados pessoais de seus clientes, parceiros comerciais, corretores e visitantes do website.
           </p>
-          <p>
-            Esta Política de Privacidade descreve de forma clara e transparente como coletamos, utilizamos, armazenamos, compartilhamos e protegemos os seus Dados Pessoais em conformidade com a Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018 - "LGPD").
+          <p class="text-neutral-700 leading-relaxed font-light text-sm sm:text-base">
+            Esta Política de Privacidade descreve de forma clara e transparente como coletamos, utilizamos, armazenamos, compartilhamos e protegemos os seus Dados Pessoais em rigorosa conformidade com a Lei Geral de Proteção de Dados Pessoais (Lei Federal nº 13.709/2018 - "LGPD").
           </p>
-        </div>
+        </article>
+
+        <div class="border-t border-lzba-border/80"></div>
 
         <!-- 2. Dados Coletados -->
-        <div class="space-y-3">
-          <h2 class="text-xl font-bold text-white font-heading">
+        <article class="reveal-up space-y-4">
+          <span class="text-xs uppercase font-bold tracking-widest text-lzba-gold block font-sans">
+            SEÇÃO 02
+          </span>
+          <h2 class="text-xl sm:text-2xl font-bold text-lzba-dark font-heading tracking-tight">
             2. Quais Dados Pessoais Coletamos
           </h2>
-          <p>
-            Podemos coletar as seguintes categorias de dados fornecidas voluntariamente por você ao preencher nossos formulários de contato, solicitar tabelas de vendas ou interagir via WhatsApp:
+          <div class="w-10 h-0.5 bg-lzba-gold"></div>
+          <p class="text-neutral-700 leading-relaxed font-light text-sm sm:text-base">
+            Podemos coletar as seguintes categorias de dados fornecidas voluntariamente por você ao preencher nossos formulários de contato, solicitar tabelas de vendas ou interagir via WhatsApp oficial:
           </p>
-          <ul class="list-disc pl-5 space-y-1 text-slate-400">
-            <li><strong>Dados de Identificação:</strong> Nome completo, e-mail profissional ou pessoal, número de telefone fixo ou celular / WhatsApp;</li>
-            <li><strong>Dados de Corretores e Imobiliárias:</strong> Número de registro no CRECI, nome da imobiliária vinculada, região de atuação;</li>
-            <li><strong>Dados de Proprietários de Terrenos:</strong> Endereço, dimensões e características do imóvel submetido para avaliação de incorporação;</li>
-            <li><strong>Dados de Navegação:</strong> Informações técnicas como endereço IP, navegador utilizado, tempo de permanência e páginas visitadas coletadas através de cookies essenciais para o funcionamento do portal.</li>
-          </ul>
-        </div>
+          
+          <div class="grid grid-cols-1 gap-3.5 pt-2">
+            <div class="p-4 bg-neutral-50/80 border border-lzba-border flex items-start gap-3.5">
+              <div class="w-6 h-6 rounded-full bg-lzba-gold/15 flex items-center justify-center shrink-0 mt-0.5">
+                <svg class="w-3.5 h-3.5 text-amber-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+                </svg>
+              </div>
+              <div class="text-xs sm:text-sm text-neutral-700">
+                <strong class="text-lzba-dark">Dados de Identificação:</strong> Nome completo, endereço de e-mail e número de telefone celular / WhatsApp.
+              </div>
+            </div>
 
-        <!-- 3. Finalidade do Tratamento -->
-        <div class="space-y-3">
-          <h2 class="text-xl font-bold text-white font-heading">
+            <div class="p-4 bg-neutral-50/80 border border-lzba-border flex items-start gap-3.5">
+              <div class="w-6 h-6 rounded-full bg-lzba-gold/15 flex items-center justify-center shrink-0 mt-0.5">
+                <svg class="w-3.5 h-3.5 text-amber-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+                </svg>
+              </div>
+              <div class="text-xs sm:text-sm text-neutral-700">
+                <strong class="text-lzba-dark">Dados de Corretores e Imobiliárias:</strong> Número de registro no CRECI, nome da imobiliária vinculada e região de atuação.
+              </div>
+            </div>
+
+            <div class="p-4 bg-neutral-50/80 border border-lzba-border flex items-start gap-3.5">
+              <div class="w-6 h-6 rounded-full bg-lzba-gold/15 flex items-center justify-center shrink-0 mt-0.5">
+                <svg class="w-3.5 h-3.5 text-amber-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+                </svg>
+              </div>
+              <div class="text-xs sm:text-sm text-neutral-700">
+                <strong class="text-lzba-dark">Dados de Proprietários de Terrenos:</strong> Endereço, dimensões e características do imóvel submetido para avaliação técnica de incorporação.
+              </div>
+            </div>
+
+            <div class="p-4 bg-neutral-50/80 border border-lzba-border flex items-start gap-3.5">
+              <div class="w-6 h-6 rounded-full bg-lzba-gold/15 flex items-center justify-center shrink-0 mt-0.5">
+                <svg class="w-3.5 h-3.5 text-amber-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+                </svg>
+              </div>
+              <div class="text-xs sm:text-sm text-neutral-700">
+                <strong class="text-lzba-dark">Dados de Navegação Técnica:</strong> Endereço IP, tipo de navegador, registros de data/hora e cookies essenciais para o funcionamento e estabilidade do portal.
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <div class="border-t border-lzba-border/80"></div>
+
+        <!-- 3. Finalidades -->
+        <article class="reveal-up space-y-4">
+          <span class="text-xs uppercase font-bold tracking-widest text-lzba-gold block font-sans">
+            SEÇÃO 03
+          </span>
+          <h2 class="text-xl sm:text-2xl font-bold text-lzba-dark font-heading tracking-tight">
             3. Finalidades e Bases Legais do Tratamento
           </h2>
-          <p>
-            Utilizamos os seus dados pessoais única e exclusivamente para finalidades legítimas, destacando-se:
+          <div class="w-10 h-0.5 bg-lzba-gold"></div>
+          <p class="text-neutral-700 leading-relaxed font-light text-sm sm:text-base">
+            Utilizamos os seus dados pessoais única e exclusivamente para finalidades legítimas do setor imobiliário, destacando-se:
           </p>
-          <ul class="list-disc pl-5 space-y-1 text-slate-400">
-            <li>Atendimento a solicitações de informações sobre empreendimentos, agendamento de visitas aos apartamentos decorados e plantões de vendas;</li>
-            <li>Envio de tabelas de vendas, espelho de unidades e materiais de suporte a corretores credenciados;</li>
-            <li>Elaboração de propostas preliminares de aquisição de unidades ou avaliação técnica de terrenos;</li>
-            <li>Cumprimento de obrigações legais e regulatórias do setor imobiliário e da construção civil;</li>
-            <li>Exercício regular de direitos em processos judiciais, administrativos ou arbitrais.</li>
+          <ul class="space-y-2.5 text-neutral-700 text-sm font-light">
+            <li class="flex items-start gap-2.5">
+              <span class="text-lzba-gold text-base leading-none font-bold mt-0.5">›</span>
+              <span>Atendimento a solicitações de informações sobre empreendimentos, agendamento de visitas a apartamentos decorados e plantões de vendas;</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-lzba-gold text-base leading-none font-bold mt-0.5">›</span>
+              <span>Envio de tabelas de vendas, espelhos de unidades e materiais de suporte a corretores credenciados;</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-lzba-gold text-base leading-none font-bold mt-0.5">›</span>
+              <span>Elaboração de propostas preliminares de aquisição de unidades ou avaliação técnica de terrenos;</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-lzba-gold text-base leading-none font-bold mt-0.5">›</span>
+              <span>Cumprimento de obrigações legais, regulatórias e fiscais inerentes à incorporação e construção civil;</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-lzba-gold text-base leading-none font-bold mt-0.5">›</span>
+              <span>Exercício regular de direitos em contratos preliminares e processos administrativos ou judiciais.</span>
+            </li>
           </ul>
-        </div>
+        </article>
 
-        <!-- 4. Compartilhamento de Dados -->
-        <div class="space-y-3">
-          <h2 class="text-xl font-bold text-white font-heading">
+        <div class="border-t border-lzba-border/80"></div>
+
+        <!-- 4. Compartilhamento -->
+        <article class="reveal-up space-y-4">
+          <span class="text-xs uppercase font-bold tracking-widest text-lzba-gold block font-sans">
+            SEÇÃO 04
+          </span>
+          <h2 class="text-xl sm:text-2xl font-bold text-lzba-dark font-heading tracking-tight">
             4. Compartilhamento com Terceiros
           </h2>
-          <p>
-            A LZBA não vende nem comercializa seus dados pessoais sob nenhuma hipótese. O compartilhamento de dados ocorre apenas de forma estritamente necessária com:
+          <div class="w-10 h-0.5 bg-lzba-gold"></div>
+          <p class="text-neutral-700 leading-relaxed font-light text-sm sm:text-base">
+            <strong>A LZBA não vende, não aluga e não comercializa dados pessoais sob nenhuma hipótese.</strong> O compartilhamento restringe-se ao estritamente necessário para a prestação dos serviços imobiliários:
           </p>
-          <ul class="list-disc pl-5 space-y-1 text-slate-400">
-            <li>Corretores de imóveis credenciados e equipes de vendas responsáveis pelo atendimento direto e agendamento de visitas;</li>
-            <li>Instituições bancárias e agentes financeiros para simulação de financiamento imobiliário e análise de crédito, mediante autorização expressa do titular;</li>
-            <li>Provedores de serviços de tecnologia essenciais à operação deste website (hospedagem, segurança da informação e CRM imobiliário);</li>
-            <li>Autoridades judiciais ou órgãos governamentais quando formalmente exigido por lei.</li>
+          <ul class="space-y-2.5 text-neutral-700 text-sm font-light">
+            <li class="flex items-start gap-2.5">
+              <span class="text-lzba-gold text-base leading-none font-bold mt-0.5">›</span>
+              <span>Corretores de imóveis credenciados responsáveis pelo atendimento presencial e apresentação das unidades;</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-lzba-gold text-base leading-none font-bold mt-0.5">›</span>
+              <span>Instituições financeiras e agentes de crédito imobiliário, mediante consentimento explícito do comprador para análise de financiamento;</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-lzba-gold text-base leading-none font-bold mt-0.5">›</span>
+              <span>Prestadores de serviços de tecnologia essenciais à operação (hospedagem segura, CRM e segurança digital);</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-lzba-gold text-base leading-none font-bold mt-0.5">›</span>
+              <span>Autoridades públicas ou cartórios de registro de imóveis quando exigido pela legislação vigente.</span>
+            </li>
           </ul>
-        </div>
+        </article>
 
-        <!-- 5. Segurança dos Dados -->
-        <div class="space-y-3">
-          <h2 class="text-xl font-bold text-white font-heading">
+        <div class="border-t border-lzba-border/80"></div>
+
+        <!-- 5. Segurança -->
+        <article class="reveal-up space-y-4">
+          <span class="text-xs uppercase font-bold tracking-widest text-lzba-gold block font-sans">
+            SEÇÃO 05
+          </span>
+          <h2 class="text-xl sm:text-2xl font-bold text-lzba-dark font-heading tracking-tight">
             5. Segurança e Retenção dos Dados
           </h2>
-          <p>
-            Adotamos medidas técnicas, administrativas e organizacionais aptas a proteger seus dados contra acessos não autorizados, destruição, perda, alteração ou qualquer forma de tratamento ilícito.
+          <div class="w-10 h-0.5 bg-lzba-gold"></div>
+          <p class="text-neutral-700 leading-relaxed font-light text-sm sm:text-base">
+            Adotamos medidas técnicas, administrativas e organizacionais aptas a proteger seus dados contra acessos não autorizados, destruição, perda, alteração ou qualquer modalidade de tratamento inadequado ou ilícito.
           </p>
-          <p>
-            Os dados pessoais serão retidos pelo período necessário para cumprir as finalidades para as quais foram coletados ou até que haja solicitação de exclusão pelo titular, ressalvadas as hipóteses de guarda obrigatória por prazos legais de prescrição imobiliária e fiscal.
+          <p class="text-neutral-700 leading-relaxed font-light text-sm sm:text-base">
+            Os dados pessoais serão conservados pelo período necessário para cumprir as finalidades contratuais ou até eventual solicitação de revogação pelo titular, ressalvadas as hipóteses de guarda obrigatória por prazos legais de garantia construtiva e prescrição imobiliária.
           </p>
-        </div>
+        </article>
+
+        <div class="border-t border-lzba-border/80"></div>
 
         <!-- 6. Direitos do Titular -->
-        <div class="space-y-3">
-          <h2 class="text-xl font-bold text-white font-heading">
+        <article class="reveal-up space-y-4">
+          <span class="text-xs uppercase font-bold tracking-widest text-lzba-gold block font-sans">
+            SEÇÃO 06
+          </span>
+          <h2 class="text-xl sm:text-2xl font-bold text-lzba-dark font-heading tracking-tight">
             6. Seus Direitos como Titular de Dados
           </h2>
-          <p>
-            De acordo com o artigo 18 da LGPD, você tem direito de solicitar a qualquer momento:
+          <div class="w-10 h-0.5 bg-lzba-gold"></div>
+          <p class="text-neutral-700 leading-relaxed font-light text-sm sm:text-base">
+            Nos termos do artigo 18 da Lei Federal nº 13.709/2018 (LGPD), você possui o direito de solicitar a qualquer momento, mediante requisição direta:
           </p>
-          <ul class="list-disc pl-5 space-y-1 text-slate-400">
-            <li>Confirmação da existência de tratamento de dados;</li>
-            <li>Acesso aos seus dados sob posse da LZBA;</li>
-            <li>Correção de dados incompletos, inexatos ou desatualizados;</li>
-            <li>Anonimização, bloqueio ou eliminação de dados desnecessários ou excessivos;</li>
-            <li>Revogação do consentimento previamente concedido.</li>
-          </ul>
-        </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
+            <div class="p-3.5 bg-neutral-50 border border-lzba-border text-xs sm:text-sm text-neutral-700">
+              <strong class="text-lzba-dark block mb-1">Confirmação & Acesso</strong>
+              Saber se seus dados são tratados e solicitar cópia integral dos registros sob nossa guarda.
+            </div>
+            <div class="p-3.5 bg-neutral-50 border border-lzba-border text-xs sm:text-sm text-neutral-700">
+              <strong class="text-lzba-dark block mb-1">Correção & Atualização</strong>
+              Solicitar a retificação de dados pessoais incompletos, inexatos ou desatualizados.
+            </div>
+            <div class="p-3.5 bg-neutral-50 border border-lzba-border text-xs sm:text-sm text-neutral-700">
+              <strong class="text-lzba-dark block mb-1">Anonimização ou Bloqueio</strong>
+              Pedir a eliminação de dados considerados excessivos ou desnecessários para a finalidade.
+            </div>
+            <div class="p-3.5 bg-neutral-50 border border-lzba-border text-xs sm:text-sm text-neutral-700">
+              <strong class="text-lzba-dark block mb-1">Revogação do Consentimento</strong>
+              Revogar autorizações concedidas previamente para envio de novidades comerciais.
+            </div>
+          </div>
+        </article>
+
+        <div class="border-t border-lzba-border/80"></div>
 
         <!-- 7. Contato do Encarregado (DPO) -->
-        <div class="space-y-3 p-6 rounded-2xl bg-white/5 border border-white/5">
-          <h2 class="text-lg font-bold text-white font-heading">
-            7. Canal de Contato do Encarregado (DPO)
-          </h2>
-          <p class="text-xs">
-            Para exercer qualquer um dos seus direitos previstos na LGPD ou esclarecer dúvidas sobre esta Política de Privacidade, entre em contato direto com nosso Encarregado de Proteção de Dados:
-          </p>
-          <div class="text-xs text-[#e5c07b] font-semibold space-y-1 pt-1">
-            <p>E-mail: <a href={`mailto:${CONTATO_LZBA.email}`} class="underline">{CONTATO_LZBA.email}</a></p>
-            <p>Telefone: {CONTATO_LZBA.telefone}</p>
-            <p>Assunto no e-mail: "Privacidade e Proteção de Dados - LGPD"</p>
+        <article class="reveal-up p-6 sm:p-8 bg-lzba-light border border-lzba-gold/40 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-lzba-gold/20 flex items-center justify-center shrink-0 text-amber-900">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <div>
+              <span class="text-[11px] font-bold uppercase tracking-widest text-lzba-gold block font-sans">
+                CANAL EXCLUSIVO LGPD
+              </span>
+              <h2 class="text-lg sm:text-xl font-bold text-lzba-dark font-heading">
+                7. Canal de Contato do Encarregado (DPO)
+              </h2>
+            </div>
           </div>
-        </div>
+
+          <p class="text-xs sm:text-sm text-neutral-700 leading-relaxed font-light">
+            Para exercer qualquer um dos seus direitos de titular ou esclarecer qualquer dúvida referente ao tratamento de dados pela Construtora e Incorporadora LZBA, entre em contato direto com o nosso Encarregado de Proteção de Dados:
+          </p>
+
+          <div class="pt-2 border-t border-lzba-border/60 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm">
+            <div>
+              <span class="block text-[11px] uppercase tracking-wider text-neutral-500 font-semibold">E-mail do DPO</span>
+              <a href={`mailto:${CONTATO_LZBA.email}`} class="text-lzba-dark font-bold hover:text-amber-800 underline transition-colors">
+                {CONTATO_LZBA.email}
+              </a>
+            </div>
+            <div>
+              <span class="block text-[11px] uppercase tracking-wider text-neutral-500 font-semibold">Telefone Institucional</span>
+              <a href={`tel:${CONTATO_LZBA.telefone.replace(/\D/g, '')}`} class="text-lzba-dark font-bold hover:text-amber-800 transition-colors">
+                {CONTATO_LZBA.telefone}
+              </a>
+            </div>
+          </div>
+          
+          <p class="text-[11px] text-neutral-500 font-light pt-1">
+            * Por favor, mencione no assunto da mensagem: <em>"Privacidade e Proteção de Dados - LGPD"</em>.
+          </p>
+        </article>
 
       </div>
 
     </div>
   </section>
+
+  <!-- 4. BANNER INSTITUCIONAL DE FECHAMENTO -->
+  <CtaSection />
 </Layout>

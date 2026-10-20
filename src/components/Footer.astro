@@ -1,57 +1,83 @@
 ---
-import { CONTATO_LZBA } from '../data/empreendimentos';
+import { CONTATO_LZBA } from "../data/empreendimentos";
 ---
 
 <footer class="bg-lzba-dark border-t border-lzba-border/20 text-lzba-muted">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
     <div class="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16">
-      
       <!-- Coluna 1: Logo & Divisor -->
       <div class="md:col-span-4 space-y-6">
         <a href="/" class="inline-block" aria-label="LZBA Início">
-          <img 
-            src="/images/logo.png" 
-            alt="LZBA Construtora e Incorporadora" 
-            class="h-10 sm:h-12 w-auto object-contain" 
-            width="170" 
+          <img
+            src="/images/logo.png"
+            alt="LZBA Construtora e Incorporadora"
+            class="h-10 sm:h-12 w-auto object-contain"
+            width="170"
             height="44"
           />
         </a>
         <div class="w-full max-w-xs h-px bg-lzba-border/30"></div>
         <p class="text-xs text-lzba-muted leading-relaxed max-w-sm">
-          Solidez técnica, tradição e consistência executiva para valorizar o patrimônio da sua família.
+          Solidez técnica, tradição e consistência executiva para valorizar o
+          patrimônio da sua família.
         </p>
       </div>
 
       <!-- Coluna 2: Menu -->
       <div class="md:col-span-4 space-y-4">
-        <h3 class="text-sm font-semibold text-white uppercase tracking-wider font-heading">
+        <h3
+          class="text-xs font-semibold text-white uppercase tracking-wider font-heading"
+        >
           Menu
         </h3>
-        <ul class="space-y-2.5 text-xs sm:text-sm font-medium">
+        <ul class="space-y-2.5 text-xs sm:text-xs font-medium">
           <li>
-            <a href="/" class="hover:text-lzba-gold transition-colors flex items-center gap-2 group">
-              <span class="text-lzba-muted group-hover:text-lzba-gold">»</span> INÍCIO
+            <a
+              href="/"
+              class="hover:text-lzba-gold transition-colors flex items-center gap-2 group"
+            >
+              INÍCIO
             </a>
           </li>
           <li>
-            <a href="/sobre" class="hover:text-lzba-gold transition-colors flex items-center gap-2 group">
-              <span class="text-lzba-muted group-hover:text-lzba-gold">»</span> SOBRE
+            <a
+              href="/sobre"
+              class="hover:text-lzba-gold transition-colors flex items-center gap-2 group"
+            >
+              SOBRE
             </a>
           </li>
           <li>
-            <a href="/empreendimentos" class="hover:text-lzba-gold transition-colors flex items-center gap-2 group">
-              <span class="text-lzba-muted group-hover:text-lzba-gold">»</span> NOSSOS PROJETOS
+            <a
+              href="/empreendimentos"
+              class="hover:text-lzba-gold transition-colors flex items-center gap-2 group"
+            >
+              NOSSOS PROJETOS
             </a>
           </li>
           <li>
-            <a href="/trabalhe-conosco" class="hover:text-lzba-gold transition-colors flex items-center gap-2 group">
-              <span class="text-lzba-muted group-hover:text-lzba-gold">»</span> OPORTUNIDADES
+            <a
+              href="/#projetos?status=destaques"
+              data-filter-trigger="destaques"
+              class="hover:text-lzba-gold transition-colors flex items-center gap-2 group"
+            >
+              OPORTUNIDADES
             </a>
           </li>
           <li>
-            <a href="/contato" class="hover:text-lzba-gold transition-colors flex items-center gap-2 group">
-              <span class="text-lzba-muted group-hover:text-lzba-gold">»</span> CONTATOS
+            <a
+              href="/blog"
+              class="hover:text-lzba-gold transition-colors flex items-center gap-2 group"
+            >
+              BLOG
+            </a>
+          </li>
+          <li>
+            <a
+              href="/contato"
+              class="hover:text-lzba-gold transition-colors flex items-center gap-2 group"
+            >
+              CONTATOS
             </a>
           </li>
         </ul>
@@ -59,46 +85,65 @@ import { CONTATO_LZBA } from '../data/empreendimentos';
 
       <!-- Coluna 3: Contatos -->
       <div class="md:col-span-4 space-y-4">
-        <h3 class="text-sm font-semibold text-white uppercase tracking-wider font-heading">
+        <h3
+          class="text-xs font-semibold text-white uppercase tracking-wider font-heading"
+        >
           Contatos
         </h3>
-        
-        <div class="space-y-4 text-xs sm:text-sm">
+
+        <div class="space-y-2 text-xs sm:text-sm">
           <div>
-            <span class="text-xs text-lzba-muted block font-medium">Telefone</span>
-            <a href={`tel:${CONTATO_LZBA.telefone.replace(/\D/g, '')}`} class="text-white hover:text-lzba-gold transition-colors font-medium">
+            <a
+              href={`tel:${CONTATO_LZBA.telefone.replace(/\D/g, "")}`}
+              class="hover:text-lzba-gold transition-colors font-medium text-xs"
+            >
               11 2691 9059
             </a>
           </div>
 
           <div>
-            <span class="text-xs text-lzba-muted block font-medium">Email</span>
-            <a href={`mailto:${CONTATO_LZBA.email}`} class="text-white hover:text-lzba-gold transition-colors font-medium break-all">
+            <a
+              href={`mailto:${CONTATO_LZBA.email}`}
+              class="hover:text-lzba-gold transition-colors font-medium break-all text-xs"
+            >
               {CONTATO_LZBA.email}
             </a>
           </div>
 
           <div>
-            <span class="text-xs text-lzba-muted block font-medium">Endereço</span>
-            <p class="text-white font-medium leading-relaxed">
+            <a
+              href={CONTATO_LZBA.enderecoWeb}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-lzba-gold transition-colors font-medium break-all text-xs"
+            >
               {CONTATO_LZBA.endereco}
-            </p>
+            </a>
           </div>
         </div>
       </div>
-
     </div>
+  </div>
 
-    <!-- Barra Inferior de Direitos e Política -->
-    <div class="mt-16 pt-8 border-t border-lzba-border/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-lzba-muted">
-      <p class="text-center sm:text-left">
-        © LZBA Construtora • Todos os direitos reservados. Desenvolvido com ♥ por <span class="text-neutral-300">3dJobs</span>
-      </p>
-      <div>
-        <a href="/politica-de-privacidade" class="hover:text-lzba-gold transition-colors">
-          Política de Privacidade
-        </a>
-      </div>
+  <!-- Barra Inferior de Direitos e Política -->
+  <div
+    class="max-w-7xl mx-auto p-4 sm:px-6 lg:px-8 border-t border-lzba-border/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] tracking-wider text-lzba-muted"
+  >
+    <p class="text-center sm:text-left">
+      © LZBA Construtora • Todos os direitos reservados. Desenvolvido com ♥ por <a
+        href="https://www.3djobs.com.br"
+        target="_blank"
+        class="text-neutral-300
+        hover:text-lzba-gold">3dJobs</a
+      >
+    </p>
+    <div>
+      <a
+        href="/politica-de-privacidade"
+        class="hover:text-lzba-gold transition-colors"
+      >
+        Política de Privacidade
+      </a>
     </div>
   </div>
 </footer>

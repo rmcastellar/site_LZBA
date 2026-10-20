@@ -2,10 +2,12 @@
 import Layout from "../layouts/Layout.astro";
 import HeroSection from "../components/sections/HeroSection.astro";
 import DiferenciaisSection from "../components/sections/DiferenciaisSection.astro";
+import DestaqueSection from "../components/sections/Destaque.astro";
 import ProjetosSection from "../components/sections/ProjetosSection.astro";
 import PrevisibilidadeSection from "../components/sections/PrevisibilidadeSection.astro";
 import NumerosSection from "../components/sections/NumerosSection.astro";
 import FaqSection from "../components/sections/FaqSection.astro";
+import BlogSection from "../components/sections/BlogSection.astro";
 import CtaSection from "../components/sections/CtaSection.astro";
 ---
 
@@ -20,18 +22,24 @@ import CtaSection from "../components/sections/CtaSection.astro";
   <!-- 2. Como Fazemos / Diferenciais e Pilares -->
   <DiferenciaisSection />
 
-  <!-- 3. Projetos (Mockup com Timeline e Cards Interativos) -->
+  <!-- 3. Destaque -->
+  <DestaqueSection />
+
+  <!-- 4. Projetos (Mockup com Timeline e Cards Interativos) -->
   <ProjetosSection />
 
-  <!-- 4. Previsibilidade e Jornada de Compra -->
+  <!-- 6. Previsibilidade e Jornada de Compra -->
   <PrevisibilidadeSection />
 
-  <!-- 5. Faixa Escura de Métricas -->
+  <!-- 7. Faixa Escura de Métricas -->
   <NumerosSection />
 
-  <!-- 6. Dúvidas Frequentes e Esclarecimentos Técnicos -->
+  <!-- 8. Dúvidas Frequentes e Esclarecimentos Técnicos -->
   <FaqSection />
 
-  <!-- 7. CTA Final -->
+  <!-- 9. Blog -->
+  <BlogSection />
+
+  <!-- 10. CTA Final -->
   <CtaSection />
 </Layout>

@@ -187,7 +187,7 @@
   transform: scale(1.04);
 }
 
-/* Estado Ativo (.is-active) - Exato como Card 1 do Mockup */
+/* Estado Ativo (.is-active) - Efeito preto e branco com overlay a 80% */
 .project-card.is-active {
   border-color: var(--lzba-border);
 }
@@ -195,12 +195,12 @@
   background-color: var(--lzba-dark);
 }
 .project-card.is-active .card-img {
-  opacity: 0.08;
-  filter: brightness(0.2) grayscale(100%);
-  transform: scale(1);
+  opacity: 0.8;
+  filter: grayscale(100%) contrast(1.05);
+  transform: scale(1.04);
 }
 .project-card.is-active .card-overlay {
-  background-color: rgba(26, 26, 26, 0.92);
+  background-color: rgba(26, 26, 26, 0.8);
 }
 .project-card.is-active .card-top-content {
   opacity: 1;
@@ -219,4 +219,111 @@
   visibility: hidden;
   transform: translateY(8px);
   pointer-events: none;
+}
+
+/* ==========================================================================
+   ANIMAÇÕES MODERNAS E ELEGANTES (LUXURY SCROLL & ENTRANCE REVEAL)
+   Transições suaves com curva cúbica exponencial (ease-out-expo)
+   ========================================================================== */
+
+/* Animações de entrada imediata no Hero */
+@keyframes heroEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-hero-1 {
+  animation: heroEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+.animate-hero-2 {
+  animation: heroEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+.animate-hero-3 {
+  animation: heroEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+.animate-hero-4 {
+  animation: heroEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+}
+
+/* Base de Revelação na Rolagem (Scroll Reveal) */
+.reveal,
+.reveal-up {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-36px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(36px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-fade {
+  opacity: 0;
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity;
+}
+
+/* Estado Ativado / Revelado ao entrar na Viewport */
+.reveal.is-revealed,
+.reveal-up.is-revealed,
+.reveal-left.is-revealed,
+.reveal-right.is-revealed,
+.reveal-scale.is-revealed,
+.reveal-fade.is-revealed {
+  opacity: 1;
+  transform: translateY(0) translateX(0) scale(1);
+}
+
+/* Delays escalonados elegantes para elementos filhos e grids */
+.delay-100 { transition-delay: 100ms; }
+.delay-150 { transition-delay: 150ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-250 { transition-delay: 250ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-350 { transition-delay: 350ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+.delay-600 { transition-delay: 600ms; }
+
+/* Acessibilidade: respeita preferências de menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-1,
+  .animate-hero-2,
+  .animate-hero-3,
+  .animate-hero-4,
+  .reveal,
+  .reveal-up,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale,
+  .reveal-fade {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
 }

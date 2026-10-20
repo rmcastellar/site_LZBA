@@ -7,6 +7,8 @@ export interface Empreendimento {
   categoria?: string;
   status: 'lancamento' | 'em_obras' | 'entregue';
   statusLabel: string;
+  hotsite?: string;
+  tourVirtual?: string;
   bairro: string;
   cidade: string;
   estado: string;
@@ -17,6 +19,7 @@ export interface Empreendimento {
   vagas: string;
   destaque: boolean;
   imagemCapa: string;
+  imagemFachada: string;
   galeria: string[];
   descricaoCurta: string;
   descricaoCompleta: string;
@@ -25,6 +28,7 @@ export interface Empreendimento {
     titulo: string;
     metragem: string;
     descricao: string;
+    imagem?: string;
   }[];
   estagioObras?: {
     geral: number;
@@ -50,7 +54,9 @@ export const EMPREENDIMENTOS: Empreendimento[] = [
     titulo: 'Residencial Season',
     subtitulo: 'A exclusividade que o seu estilo de vida merece',
     status: 'entregue',
-    statusLabel: 'Concluído',
+    statusLabel: 'Entregue',
+    hotsite: 'https://www.residencialseason.com.br/',
+    tourVirtual: 'https://www.vertuality.com.br/tour/lzba/season/',
     bairro: 'Jardim São Paulo',
     cidade: 'São Paulo',
     estado: 'SP',
@@ -60,10 +66,24 @@ export const EMPREENDIMENTOS: Empreendimento[] = [
     suites: 'com ou sem suíte',
     vagas: 'com ou sem vaga',
     destaque: true,
-    imagemCapa: '/images/img_season_capa.jpg',
+    imagemCapa: '/images/empreendimentos/season/img-season-guarita.jpg',
+    imagemFachada: '/images/empreendimentos/season/img_season_fachada.jpg',
     galeria: [
-      '/images/img_season_capa.jpg',
-      '/images/hero-building.jpg'
+      '/images/empreendimentos/season/img-season-guarita.jpg',
+      '/images/empreendimentos/season/img-season-fachada1.jpg',
+      '/images/empreendimentos/season/img-season-fachada2.jpg',
+      '/images/empreendimentos/season/img-season-fachada5.jpg',
+      '/images/empreendimentos/season/img_season_Espaço_Gourmet.jpg',
+      '/images/empreendimentos/season/img_season_Brinquedoteca.jpg',
+      '/images/empreendimentos/season/img_season_Academia.jpg',
+      '/images/empreendimentos/season/img_season_Espaço_Grill.jpg',
+      '/images/empreendimentos/season/img_season_Hall_de_Acesso.jpg',
+      '/images/empreendimentos/season/img_season_Salao_de_Festas.jpg',
+      '/images/empreendimentos/season/img_season_Salao_de_Jogos.jpg',
+      '/images/empreendimentos/season/img_season_Piscina_Adulto.png',
+      '/images/empreendimentos/season/img_season_Piscina_Infantil.jpg',
+      '/images/empreendimentos/season/img_season_Playground.jpg',
+      '/images/empreendimentos/season/img-season_Sauna.jpg'
     ],
     descricaoCurta: 'Um projeto de alto padrão que une sofisticação, conforto e localização privilegiada. Desfrute de ambientes planejados para o seu bem-estar e de uma experiência de moradia exclusiva.',
     descricaoCompleta: 'O Residencial Season foi concebido para redefinir o conceito de viver bem. Localizado em uma das regiões mais desejadas, o empreendimento traduz o compromisso da Construtora Lzba com a excelência arquitetônica, o rigor técnico e o acabamento de alto padrão. Cada detalhe foi pensado para proporcionar máxima funcionalidade, iluminação natural e conforto térmico, entregando espaços amplos e integrados que atendem às necessidades de famílias que valorizam exclusividade e sofisticação.',
@@ -80,34 +100,41 @@ export const EMPREENDIMENTOS: Empreendimento[] = [
     ],
     plantas: [
       {
-        titulo: 'Apartamento Tipo 1 - 2 Dorms',
+        titulo: 'Apartamento - 2 Dorms',
         metragem: '52,76m²',
-        descricao: '2 dormitórios (1 suíte), varanda Gourmet e 1 vaga.'
+        descricao: '2 dormitórios (1 suíte), varanda Gourmet e 1 vaga.',
+        imagem: ''
+
       },
       {
-        titulo: 'Apartamento Tipo 2 - 2 Dorms',
+        titulo: 'Apartamento - 2 Dorms',
         metragem: '44,16 m²',
-        descricao: '2 dormitórios (1 suíte), varanda Gourmet e 1 vaga.'
+        descricao: '2 dormitórios (1 suíte), varanda Gourmet e 1 vaga.',
+        imagem: '/images/empreendimentos/season/img-planta-4416m2.png'
       },
             {
-        titulo: 'Apartamento Tipo 3 - 2 Dorms',
+        titulo: 'Apartamento - 2 Dorms',
         metragem: '45,31 m²',
-        descricao: '2 dormitórios (1 suíte), varanda Gourmet e 1 vaga.'
+        descricao: '2 dormitórios (1 suíte), varanda Gourmet e 1 vaga.',
+        imagem: ''
       },
       {
-        titulo: 'Apartamento Tipo 4 - 2 Dorms',
+        titulo: 'Apartamento - 2 Dorms',
         metragem: '45,94 m²',
-        descricao: '2 dormitórios (1 suíte) e 1 vaga.'
+        descricao: '2 dormitórios (1 suíte) e 1 vaga.',
+        imagem: ''
       },
       {
-        titulo: 'Apartamento Tipo 5 - 2 Dorms',
+        titulo: 'Apartamento - 2 Dorms',
         metragem: '35,04 m²',
-        descricao: '2 dormitórios'
+        descricao: '2 dormitórios',
+        imagem: ''
       },
       {
-        titulo: 'Apartamento Tipo 6 - 2 Dorms',
+        titulo: 'Apartamento - 2 Dorms',
         metragem: '46,16 m²',
-        descricao: '2 dormitórios (1 suíte) e 1 vaga.'
+        descricao: '2 dormitórios (1 suíte) e 1 vaga.',
+        imagem: ''
       }
     ],
     estagioObras: {
@@ -125,6 +152,8 @@ export const EMPREENDIMENTOS: Empreendimento[] = [
     subtitulo: 'Viva em sintonia com a natureza, a poucos passos de tudo',
     status: 'lancamento',
     statusLabel: 'Lançamento',
+    hotsite: 'https://www.residencialarbore.com.br/',
+    tourVirtual: '',
     bairro: 'Jardim São Paulo',
     cidade: 'São Paulo',
     estado: 'SP',
@@ -134,16 +163,62 @@ export const EMPREENDIMENTOS: Empreendimento[] = [
     suites: 'com ou sem suíte',
     vagas: 'com ou sem vaga',
     destaque: true,
-    imagemCapa: '/images/img-arbore-capa.webp',
+    imagemCapa: '/images/empreendimentos/arbore/img-arbore-fachada.jpg',
+    imagemFachada: '/images/empreendimentos/arbore/img-arbore-fachada.webp',
     galeria: [
-      '/images/img-arbore-capa.webp',
-      '/images/hero-building.jpg'
+      '/images/empreendimentos/arbore/img-arbore-fachada.jpg',
+      '/images/empreendimentos/arbore/img-arbore-lateral1.jpg',
+      '/images/empreendimentos/arbore/img-arbore-lateral2.jpg',
+      '/images/empreendimentos/arbore/img-arbore-frontal1.jpg',
+      '/images/empreendimentos/arbore/img-arbore-frontal2.jpg',
+      '/images/empreendimentos/arbore/img-arbore-frontal3.jpg',
+      '/images/empreendimentos/arbore/img-arbore-frontal4.jpg',
+      '/images/empreendimentos/arbore/img-arbore-academia.jpg',
+      '/images/empreendimentos/arbore/img-arbore-brinquedoteca.jpg',
+      '/images/empreendimentos/arbore/img-arbore-coworking.jpg',
+      '/images/empreendimentos/arbore/img-arbore-delivery.jpg',
+      '/images/empreendimentos/arbore/img-arbore-festas.jpg',
+      '/images/empreendimentos/arbore/img-arbore-gourmet.jpg',
+      '/images/empreendimentos/arbore/img-arbore-hall.jpg',
+      '/images/empreendimentos/arbore/img-arbore-jogos.jpg',
+      '/images/empreendimentos/arbore/img-arbore-piscina1.jpg',
+      '/images/empreendimentos/arbore/img-arbore-piscina2.jpg',
+      '/images/empreendimentos/arbore/img-arbore-piscina3.jpg',
+      '/images/empreendimentos/arbore/img-arbore-piscina4.jpg',
+      '/images/empreendimentos/arbore/img-arbore-loja1.jpg',
+      '/images/empreendimentos/arbore/img-arbore-loja2.jpg',
+      '/images/empreendimentos/arbore/img-arbore-loja3.jpg',
+      '/images/empreendimentos/arbore/img-arbore-loja4.jpg',
+      '/images/empreendimentos/arbore/img-arbore-apto-3-Sanitario.jpg',
+      '/images/empreendimentos/arbore/img-arbore-apto-3-Sala02.jpg',
+      '/images/empreendimentos/arbore/img-arbore-apto-3-Sala01.jpg',
+      '/images/empreendimentos/arbore/img-arbore-apto-3-Dormitorio02.jpg',
+      '/images/empreendimentos/arbore/img-arbore-apto-3-Dormitorio01.jpg',
+      '/images/empreendimentos/arbore/img-arbore-apto-3-Dormitorio.jpg',
+      '/images/empreendimentos/arbore/img-arbore-apto-3-Cozinha01.jpg',
+      '/images/empreendimentos/arbore/img-arbore-apto-3-Cozinha02.jpg',
+      '/images/empreendimentos/arbore/img-arbore-apto-3-AreaDeServico.jpg',
+      '/images/empreendimentos/arbore/img-arbore-apto-1-Suite.jpg',
+      '/images/empreendimentos/arbore/img-arbore-apto-1-Sacada.jpg',
+      '/images/empreendimentos/arbore/img-arbore-apto-1-Living02.jpg',
+      '/images/empreendimentos/arbore/img-arbore-apto-1-Living01.jpg',
+      '/images/empreendimentos/arbore/img-arbore-apto-1-Dormitorio.jpg',
+      '/images/empreendimentos/arbore/img-arbore-apto-1-Cozinha.jpg',
     ],
     descricaoCurta: 'O Residencial Arbore traduz a essência daquilo que permanece: raízes profundas, tradição e crescimento constante. Um conceito que valoriza a solidez, o bem-estar e a conexão com uma vida mais equilibrada.',
     descricaoCompleta: 'O Residencial Arbore traduz a essência daquilo que permanece: raízes profundas, tradição e crescimento constante. Um conceito que valoriza a solidez, o bem-estar e a conexão com uma vida mais equilibrada. Localizado em uma região arborizada e consolidada, o empreendimento combina a tranquilidade de um bairro tradicional com a conveniência de estar próximo a importantes centros comerciais, culturais e gastronômicos. Cada detalhe foi pensado para refletir solidez, qualidade e respeito ao espaço de quem deseja viver com equilíbrio e bem-estar.',
     diferenciais: [
       'Piscina adulto e infantil',
-      'Academia'
+      'Academia',
+      'Salão de Festas',
+      'Salão de Jogos',
+      'Espaço Gourmet',
+      'Delivery',
+      'Coworking',
+      'Sauna',
+      'Térreo Comercial',
+      'Brinquedoteca'
+      
     ],
     plantas: [
       {
@@ -178,11 +253,11 @@ export const EMPREENDIMENTOS: Empreendimento[] = [
       }
     ],
     estagioObras: {
-      geral: 100,
-      fundacao: 100,
-      estrutura: 100,
-      alvenaria: 100,
-      acabamento: 100
+      geral: 0,
+      fundacao: 0,
+      estrutura: 0,
+      alvenaria: 0,
+      acabamento: 0
     }
   },
   {
@@ -190,8 +265,10 @@ export const EMPREENDIMENTOS: Empreendimento[] = [
     slug: 'residencial-vista-vicenza',
     titulo: 'Residencial Vista Vicenza',
     subtitulo: 'Elegância e amplitude com vista privilegiada',
-    status: 'em_obras',
-    statusLabel: 'Em Obras',
+    status: 'entregue',
+    statusLabel: 'Entregue',
+    hotsite: 'https://www.residencialvistavicenza.com.br/',
+    tourVirtual: '',
     bairro: 'Santana',
     cidade: 'São Paulo',
     estado: 'SP',
@@ -200,8 +277,9 @@ export const EMPREENDIMENTOS: Empreendimento[] = [
     dormitorios: '3 dormitórios',
     suites: '2 suítes',
     vagas: '2 vagas demarcadas',
-    destaque: true,
+    destaque: false,
     imagemCapa: '/images/hero-building.jpg',
+    imagemFachada: '/images/hero-building.jpg',
     galeria: [
       '/images/hero-building.jpg',
       '/images/season-facade.jpg'
@@ -242,7 +320,9 @@ export const EMPREENDIMENTOS: Empreendimento[] = [
     titulo: 'Residencial Capricho',
     subtitulo: 'Tranquilidade e sofisticação junto à natureza',
     status: 'entregue',
-    statusLabel: 'Pronto / Entregue',
+    statusLabel: 'Entregue',
+    hotsite: 'https://www.residencialcapricho.com.br/',
+    tourVirtual: '',
     bairro: 'Tremembé',
     cidade: 'São Paulo',
     estado: 'SP',
@@ -253,6 +333,7 @@ export const EMPREENDIMENTOS: Empreendimento[] = [
     vagas: '1 a 2 vagas',
     destaque: false,
     imagemCapa: '/images/hero-building.jpg',
+    imagemFachada: '/images/hero-building.jpg',
     galeria: [
       '/images/hero-building.jpg'
     ],
@@ -327,8 +408,10 @@ export const EMPREENDIMENTOS: Empreendimento[] = [
     slug: 'residencial-london',
     titulo: 'Residencial London',
     subtitulo: 'Elegância britânica com o acolhimento paulistano',
-    status: 'entregue',
-    statusLabel: 'Pronto / Entregue',
+    status: 'em_obras',
+    statusLabel: 'Em Obras',
+    hotsite: 'https://www.residenciallondon.com.br/',
+    tourVirtual: '',
     bairro: 'Santana',
     cidade: 'São Paulo',
     estado: 'SP',
@@ -339,6 +422,7 @@ export const EMPREENDIMENTOS: Empreendimento[] = [
     vagas: '2 vagas',
     destaque: false,
     imagemCapa: '/images/hero-building.jpg',
+    imagemFachada: '/images/hero-building.jpg', 
     galeria: [
       '/images/hero-building.jpg'
     ],
@@ -368,7 +452,7 @@ export const EMPREENDIMENTOS: Empreendimento[] = [
 ];
 
 export const NUMEROS_LZBA = {
-  anosCarreira: '34',
+  anosCarreira: String(new Date().getFullYear() - 1991),
   aptosEntregues: '1.343',
   obrasEntregues: '31',
   satisfacao: '99%'
@@ -379,6 +463,7 @@ export const CONTATO_LZBA = {
   whatsapp: '(11) 99961-8125',
   whatsappLink: 'https://wa.me/5511999618125?text=Ol%C3%A1%2C+gostaria+de+informa%C3%A7%C3%B5es+sobre+os+empreendimentos+da+LZBA',
   email: 'atendimento@lzba.com.br',
-  endereco: 'Rua Capitão Rabelo, 560 - Jardim São Paulo - São Paulo',
+  endereco: 'R. Augusto Tolle, 767 - Santana, São Paulo',
+  enderecoWeb: 'https://maps.app.goo.gl/YnD1X72CRT26GNB98',
   horario: 'Segunda a Sexta, das 9h às 18h'
 };

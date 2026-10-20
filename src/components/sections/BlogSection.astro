@@ -1,0 +1,76 @@
+---
+import { ARTIGOS_BLOG } from "../../data/artigos";
+import BlogCard from "../artigosBlog/BlogCard.astro";
+
+// Pega os 3 artigos mais recentes
+const artigosDestaque = ARTIGOS_BLOG.slice(0, 3);
+---
+
+<section
+  id="blog"
+  class="py-24 bg-neutral-50/70 border-t border-neutral-200/60 relative overflow-hidden"
+>
+  <!-- Elemento de fundo sutil -->
+  <div
+    class="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:24px_24px] opacity-40 pointer-events-none"
+  >
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Cabeçalho da Seção com GEO & Posicionamento -->
+    <div
+      class="reveal-up flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6"
+    >
+      <div class="max-w-2xl">
+        <div
+          class="text-xs uppercase font-bold tracking-widest text-lzba-gold block mb-2 font-sans"
+        >
+          Conteúdos & Inteligência Imobiliária
+        </div>
+        <h2
+          class="text-3xl sm:text-4xl font-extrabold text-neutral-900 tracking-tight"
+        >
+          Blog LZBA: Viva o Melhor da Zona Norte
+        </h2>
+        <p class="mt-3 text-base text-neutral-600 font-light leading-relaxed">
+          Artigos exclusivos sobre o mercado imobiliário, qualidade de vida,
+          bairros tradicionais e tendências de arquitetura na Zona Norte de São
+          Paulo.
+        </p>
+      </div>
+
+      <!-- Botão para ver todos os artigos -->
+      <div class="shrink-0">
+        <a
+          href="/blog"
+          class="inline-flex items-center gap-2 px-6 py-3 font-semibold text-sm bg-neutral-900 text-white hover:bg-neutral-800 transition-all shadow-sm hover:shadow-md active:scale-98"
+        >
+          Acessar o Blog Completo
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Grid dos Artigos com Revelação Escalonada -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {
+        artigosDestaque.map((artigo, index) => (
+          <div class={`reveal-up delay-${(index + 1) * 100}`}>
+            <BlogCard artigo={artigo} />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

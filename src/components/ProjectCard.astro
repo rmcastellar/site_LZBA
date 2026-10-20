@@ -13,15 +13,17 @@ const numberFormatted = String(index + 1).padStart(2, "0");
 <div
   class="project-card group relative p-1.5 sm:p-2 border transition-all duration-300 shrink-0 w-70 sm:w-77.5 lg:w-82.5 snap-start"
   data-status={item.status}
+  data-destaque={item.destaque ? "true" : "false"}
   data-slug={item.slug}
   data-index={index}
+  style={item.destaque ? "" : "display: none;"}
 >
   <div
     class="card-inner relative aspect-[3/4.3] w-full overflow-hidden flex flex-col justify-between p-6 sm:p-7 select-none transition-all duration-300 cursor-pointer"
   >
     <!-- Imagem de Fundo -->
     <img
-      src={item.imagemCapa}
+      src={item.imagemFachada}
       alt={item.titulo}
       class="card-img absolute inset-0 w-full h-full object-cover transition-all duration-700"
       loading={index < 3 ? "eager" : "lazy"}
@@ -30,8 +32,12 @@ const numberFormatted = String(index + 1).padStart(2, "0");
     <div class="card-overlay absolute inset-0 transition-all duration-500">
     </div>
 
-    <!-- CONTEÚDO DO TOPO (Exibido no estado ATIVO - Card 1 do Mockup) -->
-    <div class="card-top-content relative z-10 transition-all duration-300">
+    <!-- CONTEÚDO DO TOPO (Exibido no estado ATIVO) -->
+    <div class="card-top-content relative z-10 transition-all duration-500">
+      <p class="text-xs text-lzba-gold font-light pb-1">
+        {item.statusLabel}
+      </p>
+
       <h3
         class="text-lg sm:text-xl font-bold font-heading text-white leading-tight"
       >
@@ -46,6 +52,9 @@ const numberFormatted = String(index + 1).padStart(2, "0");
     <div
       class="card-bottom-content absolute left-6 right-6 sm:left-7 sm:right-7 bottom-6 sm:bottom-7 z-10 transition-all duration-300 pointer-events-none"
     >
+      <p class="text-xs text-lzba-gold font-light pb-1">
+        {item.statusLabel}
+      </p>
       <h3
         class="text-lg sm:text-xl font-bold font-heading text-white leading-tight"
       >
@@ -62,11 +71,11 @@ const numberFormatted = String(index + 1).padStart(2, "0");
     >
       <a
         href={`/empreendimentos/${item.slug}`}
-        class="inline-flex items-center justify-center p-1 rounded-full border border-white/70 hover:border-white transition-all group/btn"
+        class="inline-flex items-center justify-center p-1 border border-white/70 hover:border-white transition-all group/btn"
         aria-label={`Ver detalhes de ${item.titulo}`}
       >
         <span
-          class="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white flex items-center justify-center shadow-md transition-transform duration-300 group-hover/btn:scale-105"
+          class="w-11 h-11 sm:w-12 sm:h-12 bg-white flex items-center justify-center shadow-md transition-transform duration-300 group-hover/btn:scale-105"
         >
           <svg
             class="w-5 h-5 text-lzba-gold"
@@ -85,3 +94,18 @@ const numberFormatted = String(index + 1).padStart(2, "0");
     </div>
   </div>
 </div>
+
+<style>
+  /* Efeito preto e branco com opacidade no overlay de 80% ao passar o mouse */
+  :global(.project-card.is-active) .card-img,
+  :global(.project-card:hover) .card-img {
+    opacity: 0.8;
+    filter: grayscale(100%) contrast(1.05);
+    transform: scale(1.04);
+  }
+
+  :global(.project-card.is-active) .card-overlay,
+  :global(.project-card:hover) .card-overlay {
+    background-color: rgba(26, 26, 26, 0.8);
+  }
+</style>

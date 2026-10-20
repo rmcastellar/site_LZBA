@@ -1,209 +1,459 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import QuickBar from '../components/QuickBar.astro';
-import { CONTATO_LZBA } from '../data/empreendimentos';
+import Layout from "../layouts/Layout.astro";
+import CtaSection from "../components/sections/CtaSection.astro";
+import { NUMEROS_LZBA, CONTATO_LZBA } from "../data/empreendimentos";
+
+const title = "Sobre a LZBA | 35 Anos de Tradição e Excelência na Construção";
+const description =
+  "Conheça a história da LZBA Incorporadora e Construtora: mais de três décadas de experiência, 31 empreendimentos concluídos, nossa missão, visão e valores éticos.";
 ---
 
 <Layout
-  title="Sobre a LZBA | 34 Anos de Tradição e Excelência na Construção"
-  description="Conheça a história da LZBA Incorporadora de Imóveis: mais de três décadas de experiência, 31 empreendimentos concluídos, nossa missão, visão e valores éticos."
+  title={title}
+  description={description}
   currentPath="/sobre"
+  image="/images/02023-scaled-1.jpg"
 >
-  <!-- Cabeçalho Institucional -->
-  <section class="relative pt-20 pb-16 bg-gradient-to-b from-[#111827] to-[#0b0f17] border-b border-white/5 overflow-hidden">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-      <span class="text-xs font-bold uppercase tracking-widest text-[#e5c07b]">
-        Institucional
-      </span>
-      <h1 class="text-4xl sm:text-6xl font-extrabold text-white font-heading mt-2 mb-6">
-        Sobre a Construtora LZBA
-      </h1>
-      <p class="text-base sm:text-xl text-slate-300 font-light leading-relaxed max-w-3xl mx-auto">
-        Com mais de três décadas de expertise no setor da construção civil, a LZBA Incorporadora de Imóveis consolida-se como referência em inovação, solidez e compromisso absoluto com cada cliente.
-      </p>
+  <!-- 1. Header com Boas-Vindas -->
+  <section
+    class="relative pt-20 sm:pt-16 pb-16 bg-[#161616] text-white overflow-hidden"
+  >
+    <!-- Efeito de iluminação suave de fundo -->
+    <div
+      class="absolute inset-0 bg-linear-to-b from-[#202020] to-[#121212] pointer-events-none"
+    >
+    </div>
+
+    <div
+      class="relative z-10 max-w-7xl mx-[10%] px-4 sm:px-6 lg:px-8 w-full my-auto"
+    >
+      <div class="max-w-3xl animate-hero-1">
+        <span
+          class="inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider bg-white/10 text-amber-300 border border-white/10 mb-4"
+        >
+          Nossa História
+        </span>
+        <h1
+          class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white mb-5 leading-tight"
+        >
+          Há mais de 30 anos transformando lares na Zona Norte de SP
+        </h1>
+        <p class="text-lg text-neutral-300 font-light leading-relaxed">
+          Acompanhe a evolução da LZBA, desde os primeiros projetos em Tucuruvi
+          até os condomínios de alto padrão em Santana, Vila Maria e região,
+          sempre com excelência técnica e compromisso com a qualidade.
+        </p>
+      </div>
     </div>
   </section>
 
-  <!-- Métricas Históricas -->
-  <section class="py-12 bg-[#0b0f17]">
+  <!-- 2. NOSSA TRAJETÓRIA E LEGADO (LAYOUT EDITORIAL CLARO NO ESTILO DA HOME) -->
+  <section
+    id="historia"
+    class="py-20 lg:py-28 bg-white text-lzba-dark scroll-mt-20"
+  >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <QuickBar />
-    </div>
-  </section>
-
-  <!-- Nossa Trajetória e Proposta de Valor -->
-  <section class="py-16 sm:py-24 bg-[#0e1422] border-t border-white/5">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        
-        <!-- Texto da Trajetória -->
-        <div class="space-y-6">
-          <div class="space-y-2">
-            <span class="text-xs font-bold uppercase tracking-widest text-[#e5c07b]">
-              Legado & Propósito
+      <div
+        class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center"
+      >
+        <!-- Coluna da Esquerda: Narrativa Histórica -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="reveal-up space-y-2">
+            <span
+              class="text-xs uppercase font-bold tracking-widest text-lzba-gold block font-sans"
+            >
+              LEGADO & PROPÓSITO
             </span>
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-white font-heading">
-              Nossa Trajetória de Sucesso
+            <h2
+              class="text-2xl sm:text-3xl lg:text-4xl font-bold text-lzba-dark tracking-tight font-heading leading-tight"
+            >
+              Mais de três décadas transformando o cenário da Zona Norte
             </h2>
           </div>
-          
-          <p class="text-slate-300 text-base leading-relaxed">
-            Com 31 empreendimentos entregues e uma trajetória construída sobre pilares de confiança e responsabilidade, nosso portfólio é um reflexo do compromisso inabalável com a excelência. Cada projeto representa uma história de sucesso, traduzida em qualidade e inovação.
-          </p>
 
-          <p class="text-slate-400 text-sm leading-relaxed">
-            Nossos projetos são meticulosamente elaborados para atender às demandas do presente, sempre com um olhar visionário voltado para o futuro. Atuando com destaque no mercado de São Paulo, priorizamos a escolha de localizações estratégicas e a concepção de plantas inteligentes.
-          </p>
+          <div
+            class="reveal-up delay-100 space-y-4 text-neutral-600 font-light leading-relaxed text-sm sm:text-base"
+          >
+            <p>
+              Fundada sob o princípio inegociável da solidez técnica e do
+              respeito aos prazos contratuais, a <strong
+                class="font-semibold text-lzba-dark"
+                >LZBA Incorporadora e Construtora</strong
+              > consolidou-se como um dos nomes mais respeitados no mercado imobiliário
+              paulistano.
+            </p>
+            <p>
+              Ao longo de 35 anos ininterruptos, entregamos 31 empreendimentos
+              emblemáticos em bairros nobres e tradicionais como Jardim São
+              Paulo, Santana, Tucuruvi e Vila Mazzei. Mais do que erguer
+              edifícios, participamos ativamente da evolução urbana e do
+              fortalecimento patrimonial de mais de 1.340 famílias.
+            </p>
+            <p>
+              O que nos diferencia é a presença constante da nossa diretoria
+              técnica e de engenharia em todas as fases: da prospecção de
+              terrenos com vocação nobre à compatibilização tridimensional de
+              projetos, execução com auditoria permanente e assistência
+              pós-entrega dedicada.
+            </p>
+          </div>
 
-          <!-- Proposta de Valor Cards -->
-          <div class="space-y-4 pt-4">
-            <div class="p-5 rounded-2xl bg-white/5 border border-white/5">
-              <h3 class="text-lg font-bold text-white font-heading flex items-center gap-2 mb-2">
-                <span class="w-2 h-2 rounded-full bg-[#e5c07b]"></span>
-                Design Inteligente e Funcionalidade
+          <!-- Cards de Proposta de Valor no Padrão da Home -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+            <div
+              class="reveal-up delay-200 p-6 bg-lzba-light/60 border border-lzba-border hover:border-lzba-gold/60 transition-all duration-300"
+            >
+              <div
+                class="w-10 h-10 rounded-lg bg-white border border-lzba-border flex items-center justify-center text-lzba-dark mb-4 shadow-2xs"
+              >
+                <svg
+                  class="w-5 h-5 text-lzba-gold"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.8"
+                    d="M12 3v3m0 0l-5 13m5-13l5 13m-8-4h6M12 6a2 2 0 100-4 2 2 0 000 4z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-base font-bold text-lzba-dark font-heading mb-2">
+                Arquitetura Funcional
               </h3>
-              <p class="text-sm text-slate-400 leading-relaxed">
-                Valorizamos a união entre estética sofisticada e praticidade. Nossos empreendimentos são projetados para traduzir o estilo de vida e as aspirações de nossos clientes, criando espaços que transcendem o comum.
+              <p class="text-xs text-neutral-600 leading-relaxed font-light">
+                Plantas inteligentes otimizadas para o bem-estar real da
+                família, priorizando iluminação natural, ventilação cruzada e
+                conforto acústico.
               </p>
             </div>
 
-            <div class="p-5 rounded-2xl bg-white/5 border border-white/5">
-              <h3 class="text-lg font-bold text-white font-heading flex items-center gap-2 mb-2">
-                <span class="w-2 h-2 rounded-full bg-[#e5c07b]"></span>
-                Experiência Exclusiva e Personalizada
+            <div
+              class="reveal-up delay-300 p-6 bg-lzba-light/60 border border-lzba-border hover:border-lzba-gold/60 transition-all duration-300"
+            >
+              <div
+                class="w-10 h-10 rounded-lg bg-white border border-lzba-border flex items-center justify-center text-lzba-dark mb-4 shadow-2xs"
+              >
+                <svg
+                  class="w-5 h-5 text-lzba-gold"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.8"
+                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-base font-bold text-lzba-dark font-heading mb-2">
+                Segurança Jurídica
               </h3>
-              <p class="text-sm text-slate-400 leading-relaxed">
-                Cada cliente tem uma jornada única conosco. Desde o primeiro contato até a entrega das chaves, garantimos que cada etapa do processo seja marcada por um atendimento individualizado, resultando em lares que realmente refletem os sonhos de seus proprietários.
+              <p class="text-xs text-neutral-600 leading-relaxed font-light">
+                Governança patrimonial rigorosa, com patrimônio de afetação em
+                todos os lançamentos e transparência completa aos compradores.
               </p>
             </div>
           </div>
-
         </div>
 
-        <!-- Imagem Institucional / Foto de Fachada Real -->
-        <div class="relative group">
-          <div class="rounded-3xl overflow-hidden border border-white/10 shadow-2xl aspect-[4/3] bg-slate-900">
-            <img 
-              src="/images/hero-building.jpg" 
-              alt="Edifício construído pela LZBA" 
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-          </div>
-          <div class="absolute -bottom-6 -left-6 glass-panel p-6 rounded-2xl border border-white/10 shadow-2xl max-w-xs hidden sm:block">
-            <span class="text-2xl font-extrabold text-emerald-400 font-heading block">100%</span>
-            <span class="text-xs text-slate-300 font-medium mt-1 block">Obras concluídas com rigor técnico e pontualidade.</span>
+        <!-- Coluna da Direita: Imagem com Moldura Arquitetônica Oficial -->
+        <div class="lg:col-span-5">
+          <div
+            class="reveal-right relative p-2 sm:p-2.5 border border-lzba-border bg-white shadow-lg"
+          >
+            <div
+              class="relative overflow-hidden aspect-[4/5] bg-neutral-900 group"
+            >
+              <img
+                src="/images/hero-building.jpg"
+                alt="Empreendimento entregue pela Construtora LZBA"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
+              >
+              </div>
+
+              <!-- Selo Flutuante de Confiança Técnica -->
+              <div
+                class="absolute bottom-6 left-6 right-6 p-4 bg-lzba-dark/95 border border-white/10 text-white backdrop-blur-md"
+              >
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-10 h-10 rounded-full bg-lzba-gold/20 border border-lzba-gold/40 flex items-center justify-center shrink-0"
+                  >
+                    <span class="text-xs font-bold text-lzba-gold font-heading"
+                      >35a</span
+                    >
+                  </div>
+                  <div>
+                    <h4
+                      class="text-xs font-bold uppercase tracking-wider text-white"
+                    >
+                      Presença Local e Contínua
+                    </h4>
+                    <p class="text-[11px] text-neutral-300 font-light mt-0.5">
+                      Sede própria e obras concentradas na Zona Norte de SP.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-
       </div>
-
     </div>
   </section>
 
-  <!-- Missão, Visão e Valores -->
-  <section class="py-20 lg:py-28 bg-[#0b0f17]">
+  <!-- 3. MISSÃO, VISÃO E VALORES (ESTILO PILARES DA HOME COM PALETA LZBA) -->
+  <section
+    class="py-20 lg:py-28 bg-lzba-light text-lzba-dark border-t border-lzba-border/60"
+  >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <span class="text-xs font-bold uppercase tracking-widest text-[#e5c07b]">
-          Pilares Corporativos
+      <!-- Cabeçalho da Seção -->
+      <div class="reveal-up text-center max-w-3xl mx-auto mb-16">
+        <span
+          class="text-xs uppercase font-bold tracking-widest text-lzba-gold block mb-2 font-sans"
+        >
+          PILARES CORPORATIVOS
         </span>
-        <h2 class="text-3xl sm:text-5xl font-extrabold text-white font-heading mt-2">
-          Missão, Visão e Valores
+        <h2
+          class="text-2xl sm:text-3xl lg:text-4xl font-bold text-lzba-dark tracking-tight font-heading leading-tight"
+        >
+          Princípios que Sustentam Cada Projeto
         </h2>
-        <p class="text-slate-400 text-sm sm:text-base mt-4 font-light">
-          Os princípios éticos e estratégicos que guiam cada decisão e tijolo assentado pela LZBA.
+        <p
+          class="text-sm sm:text-base text-neutral-600 mt-4 leading-relaxed font-light"
+        >
+          A longevidade da LZBA é fundamentada em diretrizes éticas claras,
+          compromisso comunitário e excelência executiva.
         </p>
       </div>
 
+      <!-- 3 Cards de Pilares -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        
         <!-- Missão -->
-        <div class="glass-panel p-8 rounded-2xl border border-white/10 flex flex-col justify-between">
-          <div class="space-y-4">
-            <div class="w-12 h-12 rounded-xl bg-[#c5a880]/15 flex items-center justify-center text-[#e5c07b]">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-              </svg>
-            </div>
-            <h3 class="text-2xl font-bold text-white font-heading">MISSÃO</h3>
-            <p class="text-sm text-slate-300 leading-relaxed">
-              Proporcionar soluções inovadoras e de alta qualidade no setor imobiliário, redefinindo padrões de excelência em construção e atendimento, e superando as expectativas de nossos clientes.
+        <div
+          class="reveal-up delay-100 p-8 sm:p-9 bg-white border border-lzba-border hover:border-lzba-gold/60 transition-all duration-300 shadow-xs hover:shadow-md flex flex-col justify-between"
+        >
+          <div>
+            <h3 class="text-xl font-bold text-lzba-dark font-heading mb-4">
+              MISSÃO
+            </h3>
+            <p class="text-sm text-neutral-600 leading-relaxed font-light">
+              Desenvolver e construir empreendimentos imobiliários que combinem
+              rigor técnico, funcionalidade de plantas e alto padrão de
+              acabamento, gerando valorização patrimonial e lares seguros para
+              as famílias da Zona Norte.
             </p>
+          </div>
+          <div
+            class="mt-6 pt-4 border-t border-neutral-100 flex items-center gap-2 text-xs font-semibold text-lzba-dark"
+          >
+            <span class="w-1.5 h-1.5 rounded-full bg-lzba-gold"></span>
+            Excelência Construtiva Contínua
           </div>
         </div>
 
         <!-- Visão -->
-        <div class="glass-panel p-8 rounded-2xl border border-[#c5a880]/30 shadow-xl flex flex-col justify-between relative">
-          <div class="space-y-4">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-[#e5c07b] to-[#c5a880] flex items-center justify-center text-slate-950 font-bold">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-              </svg>
-            </div>
-            <h3 class="text-2xl font-bold text-white font-heading">VISÃO</h3>
-            <p class="text-sm text-slate-200 leading-relaxed">
-              Ser referência no mercado imobiliário, oferecendo experiências únicas e personalizadas que transformem cada projeto em um reflexo fiel das aspirações de nossos clientes.
+        <div
+          class="reveal-up delay-200 p-8 sm:p-9 bg-white border border-lzba-gold/50 hover:border-lzba-gold transition-all duration-300 shadow-xs hover:shadow-lg flex flex-col justify-between relative overflow-hidden"
+        >
+          <div
+            class="absolute top-0 right-0 w-24 h-24 bg-lzba-gold/10 rounded-bl-full pointer-events-none"
+          >
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-lzba-dark font-heading mb-4">
+              VISÃO
+            </h3>
+            <p class="text-sm text-neutral-600 leading-relaxed font-light">
+              Ser a incorporadora e construtora de referência absoluta em
+              credibilidade, inovação de processos e solidez na Zona Norte de
+              São Paulo, reconhecida pela satisfação integral e lealdade de
+              nossos clientes.
             </p>
+          </div>
+          <div
+            class="mt-6 pt-4 border-t border-neutral-100 flex items-center gap-2 text-xs font-semibold text-lzba-dark"
+          >
+            <span class="w-1.5 h-1.5 rounded-full bg-lzba-gold"></span>
+            Referência Regional Absoluta
           </div>
         </div>
 
         <!-- Valores -->
-        <div class="glass-panel p-8 rounded-2xl border border-white/10 flex flex-col justify-between">
-          <div class="space-y-4">
-            <div class="w-12 h-12 rounded-xl bg-[#c5a880]/15 flex items-center justify-center text-[#e5c07b]">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-              </svg>
-            </div>
-            <h3 class="text-2xl font-bold text-white font-heading">VALORES</h3>
-            <ul class="text-xs text-slate-300 space-y-2.5">
-              <li>
-                <strong class="text-white block font-medium">Respeito e Integridade:</strong>
-                A ética é a base de todas as nossas interações, assegurando relações transparentes.
+        <div
+          class="reveal-up delay-300 p-8 sm:p-9 bg-white border border-lzba-border hover:border-lzba-gold/60 transition-all duration-300 shadow-xs hover:shadow-md flex flex-col justify-between"
+        >
+          <div>
+            <h3 class="text-xl font-bold text-lzba-dark font-heading mb-4">
+              VALORES
+            </h3>
+            <ul
+              class="text-xs text-neutral-600 space-y-3 font-light leading-relaxed"
+            >
+              <li class="flex items-start gap-2">
+                <span
+                  class="mt-1 w-1.5 h-1.5 rounded-full bg-lzba-gold shrink-0"
+                ></span>
+                <span
+                  ><strong class="font-semibold text-lzba-dark"
+                    >Respeito e Ética:</strong
+                  > Relações transparentes e contratuais rigorosas com clientes e
+                  parceiros.</span
+                >
               </li>
-              <li>
-                <strong class="text-white block font-medium">Presença e Comprometimento:</strong>
-                Estamos presentes em cada detalhe, do planejamento ao pós-venda.
+              <li class="flex items-start gap-2">
+                <span
+                  class="mt-1 w-1.5 h-1.5 rounded-full bg-lzba-gold shrink-0"
+                ></span>
+                <span
+                  ><strong class="font-semibold text-lzba-dark"
+                    >Presença Operacional:</strong
+                  > Acompanhamento próximo do canteiro de obras ao pós-venda.</span
+                >
               </li>
-              <li>
-                <strong class="text-white block font-medium">Responsabilidade e Confiança:</strong>
-                Honramos a confiança depositada com entrega de excelência.
+              <li class="flex items-start gap-2">
+                <span
+                  class="mt-1 w-1.5 h-1.5 rounded-full bg-lzba-gold shrink-0"
+                ></span>
+                <span
+                  ><strong class="font-semibold text-lzba-dark"
+                    >Responsabilidade Técnica:</strong
+                  > Cumprimento estrito de normas ABNT e materiais homologados.</span
+                >
               </li>
             </ul>
           </div>
+          <div
+            class="mt-6 pt-4 border-t border-neutral-100 flex items-center gap-2 text-xs font-semibold text-lzba-dark"
+          >
+            <span class="w-1.5 h-1.5 rounded-full bg-lzba-gold"></span>
+            Ética e Responsabilidade
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. FAIXA DE DIFERENCIAIS OPERACIONAIS (ESTILO NÚMEROS/MÉTRICAS DA HOME) -->
+  <section class="py-16 bg-lzba-dark text-white border-y border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div
+        class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center items-center"
+      >
+        <div class="reveal-scale delay-100 space-y-2">
+          <div
+            class="w-10 h-10 mx-auto text-lzba-gold flex items-center justify-center"
+          >
+            <svg
+              class="w-7 h-7"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.6"
+                d="M3 21h18M4 18h16M6 18v-7c0-1.1.9-2 2-2h8a2 2 0 012 2v7M9 9V5a1 1 0 011-1h4a1 1 0 011 1v4M9 14h6"
+              ></path>
+            </svg>
+          </div>
+          <span
+            class="block text-xs uppercase tracking-wider text-lzba-muted font-medium"
+          >
+            Atuação Concentrada
+          </span>
+          <span
+            class="block text-xl sm:text-2xl font-bold text-white font-heading"
+          >
+            Zona Norte de SP
+          </span>
+          <p class="text-xs text-neutral-400 font-light max-w-xs mx-auto">
+            Domínio profundo das peculiaridades urbanas e vocações dos bairros
+            locais.
+          </p>
         </div>
 
-      </div>
+        <div class="reveal-scale delay-200 space-y-2">
+          <div
+            class="w-10 h-10 mx-auto text-lzba-gold flex items-center justify-center"
+          >
+            <svg
+              class="w-7 h-7"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.6"
+                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+              ></path>
+            </svg>
+          </div>
+          <span
+            class="block text-xs uppercase tracking-wider text-lzba-muted font-medium"
+          >
+            Segurança Jurídica
+          </span>
+          <span
+            class="block text-xl sm:text-2xl font-bold text-white font-heading"
+          >
+            Patrimônio de Afetação
+          </span>
+          <p class="text-xs text-neutral-400 font-light max-w-xs mx-auto">
+            Blindagem patrimonial que garante a destinação exclusiva dos
+            recursos da obra.
+          </p>
+        </div>
 
+        <div class="reveal-scale delay-300 space-y-2">
+          <div
+            class="w-10 h-10 mx-auto text-lzba-gold flex items-center justify-center"
+          >
+            <svg
+              class="w-7 h-7"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.6"
+                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+              ></path>
+            </svg>
+          </div>
+          <span
+            class="block text-xs uppercase tracking-wider text-lzba-muted font-medium"
+          >
+            Atendimento Personalizado
+          </span>
+          <span
+            class="block text-xl sm:text-2xl font-bold text-white font-heading"
+          >
+            Suporte Pós-Chaves
+          </span>
+          <p class="text-xs text-neutral-400 font-light max-w-xs mx-auto">
+            Vistorias técnicas criteriosas e assistência contínua após a entrega
+            das chaves.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- CTA para Conectar-se com a LZBA -->
-  <section class="py-16 bg-[#0e1422] border-t border-white/5">
-    <div class="max-w-4xl mx-auto px-4 text-center space-y-6">
-      <h2 class="text-2xl sm:text-3xl font-bold text-white font-heading">
-        Conecte-se com a LZBA
-      </h2>
-      <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto">
-        Na LZBA, estamos sempre prontos para inovar e colaborar. Se você busca transformar visões em realidade, entre em contato conosco. Cada novo projeto é uma oportunidade de criar algo extraordinário.
-      </p>
-      <div class="flex flex-wrap justify-center gap-4 pt-2">
-        <a
-          href="/contato"
-          class="px-8 py-3.5 rounded-xl text-sm font-bold text-slate-950 bg-gradient-to-r from-[#e5c07b] to-[#c5a880] hover:from-[#f3cf8e] hover:to-[#d4b58b] shadow-xl shadow-[#c5a880]/20 transition-all"
-        >
-          Fale Conosco
-        </a>
-        <a
-          href="/empreendimentos"
-          class="px-8 py-3.5 rounded-xl text-sm font-semibold text-white bg-white/10 hover:bg-white/15 border border-white/10 transition-all"
-        >
-          Ver Portfólio de Obras
-        </a>
-      </div>
-    </div>
-  </section>
+  <!-- 5. CTA OFICIAL DA HOME INTEGRADO -->
+  <CtaSection />
 </Layout>

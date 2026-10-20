@@ -65,5 +65,46 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://lzba.com
     </main>
 
     <Footer />
+
+    <!-- Script de Animações de Entrada e Rolagem (Zero Dependências, Alto Desempenho) -->
+    <script is:inline>
+      const setupScrollReveals = () => {
+        const reveals = document.querySelectorAll(
+          '.reveal, .reveal-up, .reveal-left, .reveal-right, .reveal-scale, .reveal-fade'
+        );
+
+        if (!reveals.length) return;
+
+        if (!('IntersectionObserver' in window)) {
+          reveals.forEach((el) => el.classList.add('is-revealed'));
+          return;
+        }
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-revealed');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            rootMargin: '0px 0px -30px 0px',
+            threshold: 0.08,
+          }
+        );
+
+        reveals.forEach((el) => observer.observe(el));
+      };
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupScrollReveals);
+      } else {
+        setupScrollReveals();
+      }
+
+      document.addEventListener('astro:page-load', setupScrollReveals);
+    </script>
   </body>
 </html>

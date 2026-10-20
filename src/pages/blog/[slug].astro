@@ -1,0 +1,378 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { ARTIGOS_BLOG, type ArtigoBlog } from "../../data/artigos";
+import BlogGeoSchema from "../../components/artigosBlog/BlogGeoSchema.astro";
+import BlogShare from "../../components/artigosBlog/BlogShare.astro";
+import BlogCard from "../../components/artigosBlog/BlogCard.astro";
+
+export function getStaticPaths() {
+  return ARTIGOS_BLOG.map((artigo) => ({
+    params: { slug: artigo.slug },
+    props: { artigo },
+  }));
+}
+
+interface Props {
+  artigo: ArtigoBlog;
+}
+
+const { artigo } = Astro.props;
+const currentUrl = new URL(
+  Astro.url.pathname,
+  Astro.site || "https://lzba.com.br",
+).toString();
+
+// Artigos relacionados (outros artigos excluindo o atual)
+const artigosRelacionados = ARTIGOS_BLOG.filter(
+  (item) => item.slug !== artigo.slug,
+).slice(0, 2);
+---
+
+<Layout
+  title={`${artigo.titulo} | Blog LZBA Incorporadora`}
+  description={artigo.metaDescription}
+  currentPath={`/blog/${artigo.slug}`}
+  image={artigo.imagemCapa}
+>
+  <!-- Metadados de SEO Local & GEO + JSON-LD Schema.org -->
+  <Fragment slot="head">
+    <BlogGeoSchema artigo={artigo} url={currentUrl} />
+  </Fragment>
+
+  <!-- 1. TOPO EDITORIAL / BREADCRUMB & TÍTULO -->
+  <header
+    class="pt-14 pb-12 bg-neutral-900 text-white relative overflow-hidden"
+  >
+    <!-- Glow sutil de fundo -->
+    <div
+      class="absolute inset-0 bg-linear-to-b from-neutral-800 to-neutral-950 pointer-events-none"
+    >
+    </div>
+    <div
+      class="absolute top-0 right-1/4 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"
+    >
+    </div>
+
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Badges de Categoria & Localização GEO -->
+      <div class="flex flex-wrap items-center gap-2.5 mb-5">
+        <span
+          class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-neutral-200 border border-white/10"
+        >
+          {artigo.categoria}
+        </span>
+        <span
+          class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30"
+        >
+          <svg
+            class="w-3.5 h-3.5 text-amber-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+            ></path>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+          </svg>
+          {artigo.geo.regiao} • {artigo.geo.bairro}
+        </span>
+      </div>
+
+      <!-- H1 Oficial do Artigo -->
+      <h1
+        class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight mb-6"
+      >
+        {artigo.titulo}
+      </h1>
+
+      <!-- Meta informações: Autor, Data e Leitura -->
+      <div
+        class="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-neutral-400 pt-4 border-t border-neutral-800"
+      >
+        <div class="flex items-center gap-2">
+          <div
+            class="w-8 h-8 rounded-full bg-amber-500 text-neutral-950 font-bold flex items-center justify-center text-xs"
+          >
+            LZ
+          </div>
+          <div>
+            <p class="font-medium text-white">{artigo.autor.nome}</p>
+            <p class="text-xs text-neutral-400">{artigo.autor.cargo}</p>
+          </div>
+        </div>
+
+        <span class="hidden sm:inline text-neutral-600">•</span>
+
+        <time datetime={artigo.dataPublicacao} class="text-neutral-300">
+          {artigo.dataPublicacaoFormatada}
+        </time>
+
+        <span class="hidden sm:inline text-neutral-600">•</span>
+
+        <span class="inline-flex items-center gap-1 text-neutral-300">
+          <svg
+            class="w-4 h-4 text-neutral-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          {artigo.tempoLeitura}
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. CORPO DO ARTIGO -->
+  <article class="bg-white py-12 sm:py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Imagem de Capa Principal com Aspecto e Legenda -->
+      <figure
+        class="mb-12 rounded-2xl overflow-hidden shadow-lg border border-neutral-200"
+      >
+        <img
+          src={artigo.imagemCapa}
+          alt={artigo.imagemAlt}
+          width="1200"
+          height="675"
+          class="w-full h-auto max-h-[520px] object-cover object-center"
+          loading="eager"
+        />
+        <figcaption
+          class="p-3 bg-neutral-50 text-xs text-neutral-500 italic border-t border-neutral-200"
+        >
+          {artigo.imagemAlt}
+        </figcaption>
+      </figure>
+
+      <!-- Conteúdo Editorial Semântico -->
+      <div
+        class="prose prose-lg max-w-none text-neutral-800 leading-relaxed font-light space-y-6"
+      >
+        {
+          artigo.secoes.map((secao) => {
+            if (secao.tipo === "paragrafo") {
+              return (
+                <p class="text-base sm:text-lg leading-relaxed text-neutral-700">
+                  {secao.texto}
+                </p>
+              );
+            }
+
+            if (secao.tipo === "h2") {
+              return (
+                <h2 class="text-2xl sm:text-3xl font-bold text-neutral-900 mt-10 mb-4 pt-6 border-t border-neutral-100">
+                  {secao.texto}
+                </h2>
+              );
+            }
+
+            if (secao.tipo === "h3") {
+              return (
+                <h3 class="text-xl sm:text-2xl font-semibold text-neutral-900 mt-6 mb-3">
+                  {secao.texto}
+                </h3>
+              );
+            }
+
+            if (secao.tipo === "lista" && secao.itens) {
+              return (
+                <ul class="my-6 space-y-4">
+                  {secao.itens.map((item) => (
+                    <li class="flex items-start gap-3 bg-neutral-50 p-4 rounded-xl border border-neutral-200/80">
+                      <span class="mt-1 w-2 h-2 rounded-full bg-amber-500 shrink-0" />
+                      <div class="text-sm sm:text-base text-neutral-700">
+                        {item.titulo && (
+                          <strong class="font-bold text-neutral-900 block mb-1">
+                            {item.titulo}
+                          </strong>
+                        )}
+                        <span>{item.descricao}</span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              );
+            }
+
+            if (secao.tipo === "destaque") {
+              return (
+                <blockquote class="my-8 p-6 bg-amber-500/10 border-l-4 border-amber-500 rounded-r-2xl">
+                  <p class="text-lg sm:text-xl font-medium text-neutral-900 italic leading-relaxed">
+                    "{secao.texto}"
+                  </p>
+                </blockquote>
+              );
+            }
+
+            if (secao.tipo === "cta") {
+              return (
+                <div class="my-10 p-8 bg-neutral-900 text-white rounded-2xl shadow-xl relative overflow-hidden">
+                  <div class="relative z-10">
+                    <h3 class="text-xl sm:text-2xl font-bold text-amber-400 mb-2">
+                      {secao.titulo}
+                    </h3>
+                    <p class="text-neutral-300 font-light mb-6 text-sm sm:text-base">
+                      {secao.texto}
+                    </p>
+                    <a
+                      href={secao.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-amber-500 text-neutral-950 font-bold text-sm hover:bg-amber-400 transition-colors shadow-md"
+                    >
+                      {secao.linkTexto}
+                      <svg
+                        class="w-4 h-4"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M14 5l7 7m0 0l-7 7m7-7H3"
+                        />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              );
+            }
+
+            return null;
+          })
+        }
+      </div>
+
+      <!-- Empreendimento Relacionado Vinculado ao Artigo -->
+      {
+        artigo.empreendimentoVinculado && (
+          <aside class="my-12 p-6 sm:p-8 bg-gradient-to-br from-neutral-50 to-neutral-100 rounded-2xl border border-neutral-200">
+            <div class="flex flex-col sm:flex-row items-center gap-6">
+              <img
+                src={artigo.empreendimentoVinculado.imagemCapa}
+                alt={artigo.empreendimentoVinculado.nome}
+                width="240"
+                height="160"
+                class="w-full sm:w-48 h-36 object-cover rounded-xl shadow-xs shrink-0"
+              />
+              <div class="flex-grow text-center sm:text-left">
+                <span class="text-xs font-semibold uppercase tracking-wider text-amber-600 block mb-1">
+                  Empreendimento em Destaque
+                </span>
+                <h4 class="text-xl font-bold text-neutral-900 mb-2">
+                  {artigo.empreendimentoVinculado.nome}
+                </h4>
+                <p class="text-sm text-neutral-600 font-light mb-4">
+                  {artigo.empreendimentoVinculado.tagline}
+                </p>
+                <a
+                  href={`/empreendimentos/${artigo.empreendimentoVinculado.slug}`}
+                  class="inline-flex items-center gap-1.5 text-sm font-bold text-neutral-900 hover:text-amber-600 transition-colors"
+                >
+                  Conheça as plantas e detalhes do projeto
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </aside>
+        )
+      }
+
+      <!-- Tags do Artigo -->
+      <div class="mt-12 pt-6 border-t border-neutral-200">
+        <h4
+          class="text-xs uppercase font-semibold text-neutral-500 tracking-wider mb-3"
+        >
+          Tags Relacionadas:
+        </h4>
+        <div class="flex flex-wrap gap-2">
+          {
+            artigo.tags.map((tag) => (
+              <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-neutral-100 text-neutral-700 hover:bg-neutral-200 transition-colors">
+                #{tag}
+              </span>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Compartilhamento Social -->
+      <div class="mt-6">
+        <BlogShare titulo={artigo.titulo} url={currentUrl} />
+      </div>
+    </div>
+  </article>
+
+  <!-- 3. ARTIGOS RELACIONADOS -->
+  {
+    artigosRelacionados.length > 0 && (
+      <section class="py-16 bg-neutral-50 border-t border-neutral-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between mb-8">
+            <div>
+              <span class="text-xs uppercase font-semibold text-amber-600 tracking-wider block mb-1">
+                Continue Lendo
+              </span>
+              <h3 class="text-2xl font-bold text-neutral-900">
+                Outros Artigos da Zona Norte
+              </h3>
+            </div>
+            <a
+              href="/blog"
+              class="text-sm font-semibold text-neutral-900 hover:text-amber-600 transition-colors flex items-center gap-1"
+            >
+              Ver todos
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </a>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {artigosRelacionados.map((relacionado) => (
+              <BlogCard artigo={relacionado} />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+</Layout>

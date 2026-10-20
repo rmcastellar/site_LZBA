@@ -1,14 +1,13 @@
 ---
+import { NUMEROS_LZBA } from "../../data/empreendimentos";
 ---
 
 <!-- 5. FAIXA ESCURA DE MÉTRICAS (MOCKUP STATS STRIP) -->
-<section class="py-14 bg-lzba-dark text-white border-y border-lzba-border/20">
+<section class="py-14 bg-lzba-dark text-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div
-      class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center items-center"
-    >
-      <!-- Métrica 1: Years Of Experience -->
-      <div class="space-y-2">
+    <div class="grid grid-cols-2 lg:grid-cols-3 gap-8 text-center items-center">
+      <!-- Métrica 1: Anos de Experiência -->
+      <div class="reveal-scale delay-100 space-y-2">
         <div
           class="w-10 h-10 mx-auto text-lzba-gold flex items-center justify-center"
         >
@@ -28,17 +27,17 @@
         <span
           class="block text-xs uppercase tracking-wider text-lzba-muted font-medium"
         >
-          Years Of Experience
+          Anos de Experiência
         </span>
         <span
           class="block text-3xl sm:text-4xl font-bold text-white font-heading"
         >
-          15+
+          {NUMEROS_LZBA.anosCarreira}
         </span>
       </div>
 
-      <!-- Métrica 2: Success Projects -->
-      <div class="space-y-2">
+      <!-- Métrica 2: Empreendimentos Entregues -->
+      <div class="reveal-scale delay-200 space-y-2">
         <div
           class="w-10 h-10 mx-auto text-lzba-gold flex items-center justify-center"
         >
@@ -59,17 +58,17 @@
         <span
           class="block text-xs uppercase tracking-wider text-lzba-muted font-medium"
         >
-          Success Projects
+          Empreendimentos Entregues
         </span>
         <span
           class="block text-3xl sm:text-4xl font-bold text-white font-heading"
         >
-          600+
+          {NUMEROS_LZBA.obrasEntregues}
         </span>
       </div>
 
-      <!-- Métrica 3: Team Members -->
-      <div class="space-y-2">
+      <!-- Métrica 3: Unidades Entregues -->
+      <div class="reveal-scale delay-300 space-y-2">
         <div
           class="w-10 h-10 mx-auto text-lzba-gold flex items-center justify-center"
         >
@@ -90,43 +89,12 @@
         <span
           class="block text-xs uppercase tracking-wider text-lzba-muted font-medium"
         >
-          Team Members
+          Unidades Entregues
         </span>
         <span
           class="block text-3xl sm:text-4xl font-bold text-white font-heading"
         >
-          40+
-        </span>
-      </div>
-
-      <!-- Métrica 4: Clients Satisfactions -->
-      <div class="space-y-2">
-        <div
-          class="w-10 h-10 mx-auto text-lzba-gold flex items-center justify-center"
-        >
-          <svg
-            class="w-7 h-7"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.6"
-              d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-            ></path>
-          </svg>
-        </div>
-        <span
-          class="block text-xs uppercase tracking-wider text-lzba-muted font-medium"
-        >
-          Clients Satisfactions
-        </span>
-        <span
-          class="block text-3xl sm:text-4xl font-bold text-white font-heading"
-        >
-          500+
+          {NUMEROS_LZBA.aptosEntregues}
         </span>
       </div>
     </div>

@@ -1,0 +1,46 @@
+---
+interface Props {
+  titulo: string;
+  url: string;
+}
+
+const { titulo, url } = Astro.props;
+const whatsappShareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(`${titulo} - ${url}`)}`;
+const linkedinShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+---
+
+<div class="flex flex-wrap items-center gap-3 pt-6 border-t border-neutral-200">
+  <span class="text-xs uppercase tracking-wider text-neutral-500 font-semibold">
+    Compartilhe este artigo:
+  </span>
+
+  <div class="flex items-center gap-2">
+    <!-- WhatsApp -->
+    <a
+      href={whatsappShareUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-[#25D366]/10 text-[#128C7E] hover:bg-[#25D366] hover:text-white transition-colors"
+      aria-label="Compartilhar no WhatsApp"
+    >
+      <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.584 1.831.848 2.791.848 3.182 0 5.768-2.586 5.768-5.766.001-3.18-2.585-5.634-5.768-5.634zm3.376 8.204c-.149.42-.77.77-1.077.818-.289.044-.664.06-1.077-.073-.257-.083-.585-.205-1.002-.387-1.768-.767-2.92-2.55-3.008-2.668-.088-.118-.716-.955-.716-1.821 0-.866.453-1.293.614-1.468.161-.176.352-.22.469-.22.117 0 .235.001.337.006.109.005.253-.042.395.299.147.353.504 1.233.548 1.323.044.09.073.195.015.312-.059.117-.088.19-.176.294-.088.103-.186.23-.265.309-.088.088-.18.184-.078.359.103.175.459.757.985 1.226.677.604 1.248.791 1.424.879.176.088.278.073.382-.044.103-.117.44-.513.558-.689.117-.176.235-.147.395-.088.161.059 1.019.48 1.194.568.176.088.293.132.337.205.044.074.044.428-.105.848z"/>
+      </svg>
+      WhatsApp
+    </a>
+
+    <!-- LinkedIn -->
+    <a
+      href={linkedinShareUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-[#0A66C2]/10 text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white transition-colors"
+      aria-label="Compartilhar no LinkedIn"
+    >
+      <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+      </svg>
+      LinkedIn
+    </a>
+  </div>
+</div>

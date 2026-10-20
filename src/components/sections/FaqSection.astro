@@ -1,13 +1,45 @@
 ---
+// Dados das perguntas frequentes com temática técnica, operacional e contratual
+const faqs = [
+  {
+    id: "01",
+    question: "Como o cliente acompanha a evolução da obra?",
+    answer:
+      "Disponibilizamos relatórios periódicos e registros fotográficos detalhados sobre o avanço de cada fase (infraestrutura, alvenaria, acabamentos) diretamente através do nosso canal de comunicação.",
+  },
+  {
+    id: "02",
+    question: "Quais são os padrões de acabamento e controle de qualidade?",
+    answer:
+      "Trabalhamos com especificações técnicas rigorosas e marcas líderes homologadas pelo mercado nacional, com inspeção sistemática de cada material aplicado para garantir durabilidade, desempenho acústico e conformidade com as normas ABNT.",
+  },
+  {
+    id: "03",
+    question: "Qual é o procedimento de vistoria antes da entrega das chaves?",
+    answer:
+      "A entrega é precedida por uma vistoria técnica individual, onde o proprietário e nosso responsável técnico validam cada detalhe conforme o memorial descritivo antes da assinatura final do termo de entrega.",
+  },
+  {
+    id: "04",
+    question:
+      "Como funciona a segurança jurídica e patrimonial durante a construção?",
+    answer:
+      "Operamos sob rigorosa transparência jurídica e mecanismos de segregação patrimonial (como patrimônio de afetação), garantindo que os recursos do empreendimento sejam administrados com exclusividade e integridade para a conclusão da obra.",
+  },
+  {
+    id: "05",
+    question: "Qual é a política de garantia técnica e suporte pós-entrega?",
+    answer:
+      "Todos os empreendimentos contam com garantia legal estrutural e operacional alinhada à ABNT NBR 15575 e ao Código Civil, amparados por um canal técnico ágil e estruturado para vistorias e assistência durante toda a fase pós-ocupação.",
+  },
+];
 ---
 
 <!-- 6. DÚVIDAS FREQUENTES (FOTO + ESCLARECIMENTOS TÉCNICOS E CONTRATUAIS) -->
-<section
-  class="py-20 lg:py-28 bg-white text-lzba-dark border-b border-lzba-border"
->
+<section id="faq" class="py-20 lg:py-28 bg-white text-lzba-dark">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Cabeçalho -->
-    <div class="mb-12">
+    <div class="reveal-up mb-12">
       <span
         class="text-xs uppercase font-bold tracking-widest text-lzba-gold block mb-2 font-sans"
       >
@@ -18,111 +50,228 @@
       >
         Esclarecimentos Técnicos e Contratuais
       </h2>
+      <p class="text-sm text-neutral-500 mt-2 font-light">
+        Passe o mouse ou clique sobre uma questão para visualizar os detalhes.
+      </p>
     </div>
 
-    <!-- Layout 2 Colunas: Foto e Lista Numerada -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <!-- Layout 2 Colunas: Foto e Accordion Interativo -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
       <!-- Coluna da Esquerda: Foto Técnica de Engenharia -->
-      <div class="lg:col-span-5">
+      <div class="reveal-left lg:col-span-5 lg:sticky lg:top-28">
         <div
-          class="rounded-xl overflow-hidden shadow-lg border border-lzba-border aspect-4/3 bg-lzba-light"
+          class="group overflow-hidden shadow-lg border border-lzba-border aspect-[4/3] sm:aspect-[4/5] lg:aspect-auto lg:h-[580px] bg-lzba-light relative"
         >
           <img
             src="/images/faq-engenharia.jpg"
             alt="Inspeção técnica e engenharia de projetos LZBA"
-            class="w-full h-full object-cover"
+            class="w-full h-full object-cover object-[70%_center] transition-transform duration-700 group-hover:scale-105"
             loading="lazy"
           />
+          <div
+            class="absolute inset-0 bg-linear-to-t from-lzba-dark/75 via-lzba-dark/20 to-transparent"
+          >
+          </div>
         </div>
       </div>
 
-      <!-- Coluna da Direita: Itens Numerados com Respostas Claras -->
-      <div class="lg:col-span-7 space-y-6">
-        <!-- Item 01 -->
-        <div
-          class="border border-lzba-border rounded-lg p-6 bg-lzba-light/40 hover:bg-lzba-light/80 hover:border-lzba-gold/40 transition-colors"
-        >
-          <div class="flex items-start gap-4">
-            <span
-              class="w-8 h-8 rounded-full bg-lzba-red text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5 shadow-2xs"
+      <!-- Coluna da Direita: Lista Dinâmica e Interativa de FAQ -->
+      <div
+        id="faq-accordion"
+        class="lg:col-span-7 space-y-4"
+        data-faq-accordion
+      >
+        {
+          faqs.map((faq, index) => (
+            <div
+              class={`faq-item reveal-right delay-${(index + 1) * 100} group border border-lzba-border bg-lzba-light/35 transition-all duration-300 hover:border-lzba-gold/50 hover:bg-lzba-light/65`}
+              data-faq-item
             >
-              01
-            </span>
-            <div>
-              <h3
-                class="text-base sm:text-lg font-bold text-lzba-dark font-heading"
+              <button
+                type="button"
+                class="faq-trigger w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-lzba-gold rounded-xl select-none"
+                aria-expanded="false"
+                aria-controls={`faq-answer-${faq.id}`}
+                id={`faq-trigger-${faq.id}`}
               >
-                Como o cliente acompanha a evolução da obra?
-              </h3>
-              <p
-                class="text-xs sm:text-sm text-neutral-600 mt-2 leading-relaxed font-light"
-              >
-                Disponibilizamos relatórios periódicos e registros
-                fotográficos detalhados sobre o avanço de cada fase
-                (infraestrutura, alvenaria, acabamentos) diretamente através
-                do nosso canal de comunicação.
-              </p>
-            </div>
-          </div>
-        </div>
+                <div class="flex items-center gap-4">
+                  <span class="faq-badge w-8 h-8 rounded-full bg-lzba-red text-white text-xs font-bold flex items-center justify-center shrink-0 shadow-2xs transition-all duration-300">
+                    {faq.id}
+                  </span>
+                  <h3 class="faq-question text-base sm:text-lg font-bold text-lzba-dark font-heading leading-snug transition-colors group-hover:text-lzba-red">
+                    {faq.question}
+                  </h3>
+                </div>
+                <div class="faq-icon-wrapper w-8 h-8 rounded-full border border-lzba-border/80 bg-white flex items-center justify-center shrink-0 transition-all duration-300 shadow-2xs group-hover:border-lzba-gold/60">
+                  <svg
+                    class="faq-icon w-4 h-4 text-lzba-dark transition-transform duration-300"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </div>
+              </button>
 
-        <!-- Item 02 -->
-        <div
-          class="border border-lzba-border rounded-lg p-6 bg-lzba-light/40 hover:bg-lzba-light/80 hover:border-lzba-gold/40 transition-colors"
-        >
-          <div class="flex items-start gap-4">
-            <span
-              class="w-8 h-8 rounded-full bg-lzba-red text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5 shadow-2xs"
-            >
-              02
-            </span>
-            <div>
-              <h3
-                class="text-base sm:text-lg font-bold text-lzba-dark font-heading"
+              <div
+                class="faq-content"
+                id={`faq-answer-${faq.id}`}
+                role="region"
+                aria-labelledby={`faq-trigger-${faq.id}`}
               >
-                Quais são os padrões de acabamento e controle de qualidade?
-              </h3>
-              <p
-                class="text-xs sm:text-sm text-neutral-600 mt-2 leading-relaxed font-light"
-              >
-                Trabalhamos com especificações técnicas rigorosas e marcas
-                líderes homologadas pelo mercado nacional, com inspeção
-                sistemática de cada material aplicado para garantir
-                durabilidade, desempenho acústico e conformidade com as normas
-                ABNT.
-              </p>
+                <div>
+                  <div class="px-5 sm:px-6 pb-6 pt-1 pl-17 sm:pl-18">
+                    <div class="w-12 h-0.5 bg-lzba-gold/70 mb-3 rounded-full faq-divider" />
+                    <p class="faq-text text-xs sm:text-sm text-neutral-600 leading-relaxed font-light">
+                      {faq.answer}
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-
-        <!-- Item 03 -->
-        <div
-          class="border border-lzba-border rounded-lg p-6 bg-lzba-light/40 hover:bg-lzba-light/80 hover:border-lzba-gold/40 transition-colors"
-        >
-          <div class="flex items-start gap-4">
-            <span
-              class="w-8 h-8 rounded-full bg-lzba-red text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5 shadow-2xs"
-            >
-              03
-            </span>
-            <div>
-              <h3
-                class="text-base sm:text-lg font-bold text-lzba-dark font-heading"
-              >
-                Qual é o procedimento de vistoria antes da entrega das chaves?
-              </h3>
-              <p
-                class="text-xs sm:text-sm text-neutral-600 mt-2 leading-relaxed font-light"
-              >
-                A entrega é precedida por uma vistoria técnica individual,
-                onde o proprietário e nosso responsável técnico validam cada
-                detalhe conforme o memorial descritivo antes da assinatura
-                final do termo de entrega.
-              </p>
-            </div>
-          </div>
-        </div>
+          ))
+        }
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  /* Expansão dinâmica suave via CSS Grid (0fr -> 1fr) */
+  .faq-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 320ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .faq-content > div {
+    overflow: hidden;
+  }
+
+  .faq-text,
+  .faq-divider {
+    opacity: 0;
+    transition: opacity 280ms ease 40ms;
+  }
+
+  /* Estado Aberto (is-open) */
+  .faq-item.is-open {
+    background-color: #ffffff;
+    box-shadow: 0 4px 16px -2px rgba(26, 26, 26, 0.06);
+  }
+
+  .faq-item.is-open .faq-content {
+    grid-template-rows: 1fr;
+  }
+
+  .faq-item.is-open .faq-text,
+  .faq-item.is-open .faq-divider {
+    opacity: 1;
+  }
+
+  .faq-item.is-open .faq-icon {
+    transform: rotate(180deg);
+  }
+
+  .faq-item.is-open .faq-icon-wrapper {
+    background-color: #fafafa;
+  }
+</style>
+
+<script>
+  function setupFaqAccordion() {
+    const faqContainer = document.getElementById("faq-accordion");
+    if (!faqContainer) return;
+
+    // Se já estiver inicializado neste container, evita listeners duplicados
+    if (faqContainer.dataset.initialized === "true") return;
+    faqContainer.dataset.initialized = "true";
+
+    const items = faqContainer.querySelectorAll<HTMLElement>("[data-faq-item]");
+    let pinnedIndex = -1; // Item fixado via clique (-1 = nenhum)
+    let hoveredIndex = -1; // Item sob cursor (-1 = nenhum)
+    let ignoredHoverIndex = -1; // Evita reabrir instantaneamente após clique de fechamento
+
+    function render() {
+      // Determina qual item deve ser exibido:
+      // Se houver hover ativo e não ignorado, ele é priorizado para resposta imediata.
+      // Caso contrário, mantém o item fixado pelo clique (ou nenhum se pinnedIndex = -1).
+      const activeIndex =
+        hoveredIndex !== -1 && hoveredIndex !== ignoredHoverIndex
+          ? hoveredIndex
+          : pinnedIndex;
+
+      items.forEach((item, index) => {
+        const isOpen = index === activeIndex;
+        const trigger = item.querySelector(".faq-trigger");
+
+        if (isOpen) {
+          item.classList.add("is-open");
+          trigger?.setAttribute("aria-expanded", "true");
+        } else {
+          item.classList.remove("is-open");
+          trigger?.setAttribute("aria-expanded", "false");
+        }
+      });
+    }
+
+    items.forEach((item, index) => {
+      // Ação de Clique:
+      // Ao clicar em um item, os outros são fechados automaticamente.
+      // Se clicar no item já aberto/fixado, fecha-o (voltando ao estado padrão).
+      item.addEventListener("click", () => {
+        if (pinnedIndex === index) {
+          pinnedIndex = -1;
+          ignoredHoverIndex = index;
+        } else {
+          pinnedIndex = index;
+          ignoredHoverIndex = -1;
+        }
+        render();
+      });
+
+      // Ação de Hover (passar o mouse acima):
+      // Exibe a resposta ao passar o mouse.
+      item.addEventListener("mouseenter", () => {
+        if (ignoredHoverIndex === index) return;
+        hoveredIndex = index;
+        render();
+      });
+
+      item.addEventListener("mouseleave", () => {
+        if (ignoredHoverIndex === index) {
+          ignoredHoverIndex = -1;
+        }
+        if (hoveredIndex === index) {
+          hoveredIndex = -1;
+          render();
+        }
+      });
+    });
+
+    // Ao retirar o mouse de todo o bloco FAQ, restaura estado
+    faqContainer.addEventListener("mouseleave", () => {
+      hoveredIndex = -1;
+      ignoredHoverIndex = -1;
+      render();
+    });
+
+    // Estado inicial: apenas perguntas visíveis por padrão
+    render();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupFaqAccordion);
+  } else {
+    setupFaqAccordion();
+  }
+
+  // Suporte a transições de página do Astro
+  document.addEventListener("astro:page-load", setupFaqAccordion);
+</script>

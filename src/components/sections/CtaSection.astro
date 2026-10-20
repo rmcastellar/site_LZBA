@@ -4,12 +4,27 @@ import { CONTATO_LZBA } from "../../data/empreendimentos";
 
 <!-- 7. CTA BANNER FINAL (ESTILO QUENTE / SAND ARQUITETÔNICO DO MOCKUP) -->
 <section
-  class="py-20 lg:py-24 bg-lzba-light text-lzba-dark border-t border-lzba-border"
+  class="relative py-20 lg:py-28 text-lzba-dark overflow-hidden bg-lzba-light"
 >
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="max-w-3xl">
+  <!-- Imagem de fundo cobrindo toda a CtaSection com Revelação Suave -->
+  <div class="absolute inset-0 z-0 overflow-hidden">
+    <img
+      src="/images/img-banner-lzba.webp"
+      alt="Banner LZBA"
+      class="reveal-scale w-full h-full object-cover object-[75%_center] sm:object-right md:object-center transition-transform duration-1000"
+      loading="lazy"
+    />
+    <!-- Overlay com gradiente para garantir leitura perfeita dos textos mantendo a visibilidade da foto -->
+    <div
+      class="absolute inset-0 bg-linear-to-r from-[#EDEDED] via-[#EDEDED]/90 to-[#EDEDED]/30 max-md:from-[#EDEDED]/95 max-md:via-[#EDEDED]/90 max-md:to-[#EDEDED]/70"
+    >
+    </div>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-[10%] px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl space-y-6">
       <!-- Logo / Eyebrow LZBA -->
-      <div class="flex items-center gap-3 mb-6">
+      <div class="reveal-up flex items-center gap-3">
         <img
           src="/images/logo.png"
           alt="Logo LZBA"
@@ -19,7 +34,7 @@ import { CONTATO_LZBA } from "../../data/empreendimentos";
 
       <!-- Headline Forte -->
       <h2
-        class="text-3xl sm:text-4xl lg:text-5xl font-bold text-lzba-dark tracking-tight font-heading leading-[1.15]"
+        class="reveal-up delay-100 text-3xl sm:text-4xl lg:text-5xl font-bold text-lzba-dark tracking-tight font-heading leading-[1.15]"
       >
         Planeje o futuro da sua<br />
         família sobre alicerces<br />
@@ -28,25 +43,26 @@ import { CONTATO_LZBA } from "../../data/empreendimentos";
 
       <!-- Descrição -->
       <p
-        class="text-sm sm:text-base text-neutral-700 max-w-xl mt-6 leading-relaxed font-light"
+        class="reveal-up delay-200 text-sm sm:text-base text-neutral-800 max-w-xl leading-relaxed font-normal"
       >
         Converse com nossos consultores técnicos e conheça as oportunidades
         residenciais que combinam tradição construtiva e valorização contínua.
       </p>
 
-      <!-- Botões de Ação -->
-      <div class="mt-8 flex flex-col sm:flex-row gap-4">
+      <!-- Botões de Ação com Entrada Escalonada e Microinteração -->
+      <div class="reveal-up delay-300 pt-2 flex flex-col sm:flex-row gap-4">
         <a
           href={CONTATO_LZBA.whatsappLink}
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center justify-center px-8 py-4 bg-lzba-dark hover:bg-lzba-red text-white text-xs sm:text-sm font-semibold tracking-wider uppercase transition-colors"
+          class="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-lzba-dark hover:bg-lzba-red text-white text-xs sm:text-sm font-semibold tracking-wider uppercase transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer"
         >
-          Falar com Consultores Técnicos
+          <span>Falar com Consultores Técnicos</span>
+          <span class="text-lzba-gold transform transition-transform duration-300 group-hover:translate-x-1">›</span>
         </a>
         <a
           href="#projetos"
-          class="inline-flex items-center justify-center px-8 py-4 border border-lzba-dark/30 hover:border-lzba-dark text-lzba-dark text-xs sm:text-sm font-semibold tracking-wider uppercase transition-colors"
+          class="inline-flex items-center justify-center px-8 py-4 border border-lzba-dark/40 hover:border-lzba-dark bg-white/40 hover:bg-white/80 backdrop-blur-xs text-lzba-dark text-xs sm:text-sm font-semibold tracking-wider uppercase transition-all duration-300 shadow-xs cursor-pointer"
         >
           Ver Oportunidades
         </a>

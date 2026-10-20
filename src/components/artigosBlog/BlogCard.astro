@@ -1,0 +1,154 @@
+---
+import type { ArtigoBlog } from "../../data/artigos";
+
+interface Props {
+  artigo: ArtigoBlog;
+  featured?: boolean;
+}
+
+const { artigo, featured = false } = Astro.props;
+---
+
+<!-- Wrapper externo com a mesma moldura e recuo (p-1.5 sm:p-2) do ProjectCard ao passar o mouse -->
+<div
+  class={`blog-card-frame group relative p-1.5 sm:p-2 border border-transparent hover:border-lzba-border transition-all duration-300 ${
+    featured ? "w-full" : "h-full"
+  }`}
+>
+  <article
+    class={`flex flex-col bg-white border border-neutral-200/80 overflow-hidden shadow-xs group-hover:shadow-xl transition-all duration-300 h-full ${
+      featured ? "md:grid md:grid-cols-12 md:gap-8 items-stretch" : ""
+    }`}
+  >
+    <!-- Imagem com efeito hover e tags sobrepostas -->
+    <div
+      class={`relative overflow-hidden ${featured ? "md:col-span-7 h-72 md:h-full" : "h-60"}`}
+    >
+      <a href={`/blog/${artigo.slug}`} class="block h-full w-full">
+        <img
+          src={artigo.imagemCapa}
+          alt={artigo.imagemAlt}
+          loading="lazy"
+          width="800"
+          height="500"
+          class="w-full h-full object-cover object-center transform transition-transform duration-700 ease-out group-hover:scale-105"
+        />
+      </a>
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"
+      >
+      </div>
+
+      <!-- Badge Categoria & Região -->
+      <div class="absolute top-4 left-4 flex flex-wrap gap-2">
+        <span
+          class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-neutral-900/85 text-white backdrop-blur-md shadow-xs"
+        >
+          {artigo.categoria}
+        </span>
+        <span
+          class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-amber-500/90 text-neutral-950 backdrop-blur-md shadow-xs"
+        >
+          <svg
+            class="w-3 h-3"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+            ></path>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+          </svg>
+          {artigo.geo.bairro}
+        </span>
+      </div>
+    </div>
+
+    <!-- Conteúdo textual do Card -->
+    <div
+      class={`flex flex-col justify-between p-6 sm:p-7 ${featured ? "md:col-span-5 md:py-8" : ""}`}
+    >
+      <div>
+        <!-- Metadados de Data e Leitura -->
+        <div
+          class="flex items-center gap-3 text-xs text-neutral-500 mb-3 font-medium"
+        >
+          <span class="inline-flex items-center gap-1">
+            <svg
+              class="w-3.5 h-3.5 text-neutral-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            {artigo.tempoLeitura}
+          </span>
+        </div>
+
+        <!-- Título H3 clicável -->
+        <h3
+          class={`font-bold text-neutral-900 group-hover:text-neutral-700 transition-colors line-clamp-2 leading-snug mb-3 ${
+            featured ? "text-2xl md:text-3xl" : "text-lg"
+          }`}
+        >
+          <a href={`/blog/${artigo.slug}`}>
+            {artigo.titulo}
+          </a>
+        </h3>
+
+        <!-- Resumo / Meta Description -->
+        <p
+          class="text-neutral-600 text-sm line-clamp-3 leading-relaxed mb-6 font-light"
+        >
+          {artigo.resumo}
+        </p>
+      </div>
+
+      <!-- Footer do Card com CTA e Link -->
+      <div
+        class="pt-4 border-t border-neutral-100 flex items-center justify-between mt-auto"
+      >
+        <span class="text-xs text-neutral-500 font-medium">
+          Zona Norte • São Paulo
+        </span>
+        <a
+          href={`/blog/${artigo.slug}`}
+          class="inline-flex items-center gap-1.5 text-sm font-semibold text-neutral-900 group-hover:text-amber-600 transition-colors"
+        >
+          Ler artigo
+          <svg
+            class="w-4 h-4 transform transition-transform group-hover:translate-x-1"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </article>
+</div>
+
+<style>
+  .blog-card-frame:hover {
+    border-color: var(--lzba-border);
+  }
+</style>

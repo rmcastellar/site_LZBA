@@ -1,0 +1,165 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { ARTIGOS_BLOG } from "../data/artigos";
+import BlogCard from "../components/artigosBlog/BlogCard.astro";
+
+const artigoDestaque = ARTIGOS_BLOG[0];
+const demaisArtigos = ARTIGOS_BLOG.slice(1);
+
+const title =
+  "Blog LZBA | Imóveis, Parques e Qualidade de Vida na Zona Norte de SP";
+const description =
+  "Confira os artigos, guias de bairros e novidades sobre o mercado imobiliário da Zona Norte de São Paulo. Experiência de 35 anos da LZBA Incorporadora.";
+---
+
+<Layout
+  title={title}
+  description={description}
+  currentPath="/blog"
+  image="/images/blog/tradicao-inovacao-zona-norte.jpg"
+>
+  <!-- SEO Adicional Local & GEO -->
+  <Fragment slot="head">
+    <meta name="geo.region" content="BR-SP" />
+    <meta name="geo.placename" content="São Paulo - Zona Norte" />
+    <meta name="geo.position" content="-23.4925;-46.6180" />
+    <meta name="ICBM" content="-23.4925, -46.6180" />
+  </Fragment>
+
+  <!-- 1. Header do Blog com Boas-Vindas -->
+  <section
+    class="relative pt-20 sm:pt-16 pb-16 bg-[#161616] text-white overflow-hidden"
+  >
+    <!-- Efeito de iluminação suave de fundo -->
+    <div
+      class="absolute inset-0 bg-linear-to-b from-[#202020] to-[#121212] pointer-events-none"
+    >
+    </div>
+
+    <div
+      class="relative z-10 max-w-7xl mx-[10%] px-4 sm:px-6 lg:px-8 w-full my-auto"
+    >
+      <div class="max-w-3xl animate-hero-1">
+        <span
+          class="inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider bg-white/10 text-amber-300 border border-white/10 mb-4"
+        >
+          Blog Oficial LZBA Incorporadora
+        </span>
+        <h1
+          class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white mb-5 leading-tight"
+        >
+          Notícias, Guias e Estilo de Vida na <span class="text-amber-400"
+            >Zona Norte de SP</span
+          >
+        </h1>
+        <p class="text-lg text-neutral-300 font-light leading-relaxed">
+          Explore reflexões sobre arquitetura moderna, dicas de lazer em família
+          nos melhores parques e a tradição dos bairros Jardim São Paulo,
+          Santana e Tucuruvi.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Conteúdo Principal do Blog -->
+  <div class="bg-neutral-50 py-16 sm:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      <!-- Artigo em Destaque Principal -->
+      {
+        artigoDestaque && (
+          <section aria-labelledby="featured-heading" class="reveal-up">
+            <div class="flex items-center justify-between mb-6">
+              <h2
+                id="featured-heading"
+                class="text-xs uppercase tracking-widest text-neutral-500 font-bold"
+              >
+                Artigo em Destaque
+              </h2>
+            </div>
+            <BlogCard artigo={artigoDestaque} featured={true} />
+          </section>
+        )
+      }
+
+      <!-- Demais Artigos em Grid -->
+      <section aria-labelledby="all-articles-heading" class="reveal-up">
+        <div
+          class="flex items-center justify-between mb-8 pb-4 border-b border-neutral-200"
+        >
+          <h2
+            id="all-articles-heading"
+            class="text-2xl font-bold text-neutral-900"
+          >
+            Últimas Publicações
+          </h2>
+          <span class="text-xs text-neutral-500 font-medium">
+            {ARTIGOS_BLOG.length} artigos disponíveis
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {
+            demaisArtigos.map((artigo, idx) => (
+              <div class={`reveal-up delay-${(idx + 1) * 100}`}>
+                <BlogCard artigo={artigo} />
+              </div>
+            ))
+          }
+        </div>
+      </section>
+
+      <!-- Banner GEO e Institucional LZBA -->
+      <section
+        class="reveal-scale bg-neutral-900 text-white rounded-3xl p-8 sm:p-12 relative overflow-hidden"
+      >
+        <div
+          class="absolute -right-20 -bottom-20 w-80 h-80 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"
+        >
+        </div>
+        <div class="relative z-10 max-w-3xl">
+          <span
+            class="text-xs uppercase tracking-wider text-amber-400 font-semibold mb-2 block"
+          >
+            35 Anos de Tradição e Excelência
+          </span>
+          <h3 class="text-2xl sm:text-3xl font-bold mb-4 text-white">
+            Planejando morar na Zona Norte com exclusividade?
+          </h3>
+          <p class="text-neutral-300 font-light leading-relaxed mb-6">
+            Conheça nossos empreendimentos residenciais no Jardim São Paulo e na
+            Vila Mazzei / Tucuruvi. Plantas pensadas para cada momento da sua
+            vida com acabamento de alto padrão.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a
+              href="/empreendimentos"
+              class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-amber-500 text-neutral-950 font-semibold text-sm hover:bg-amber-400 transition-colors shadow-sm"
+            >
+              Ver Empreendimentos LZBA
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </a>
+            <a
+              href="https://wa.me/5511999618125?text=Ol%C3%A1!%20Acessei%20o%20Blog%20da%20LZBA%20e%20gostaria%20de%20falar%20com%20um%20consultor."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition-colors border border-white/10"
+            >
+              Falar via WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</Layout>
