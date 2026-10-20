@@ -41,19 +41,18 @@ const artigosRelacionados = ARTIGOS_BLOG.filter(
 
   <!-- 1. TOPO EDITORIAL / BREADCRUMB & TÍTULO -->
   <header
-    class="pt-14 pb-12 bg-neutral-900 text-white relative overflow-hidden"
+    class="pt-28 pb-12 sm:pt-36 sm:pb-16 bg-lzba-dark text-white relative overflow-hidden"
   >
-    <!-- Glow sutil de fundo -->
-    <div
-      class="absolute inset-0 bg-linear-to-b from-neutral-800 to-neutral-950 pointer-events-none"
-    >
+    <!-- Overlay Arquitetônico -->
+    <div class="absolute inset-0 z-0">
+      <div class="absolute inset-0 hero-overlay"></div>
     </div>
     <div
-      class="absolute top-0 right-1/4 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"
+      class="absolute top-0 right-1/4 w-80 h-80 bg-lzba-gold/10 rounded-full blur-3xl pointer-events-none"
     >
     </div>
 
-    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Badges de Categoria & Localização GEO -->
       <div class="flex flex-wrap items-center gap-2.5 mb-5">
         <span
@@ -62,10 +61,10 @@ const artigosRelacionados = ARTIGOS_BLOG.filter(
           {artigo.categoria}
         </span>
         <span
-          class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30"
+          class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-lzba-gold/15 text-lzba-gold border border-lzba-gold/30"
         >
           <svg
-            class="w-3.5 h-3.5 text-amber-400"
+            class="w-3.5 h-3.5 text-lzba-gold"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -88,7 +87,7 @@ const artigosRelacionados = ARTIGOS_BLOG.filter(
 
       <!-- H1 Oficial do Artigo -->
       <h1
-        class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight mb-6"
+        class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight mb-6 font-heading uppercase"
       >
         {artigo.titulo}
       </h1>
@@ -99,7 +98,7 @@ const artigosRelacionados = ARTIGOS_BLOG.filter(
       >
         <div class="flex items-center gap-2">
           <div
-            class="w-8 h-8 rounded-full bg-amber-500 text-neutral-950 font-bold flex items-center justify-center text-xs"
+            class="w-8 h-8 rounded-full bg-lzba-red text-white font-bold flex items-center justify-center text-xs"
           >
             LZ
           </div>
@@ -210,8 +209,8 @@ const artigosRelacionados = ARTIGOS_BLOG.filter(
 
             if (secao.tipo === "destaque") {
               return (
-                <blockquote class="my-8 p-6 bg-amber-500/10 border-l-4 border-amber-500 rounded-r-2xl">
-                  <p class="text-lg sm:text-xl font-medium text-neutral-900 italic leading-relaxed">
+                <blockquote class="my-8 p-6 bg-lzba-light/60 border-l-4 border-lzba-gold rounded-r-xl">
+                  <p class="text-lg sm:text-xl font-medium text-lzba-dark italic leading-relaxed">
                     "{secao.texto}"
                   </p>
                 </blockquote>
@@ -220,9 +219,9 @@ const artigosRelacionados = ARTIGOS_BLOG.filter(
 
             if (secao.tipo === "cta") {
               return (
-                <div class="my-10 p-8 bg-neutral-900 text-white rounded-2xl shadow-xl relative overflow-hidden">
+                <div class="my-10 p-8 bg-lzba-dark text-white rounded-2xl shadow-xl relative overflow-hidden border border-white/10">
                   <div class="relative z-10">
-                    <h3 class="text-xl sm:text-2xl font-bold text-amber-400 mb-2">
+                    <h3 class="text-xl sm:text-2xl font-bold text-lzba-gold mb-2 font-heading uppercase">
                       {secao.titulo}
                     </h3>
                     <p class="text-neutral-300 font-light mb-6 text-sm sm:text-base">
@@ -232,7 +231,7 @@ const artigosRelacionados = ARTIGOS_BLOG.filter(
                       href={secao.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-amber-500 text-neutral-950 font-bold text-sm hover:bg-amber-400 transition-colors shadow-md"
+                      class="inline-flex items-center gap-2 px-6 py-3.5 bg-lzba-red hover:bg-lzba-red/90 text-white font-medium text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 shadow-md"
                     >
                       {secao.linkTexto}
                       <svg
@@ -272,10 +271,10 @@ const artigosRelacionados = ARTIGOS_BLOG.filter(
                 class="w-full sm:w-48 h-36 object-cover rounded-xl shadow-xs shrink-0"
               />
               <div class="flex-grow text-center sm:text-left">
-                <span class="text-xs font-semibold uppercase tracking-wider text-amber-600 block mb-1">
+                <span class="text-xs font-semibold uppercase tracking-wider text-lzba-gold block mb-1">
                   Empreendimento em Destaque
                 </span>
-                <h4 class="text-xl font-bold text-neutral-900 mb-2">
+                <h4 class="text-xl font-bold text-neutral-900 mb-2 font-heading">
                   {artigo.empreendimentoVinculado.nome}
                 </h4>
                 <p class="text-sm text-neutral-600 font-light mb-4">
@@ -283,7 +282,7 @@ const artigosRelacionados = ARTIGOS_BLOG.filter(
                 </p>
                 <a
                   href={`/empreendimentos/${artigo.empreendimentoVinculado.slug}`}
-                  class="inline-flex items-center gap-1.5 text-sm font-bold text-neutral-900 hover:text-amber-600 transition-colors"
+                  class="inline-flex items-center gap-1.5 text-sm font-bold text-neutral-900 hover:text-lzba-red transition-colors"
                 >
                   Conheça as plantas e detalhes do projeto
                   <svg
@@ -338,16 +337,16 @@ const artigosRelacionados = ARTIGOS_BLOG.filter(
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex items-center justify-between mb-8">
             <div>
-              <span class="text-xs uppercase font-semibold text-amber-600 tracking-wider block mb-1">
+              <span class="text-xs uppercase font-semibold text-lzba-gold tracking-wider block mb-1">
                 Continue Lendo
               </span>
-              <h3 class="text-2xl font-bold text-neutral-900">
+              <h3 class="text-2xl font-bold text-neutral-900 font-heading">
                 Outros Artigos da Zona Norte
               </h3>
             </div>
             <a
               href="/blog"
-              class="text-sm font-semibold text-neutral-900 hover:text-amber-600 transition-colors flex items-center gap-1"
+              class="text-sm font-semibold text-neutral-900 hover:text-lzba-red transition-colors flex items-center gap-1"
             >
               Ver todos
               <svg

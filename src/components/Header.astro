@@ -20,6 +20,8 @@ const navLinks = [
 ];
 
 const navLinksDrawer = [
+  { href: "/", label: "INÍCIO" },
+  { href: "/#projetos?status=destaques", label: "OPORTUNIDADES" },
   { href: "/sobre", label: "SOBRE" },
   { href: "/empreendimentos", label: "NOSSOS PROJETOS" },
   { href: "/blog", label: "BLOG" },
@@ -63,9 +65,9 @@ const navLinksDrawer = [
 
       <!-- Direita: Navegação + Botão Oportunidades + Menu Hambúrguer -->
       <div class="flex items-center gap-6 lg:gap-8">
-        <!-- Desktop Navigation -->
+        <!-- Desktop Navigation (visível em telas grandes para layout refinado e sem aperto) -->
         <nav
-          class="hidden md:flex items-center gap-6 lg:gap-8"
+          class="hidden lg:flex items-center gap-6 lg:gap-8"
           aria-label="Navegação Principal"
         >
           {

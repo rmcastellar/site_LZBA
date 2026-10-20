@@ -28,34 +28,31 @@ const description =
 
   <!-- 1. Header do Blog com Boas-Vindas -->
   <section
-    class="relative pt-20 sm:pt-16 pb-16 bg-[#161616] text-white overflow-hidden"
+    class="relative pt-32 pb-20 sm:pt-40 sm:pb-28 bg-lzba-dark text-white overflow-hidden flex items-center min-h-[42vh]"
   >
-    <!-- Efeito de iluminação suave de fundo -->
-    <div
-      class="absolute inset-0 bg-linear-to-b from-[#202020] to-[#121212] pointer-events-none"
-    >
+    <!-- Overlay Arquitetônico -->
+    <div class="absolute inset-0 z-0">
+      <div class="absolute inset-0 hero-overlay"></div>
     </div>
 
     <div
-      class="relative z-10 max-w-7xl mx-[10%] px-4 sm:px-6 lg:px-8 w-full my-auto"
+      class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto"
     >
-      <div class="max-w-3xl animate-hero-1">
+      <div class="max-w-3xl">
         <span
-          class="inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider bg-white/10 text-amber-300 border border-white/10 mb-4"
+          class="animate-hero-1 text-xs uppercase font-bold tracking-widest text-lzba-gold block mb-3 font-sans"
         >
-          Blog Oficial LZBA Incorporadora
+          BLOG OFICIAL LZBA • CONTEÚDO EXCLUSIVO
         </span>
         <h1
-          class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white mb-5 leading-tight"
+          class="animate-hero-2 text-3xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight uppercase leading-[1.12] font-heading"
         >
-          Notícias, Guias e Estilo de Vida na <span class="text-amber-400"
-            >Zona Norte de SP</span
+          Notícias, Guias e Estilo de Vida na <span class="text-lzba-gold"
+            >Zona Norte</span
           >
         </h1>
-        <p class="text-lg text-neutral-300 font-light leading-relaxed">
-          Explore reflexões sobre arquitetura moderna, dicas de lazer em família
-          nos melhores parques e a tradição dos bairros Jardim São Paulo,
-          Santana e Tucuruvi.
+        <p class="animate-hero-3 text-sm sm:text-base lg:text-lg text-neutral-300 max-w-2xl mt-4 font-light leading-relaxed">
+          Explore reflexões sobre arquitetura moderna, tendências do mercado imobiliário e guias dos bairros mais nobres da Zona Norte de São Paulo.
         </p>
       </div>
     </div>
@@ -110,30 +107,30 @@ const description =
 
       <!-- Banner GEO e Institucional LZBA -->
       <section
-        class="reveal-scale bg-neutral-900 text-white rounded-3xl p-8 sm:p-12 relative overflow-hidden"
+        class="reveal-scale bg-lzba-dark text-white rounded-2xl p-8 sm:p-12 relative overflow-hidden border border-white/10"
       >
         <div
-          class="absolute -right-20 -bottom-20 w-80 h-80 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"
+          class="absolute -right-20 -bottom-20 w-80 h-80 bg-lzba-gold/10 rounded-full blur-3xl pointer-events-none"
         >
         </div>
         <div class="relative z-10 max-w-3xl">
           <span
-            class="text-xs uppercase tracking-wider text-amber-400 font-semibold mb-2 block"
+            class="text-xs uppercase tracking-widest text-lzba-gold font-bold mb-3 block"
           >
-            35 Anos de Tradição e Excelência
+            Mais de 30 Anos de Tradição e Excelência
           </span>
-          <h3 class="text-2xl sm:text-3xl font-bold mb-4 text-white">
+          <h3 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 text-white font-heading uppercase tracking-tight">
             Planejando morar na Zona Norte com exclusividade?
           </h3>
-          <p class="text-neutral-300 font-light leading-relaxed mb-6">
+          <p class="text-neutral-300 font-light leading-relaxed mb-6 text-sm sm:text-base">
             Conheça nossos empreendimentos residenciais no Jardim São Paulo e na
             Vila Mazzei / Tucuruvi. Plantas pensadas para cada momento da sua
             vida com acabamento de alto padrão.
           </p>
-          <div class="flex flex-wrap gap-4">
+          <div class="flex flex-wrap items-center gap-4">
             <a
               href="/empreendimentos"
-              class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-amber-500 text-neutral-950 font-semibold text-sm hover:bg-amber-400 transition-colors shadow-sm"
+              class="inline-flex items-center gap-2 px-6 py-3.5 bg-lzba-red hover:bg-lzba-red/90 text-white font-medium text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 shadow-sm"
             >
               Ver Empreendimentos LZBA
               <svg
@@ -153,7 +150,7 @@ const description =
               href="https://wa.me/5511999618125?text=Ol%C3%A1!%20Acessei%20o%20Blog%20da%20LZBA%20e%20gostaria%20de%20falar%20com%20um%20consultor."
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition-colors border border-white/10"
+              class="inline-flex items-center gap-2 px-6 py-3.5 border border-lzba-gold/40 text-lzba-gold hover:bg-lzba-gold hover:text-lzba-dark font-medium text-xs sm:text-sm uppercase tracking-wider transition-all duration-300"
             >
               Falar via WhatsApp
             </a>
