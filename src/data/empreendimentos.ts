@@ -1,11 +1,12 @@
 export interface Empreendimento {
   id: string;
   slug: string;
+  ano: string,
   titulo: string;
   subtitulo: string;
   /** Categoria arquitetônica do card (ex: 'Architecture – Luxury Living', 'Residencial Exclusivo') */
   categoria?: string;
-  status: 'lancamento' | 'em_obras' | 'entregue';
+  status: 'lancamento' | 'em_obras' | 'entregue' | 'futuros';
   statusLabel: string;
   hotsite?: string;
   tourVirtual?: string;
@@ -50,6 +51,7 @@ export interface Empreendimento {
 export const EMPREENDIMENTOS: Empreendimento[] = [
   {
     id: 'residencial-season',
+    ano: '2025',
     slug: 'residencial-season',
     titulo: 'Residencial Season',
     subtitulo: 'A exclusividade que o seu estilo de vida merece',
@@ -147,6 +149,7 @@ export const EMPREENDIMENTOS: Empreendimento[] = [
   },
     {
     id: 'residencial-arbore',
+    ano: '2028',
     slug: 'residencial-arbore',
     titulo: 'Residencial Arbore',
     subtitulo: 'Viva em sintonia com a natureza, a poucos passos de tudo',
@@ -261,95 +264,39 @@ export const EMPREENDIMENTOS: Empreendimento[] = [
     }
   },
   {
-    id: 'residencial-vista-vicenza',
-    slug: 'residencial-vista-vicenza',
-    titulo: 'Residencial Vista Vicenza',
-    subtitulo: 'Elegância e amplitude com vista privilegiada',
+    id: 'edificio-mata-atlantica',
+    ano: '1992',
+    slug: 'edificio-mata-atlantica',
+    titulo: 'Edificio Mata Atlântica',
+    subtitulo: '',
     status: 'entregue',
     statusLabel: 'Entregue',
-    hotsite: 'https://www.residencialvistavicenza.com.br/',
+    hotsite: '',
     tourVirtual: '',
-    bairro: 'Santana',
-    cidade: 'São Paulo',
+    bairro: 'Jardim Guilhermina',
+    cidade: 'Praia Grande',
     estado: 'SP',
-    endereco: 'Rua Voluntários da Pátria - Santana',
-    metragem: '74m² a 118m²',
-    dormitorios: '3 dormitórios',
-    suites: '2 suítes',
-    vagas: '2 vagas demarcadas',
+    endereco: 'Rua Guaratuba, 86',
+    metragem: '',
+    dormitorios: '',
+    suites: '',
+    vagas: '',
     destaque: false,
-    imagemCapa: '/images/hero-building.jpg',
-    imagemFachada: '/images/hero-building.jpg',
+    imagemCapa: '/images/empreendimentos/img-res-mata-atlantica.webp',
+    imagemFachada: '/images/empreendimentos/img-res-mata-atlantica.webp', 
     galeria: [
-      '/images/hero-building.jpg',
-      '/images/season-facade.jpg'
+      '/images/empreendimentos/img-res-mata-atlantica.webp'
     ],
-    descricaoCurta: 'Obras avançadas com alto padrão de acabamento e plantas confortáveis para toda a família.',
-    descricaoCompleta: 'Com localização privilegiada no coração de Santana, o Residencial Vista Vicenza une a conveniência dos melhores colégios e gastronomia a uma estrutura de clube privativo. Construção sólida com assinatura e garantia de qualidade LZBA.',
+    descricaoCurta: '',
+    descricaoCompleta: '',
     diferenciais: [
-      'Terraço panorâmico envidraçado',
-      'Complexo aquático com raia coberta',
-      'Espaço Mulher / SPA e sauna seca',
-      'Quadra poliesportiva oficial',
-      'Bicicletário com oficina compartilhada',
-      'Gerador de emergência para elevadores e áreas comuns'
+      
     ],
     plantas: [
       {
-        titulo: 'Planta Premium - 3 Dorms',
-        metragem: '74 m²',
-        descricao: 'Living com 2 ambientes, varanda espaçosa, suíte e excelente aproveitamento de armários.'
-      },
-      {
-        titulo: 'Planta Master - 3 Suítes',
-        metragem: '118 m²',
-        descricao: 'Hall privativo, varanda gourmet com churrasqueira, 3 suítes plenas e lavabo.'
-      }
-    ],
-    estagioObras: {
-      geral: 68,
-      fundacao: 100,
-      estrutura: 100,
-      alvenaria: 92,
-      acabamento: 45
-    }
-  },
-  {
-    id: 'residencial-capricho',
-    slug: 'residencial-capricho',
-    titulo: 'Residencial Capricho',
-    subtitulo: 'Tranquilidade e sofisticação junto à natureza',
-    status: 'entregue',
-    statusLabel: 'Entregue',
-    hotsite: 'https://www.residencialcapricho.com.br/',
-    tourVirtual: '',
-    bairro: 'Tremembé',
-    cidade: 'São Paulo',
-    estado: 'SP',
-    endereco: 'Avenida Nova Cantareira - Tremembé',
-    metragem: '65m² a 95m²',
-    dormitorios: '2 e 3 dormitórios',
-    suites: '1 suíte',
-    vagas: '1 a 2 vagas',
-    destaque: false,
-    imagemCapa: '/images/hero-building.jpg',
-    imagemFachada: '/images/hero-building.jpg',
-    galeria: [
-      '/images/hero-building.jpg'
-    ],
-    descricaoCurta: 'Empreendimento 100% entregue no prazo, consolidando a satisfação dos proprietários.',
-    descricaoCompleta: 'Mais uma entrega de excelência concluída com sucesso pela LZBA. O Residencial Capricho oferece qualidade de vida em região arborizada, com segurança 24h e infraestrutura impecável.',
-    diferenciais: [
-      'Entregue rigorosamente dentro do prazo',
-      'Áreas comuns decoradas e climatizadas',
-      'Salão de jogos e brinquedoteca',
-      'Jardins planejados com paisagismo exuberante'
-    ],
-    plantas: [
-      {
-        titulo: 'Planta Conforto - 2 Dorms',
-        metragem: '65 m²',
-        descricao: 'Planta funcional com suíte e varanda integrada.'
+        titulo: '',
+        metragem: '',
+        descricao: ''
       }
     ],
     estagioObras: {
@@ -361,38 +308,39 @@ export const EMPREENDIMENTOS: Empreendimento[] = [
     }
   },
   {
-    id: 'residencial-liverpool',
-    slug: 'residencial-liverpool',
-    titulo: 'Residencial Liverpool',
-    subtitulo: 'Design moderno e qualidade construtiva atemporal',
+    id: 'edificio-peninsula-iberico',
+    ano: '1996',
+    slug: 'edificio-peninsula-iberico',
+    titulo: 'Edificio Península e Ibérico',
+    subtitulo: '',
     status: 'entregue',
-    statusLabel: 'Pronto / Entregue',
-    bairro: 'Parada Inglesa',
-    cidade: 'São Paulo',
+    statusLabel: 'Entregue',
+    hotsite: '',
+    tourVirtual: '',
+    bairro: 'Aviação',
+    cidade: 'Praia Grande',
     estado: 'SP',
-    endereco: 'Rua Guupira - Parada Inglesa',
-    metragem: '58m² a 82m²',
-    dormitorios: '2 dormitórios',
-    suites: '1 suíte',
-    vagas: '1 vaga',
+    endereco: 'Rua Gal. Marcondes Salgado Filho, 71 e 81',
+    metragem: '',
+    dormitorios: '',
+    suites: '',
+    vagas: '',
     destaque: false,
-    imagemCapa: '/images/hero-building.jpg',
+    imagemCapa: '/images/empreendimentos/img-peninsula-iberico.webp',
+    imagemFachada: '/images/empreendimentos/img-peninsula-iberico.webp', 
     galeria: [
-      '/images/hero-building.jpg'
+      '/images/empreendimentos/img-peninsula-iberico.webp'
     ],
-    descricaoCurta: 'Sucesso de vendas e valorização imobiliária garantida para os moradores e investidores.',
-    descricaoCompleta: 'Entregue com padrão de ponta LZBA, a passos do metrô e com excelente infraestrutura de comércio e serviços.',
+    descricaoCurta: '',
+    descricaoCompleta: '',
     diferenciais: [
-      'Elevadores inteligentes de alta velocidade',
-      'Piscina adulto e infantil',
-      'Espaço gourmet mobiliado',
-      'Excelente liquidez e valorização'
+      
     ],
     plantas: [
       {
-        titulo: 'Planta Urbana - 2 Dorms',
-        metragem: '58 m²',
-        descricao: 'Otimização inteligente para a vida moderna.'
+        titulo: '',
+        metragem: '',
+        descricao: ''
       }
     ],
     estagioObras: {
@@ -403,42 +351,1096 @@ export const EMPREENDIMENTOS: Empreendimento[] = [
       acabamento: 100
     }
   },
-  {
-    id: 'residencial-london',
-    slug: 'residencial-london',
-    titulo: 'Residencial London',
-    subtitulo: 'Elegância britânica com o acolhimento paulistano',
-    status: 'em_obras',
-    statusLabel: 'Em Obras',
-    hotsite: 'https://www.residenciallondon.com.br/',
+    {
+    id: 'edificio-tijuca',
+    ano: '1996',
+    slug: 'edificio-tijuca',
+    titulo: 'Edificio Tijuca',
+    subtitulo: '',
+    status: 'entregue',
+    statusLabel: 'Entregue',
+    hotsite: '',
     tourVirtual: '',
-    bairro: 'Santana',
-    cidade: 'São Paulo',
+    bairro: 'Forte',
+    cidade: 'Praia Grande',
     estado: 'SP',
-    endereco: 'Rua Conselheiro Moreira de Barros - Santana',
-    metragem: '70m² a 105m²',
-    dormitorios: '3 dormitórios',
-    suites: '1 ou 2 suítes',
-    vagas: '2 vagas',
+    endereco: 'Avenida Dr.Mauricio José Cardoso, 543',
+    metragem: '',
+    dormitorios: '',
+    suites: '',
+    vagas: '',
     destaque: false,
-    imagemCapa: '/images/hero-building.jpg',
-    imagemFachada: '/images/hero-building.jpg', 
+    imagemCapa: '/images/empreendimentos/img-tijuca.webp',
+    imagemFachada: '/images/empreendimentos/img-tijuca.webp', 
     galeria: [
-      '/images/hero-building.jpg'
+      '/images/empreendimentos/img-tijuca.webp'
     ],
-    descricaoCurta: 'Referência de moradia e acabamentos premium na Zona Norte.',
-    descricaoCompleta: 'Concluído e entregue com padrão de acabamento refinado, demonstrando a consistência e solidez técnica dos 34 anos da LZBA.',
+    descricaoCurta: '',
+    descricaoCompleta: '',
     diferenciais: [
-      'Ambientes amplos e arejados',
-      'Segurança armada monitorada',
-      'Academia climatizada',
-      'Salão gourmet'
+      
     ],
     plantas: [
       {
-        titulo: 'Planta Família - 3 Dorms',
-        metragem: '70 m²',
-        descricao: 'Conforto acústico e excelente ventilação cruzada.'
+        titulo: '',
+        metragem: '',
+        descricao: ''
+      }
+    ],
+    estagioObras: {
+      geral: 100,
+      fundacao: 100,
+      estrutura: 100,
+      alvenaria: 100,
+      acabamento: 100
+    }
+  },
+    {
+    id: 'edificio-santiago',
+    ano: '1996',
+    slug: 'edificio-santiago',
+    titulo: 'Edificio Santiago',
+    subtitulo: '',
+    status: 'entregue',
+    statusLabel: 'Entregue',
+    hotsite: '',
+    tourVirtual: '',
+    bairro: 'Aviação',
+    cidade: 'Praia Grande',
+    estado: 'SP',
+    endereco: 'Rua Gal. Marcondes Salgado Filho, 71 e 81',
+    metragem: '',
+    dormitorios: '',
+    suites: '',
+    vagas: '',
+    destaque: false,
+    imagemCapa: '/images/empreendimentos/img-santiago.webp',
+    imagemFachada: '/images/empreendimentos/img-santiago.webp', 
+    galeria: [
+      '/images/empreendimentos/img-santiago.webp'
+    ],
+    descricaoCurta: '',
+    descricaoCompleta: '',
+    diferenciais: [
+      
+    ],
+    plantas: [
+      {
+        titulo: '',
+        metragem: '',
+        descricao: ''
+      }
+    ],
+    estagioObras: {
+      geral: 100,
+      fundacao: 100,
+      estrutura: 100,
+      alvenaria: 100,
+      acabamento: 100
+    }
+  },
+    {
+    id: 'edificio-la-coruna',
+    ano: '1998',
+    slug: 'edificio-la-coruna',
+    titulo: 'Edificio La Coruña',
+    subtitulo: '',
+    status: 'entregue',
+    statusLabel: 'Entregue',
+    hotsite: '',
+    tourVirtual: '',
+    bairro: 'Vila Tupy',
+    cidade: 'Praia Grande',
+    estado: 'SP',
+    endereco: 'Rua Guaranis, 154 ',
+    metragem: '',
+    dormitorios: '',
+    suites: '',
+    vagas: '',
+    destaque: false,
+    imagemCapa: '/images/empreendimentos/img-la-coruna.webp',
+    imagemFachada: '/images/empreendimentos/img-la-coruna.webp', 
+    galeria: [
+      '/images/empreendimentos/img-la-coruna.webp'
+    ],
+    descricaoCurta: '',
+    descricaoCompleta: '',
+    diferenciais: [
+      
+    ],
+    plantas: [
+      {
+        titulo: '',
+        metragem: '',
+        descricao: ''
+      }
+    ],
+    estagioObras: {
+      geral: 100,
+      fundacao: 100,
+      estrutura: 100,
+      alvenaria: 100,
+      acabamento: 100
+    }
+  },
+    {
+    id: 'edificio-los-rosales',
+    ano: '1999',
+    slug: 'edificio-los-rosales',
+    titulo: 'Edificio Los Rosales',
+    subtitulo: '',
+    status: 'entregue',
+    statusLabel: 'Entregue',
+    hotsite: '',
+    tourVirtual: '',
+    bairro: 'Aviação',
+    cidade: 'Praia Grande',
+    estado: 'SP',
+    endereco: 'Rua Pero Vaz de Caminha, 69',
+    metragem: '',
+    dormitorios: '',
+    suites: '',
+    vagas: '',
+    destaque: false,
+    imagemCapa: '/images/empreendimentos/img-los-rosales.webp',
+    imagemFachada: '/images/empreendimentos/img-los-rosales.webp', 
+    galeria: [
+      '/images/empreendimentos/img-los-rosales.webp'
+    ],
+    descricaoCurta: '',
+    descricaoCompleta: '',
+    diferenciais: [
+      
+    ],
+    plantas: [
+      {
+        titulo: '',
+        metragem: '',
+        descricao: ''
+      }
+    ],
+    estagioObras: {
+      geral: 100,
+      fundacao: 100,
+      estrutura: 100,
+      alvenaria: 100,
+      acabamento: 100
+    }
+  },
+    {
+    id: 'edificio-barcelona',
+    ano: '2000',
+    slug: 'edificio-barcelona',
+    titulo: 'Edificio Barcelona',
+    subtitulo: '',
+    status: 'entregue',
+    statusLabel: 'Entregue',
+    hotsite: '',
+    tourVirtual: '',
+    bairro: 'Forte',
+    cidade: 'Praia Grande',
+    estado: 'SP',
+    endereco: 'Rua Rui Barbosa, 143 ',
+    metragem: '',
+    dormitorios: '',
+    suites: '',
+    vagas: '',
+    destaque: false,
+    imagemCapa: '/images/empreendimentos/img-barcelona.webp',
+    imagemFachada: '/images/empreendimentos/img-barcelona.webp', 
+    galeria: [
+      '/images/empreendimentos/img-barcelona.webp'
+    ],
+    descricaoCurta: '',
+    descricaoCompleta: '',
+    diferenciais: [
+      
+    ],
+    plantas: [
+      {
+        titulo: '',
+        metragem: '',
+        descricao: ''
+      }
+    ],
+    estagioObras: {
+      geral: 100,
+      fundacao: 100,
+      estrutura: 100,
+      alvenaria: 100,
+      acabamento: 100
+    }
+  },
+    {
+    id: 'edificio-asturias',
+    ano: '2001',
+    slug: 'edificio-asturias',
+    titulo: 'Edificio Asturias',
+    subtitulo: '',
+    status: 'entregue',
+    statusLabel: 'Entregue',
+    hotsite: '',
+    tourVirtual: '',
+    bairro: 'Aviação',
+    cidade: 'Praia Grande',
+    estado: 'SP',
+    endereco: 'Rua Ophelia Caccetari Reis, 173',
+    metragem: '',
+    dormitorios: '',
+    suites: '',
+    vagas: '',
+    destaque: false,
+    imagemCapa: '/images/empreendimentos/img-asturias.webp',
+    imagemFachada: '/images/empreendimentos/img-asturias.webp', 
+    galeria: [
+      '/images/empreendimentos/img-asturias.webp'
+    ],
+    descricaoCurta: '',
+    descricaoCompleta: '',
+    diferenciais: [
+      
+    ],
+    plantas: [
+      {
+        titulo: '',
+        metragem: '',
+        descricao: ''
+      }
+    ],
+    estagioObras: {
+      geral: 100,
+      fundacao: 100,
+      estrutura: 100,
+      alvenaria: 100,
+      acabamento: 100
+    }
+  },
+    {
+    id: 'edificio-marbela',
+    ano: '2001',
+    slug: 'edificio-marbela',
+    titulo: 'Edificio Marbela',
+    subtitulo: '',
+    status: 'entregue',
+    statusLabel: 'Entregue',
+    hotsite: '',
+    tourVirtual: '',
+    bairro: 'Jd. Guilhermina',
+    cidade: 'Praia Grande',
+    estado: 'SP',
+    endereco: 'Rua Dr. João Sampaio, 197',
+    metragem: '',
+    dormitorios: '',
+    suites: '',
+    vagas: '',
+    destaque: false,
+    imagemCapa: '/images/empreendimentos/img-marbela.webp',
+    imagemFachada: '/images/empreendimentos/img-marbela.webp', 
+    galeria: [
+      '/images/empreendimentos/img-marbela.webp'
+    ],
+    descricaoCurta: '',
+    descricaoCompleta: '',
+    diferenciais: [
+      
+    ],
+    plantas: [
+      {
+        titulo: '',
+        metragem: '',
+        descricao: ''
+      }
+    ],
+    estagioObras: {
+      geral: 100,
+      fundacao: 100,
+      estrutura: 100,
+      alvenaria: 100,
+      acabamento: 100
+    }
+  },
+    {
+    id: 'edificio-apolo',
+    ano: '2001',
+    slug: 'edificio-apolo',
+    titulo: 'Edificio Apolo',
+    subtitulo: '',
+    status: 'entregue',
+    statusLabel: 'Entregue',
+    hotsite: '',
+    tourVirtual: '',
+    bairro: 'Jd. Guilhermina',
+    cidade: 'Praia Grande',
+    estado: 'SP',
+    endereco: 'Rua Gonzaga, 32',
+    metragem: '',
+    dormitorios: '',
+    suites: '',
+    vagas: '',
+    destaque: false,
+    imagemCapa: '/images/empreendimentos/img-apolo.webp',
+    imagemFachada: '/images/empreendimentos/img-apolo.webp', 
+    galeria: [
+      '/images/empreendimentos/img-apolo.webp'
+    ],
+    descricaoCurta: '',
+    descricaoCompleta: '',
+    diferenciais: [
+      
+    ],
+    plantas: [
+      {
+        titulo: '',
+        metragem: '',
+        descricao: ''
+      }
+    ],
+    estagioObras: {
+      geral: 100,
+      fundacao: 100,
+      estrutura: 100,
+      alvenaria: 100,
+      acabamento: 100
+    }
+  },
+    {
+    id: 'edificio-leon',
+    ano: '2004',
+    slug: 'edificio-leon',
+    titulo: 'Edificio Leon',
+    subtitulo: '',
+    status: 'entregue',
+    statusLabel: 'Entregue',
+    hotsite: '',
+    tourVirtual: '',
+    bairro: 'Jd. Guilhermina',
+    cidade: 'Praia Grande',
+    estado: 'SP',
+    endereco: 'Rua Peru, 210 ',
+    metragem: '',
+    dormitorios: '',
+    suites: '',
+    vagas: '',
+    destaque: false,
+    imagemCapa: '/images/empreendimentos/img-leon.webp',
+    imagemFachada: '/images/empreendimentos/img-leon.webp', 
+    galeria: [
+      '/images/empreendimentos/img-leon.webp'
+    ],
+    descricaoCurta: '',
+    descricaoCompleta: '',
+    diferenciais: [
+      
+    ],
+    plantas: [
+      {
+        titulo: '',
+        metragem: '',
+        descricao: ''
+      }
+    ],
+    estagioObras: {
+      geral: 100,
+      fundacao: 100,
+      estrutura: 100,
+      alvenaria: 100,
+      acabamento: 100
+    }
+  },
+    {
+    id: 'edificio-gaudi',
+    ano: '2006',
+    slug: 'edificio-gaudi',
+    titulo: 'Edificio gaudi',
+    subtitulo: '',
+    status: 'entregue',
+    statusLabel: 'Entregue',
+    hotsite: '',
+    tourVirtual: '',
+    bairro: 'Aviação',
+    cidade: 'Praia Grande',
+    estado: 'SP',
+    endereco: 'Rua Gal. Marcondes Salgado Filho, 212',
+    metragem: '',
+    dormitorios: '',
+    suites: '',
+    vagas: '',
+    destaque: false,
+    imagemCapa: '/images/empreendimentos/img-gaudi.webp',
+    imagemFachada: '/images/empreendimentos/img-gaudi.webp', 
+    galeria: [
+      '/images/empreendimentos/img-gaudi.webp'
+    ],
+    descricaoCurta: '',
+    descricaoCompleta: '',
+    diferenciais: [
+      
+    ],
+    plantas: [
+      {
+        titulo: '',
+        metragem: '',
+        descricao: ''
+      }
+    ],
+    estagioObras: {
+      geral: 100,
+      fundacao: 100,
+      estrutura: 100,
+      alvenaria: 100,
+      acabamento: 100
+    }
+  },
+    {
+    id: 'edificio-valencia',
+    ano: '2007',
+    slug: 'edificio-valencia',
+    titulo: 'Edificio Valencia',
+    subtitulo: '',
+    status: 'entregue',
+    statusLabel: 'Entregue',
+    hotsite: '',
+    tourVirtual: '',
+    bairro: 'Aviação',
+    cidade: 'Praia Grande',
+    estado: 'SP',
+    endereco: 'Rua Gal. Marcondes Salgado Filho, 212',
+    metragem: '',
+    dormitorios: '',
+    suites: '',
+    vagas: '',
+    destaque: false,
+    imagemCapa: '/images/empreendimentos/img-valencia.webp',
+    imagemFachada: '/images/empreendimentos/img-valencia.webp', 
+    galeria: [
+      '/images/empreendimentos/img-valencia.webp'
+    ],
+    descricaoCurta: '',
+    descricaoCompleta: '',
+    diferenciais: [
+      
+    ],
+    plantas: [
+      {
+        titulo: '',
+        metragem: '',
+        descricao: ''
+      }
+    ],
+    estagioObras: {
+      geral: 100,
+      fundacao: 100,
+      estrutura: 100,
+      alvenaria: 100,
+      acabamento: 100
+    }
+  },
+    {
+    id: 'edificio-sevilha',
+    ano: '2008',
+    slug: 'edificio-sevilha',
+    titulo: 'Edificio Sevilha',
+    subtitulo: '',
+    status: 'entregue',
+    statusLabel: 'Entregue',
+    hotsite: '',
+    tourVirtual: '',
+    bairro: 'Boqueirão',
+    cidade: 'Praia Grande',
+    estado: 'SP',
+    endereco: 'Rua Rui Barbosa, 187',
+    metragem: '',
+    dormitorios: '',
+    suites: '',
+    vagas: '',
+    destaque: false,
+    imagemCapa: '/images/empreendimentos/img-sevilha.webp',
+    imagemFachada: '/images/empreendimentos/img-sevilha.webp', 
+    galeria: [
+      '/images/empreendimentos/img-sevilha.webp'
+    ],
+    descricaoCurta: '',
+    descricaoCompleta: '',
+    diferenciais: [
+      
+    ],
+    plantas: [
+      {
+        titulo: '',
+        metragem: '',
+        descricao: ''
+      }
+    ],
+    estagioObras: {
+      geral: 100,
+      fundacao: 100,
+      estrutura: 100,
+      alvenaria: 100,
+      acabamento: 100
+    }
+  },
+    {
+    id: 'edificio-avila',
+    ano: '2009',
+    slug: 'edificio-avila',
+    titulo: 'Edificio Ávila',
+    subtitulo: '',
+    status: 'entregue',
+    statusLabel: 'Entregue',
+    hotsite: '',
+    tourVirtual: '',
+    bairro: 'Jd. Guilhermina',
+    cidade: 'Praia Grande',
+    estado: 'SP',
+    endereco: 'Avenida Pres. Castelo Branco, 3400',
+    metragem: '',
+    dormitorios: '',
+    suites: '',
+    vagas: '',
+    destaque: false,
+    imagemCapa: '/images/empreendimentos/img-avila.webp',
+    imagemFachada: '/images/empreendimentos/img-avila.webp', 
+    galeria: [
+      '/images/empreendimentos/img-avila.webp'
+    ],
+    descricaoCurta: '',
+    descricaoCompleta: '',
+    diferenciais: [
+      
+    ],
+    plantas: [
+      {
+        titulo: '',
+        metragem: '',
+        descricao: ''
+      }
+    ],
+    estagioObras: {
+      geral: 100,
+      fundacao: 100,
+      estrutura: 100,
+      alvenaria: 100,
+      acabamento: 100
+    }
+  },
+    {
+    id: 'edificio-tiwa',
+    ano: '2011',
+    slug: 'edificio-tiwa',
+    titulo: 'Edificio Tiwa',
+    subtitulo: '',
+    status: 'entregue',
+    statusLabel: 'Entregue',
+    hotsite: '',
+    tourVirtual: '',
+    bairro: 'Forte',
+    cidade: 'Praia Grande',
+    estado: 'SP',
+    endereco: 'Rua Rui Barbosa, 116',
+    metragem: '',
+    dormitorios: '',
+    suites: '',
+    vagas: '',
+    destaque: false,
+    imagemCapa: '/images/empreendimentos/img-tiwa.webp',
+    imagemFachada: '/images/empreendimentos/img-tiwa.webp', 
+    galeria: [
+      '/images/empreendimentos/img-tiwa.webp'
+    ],
+    descricaoCurta: '',
+    descricaoCompleta: '',
+    diferenciais: [
+      
+    ],
+    plantas: [
+      {
+        titulo: '',
+        metragem: '',
+        descricao: ''
+      }
+    ],
+    estagioObras: {
+      geral: 100,
+      fundacao: 100,
+      estrutura: 100,
+      alvenaria: 100,
+      acabamento: 100
+    }
+  },
+    {
+    id: 'edificio-balboa',
+    ano: '2013',
+    slug: 'edificio-balboa',
+    titulo: 'Edificio Balboa',
+    subtitulo: '',
+    status: 'entregue',
+    statusLabel: 'Entregue',
+    hotsite: '',
+    tourVirtual: '',
+    bairro: 'Jd. Guilhermina',
+    cidade: 'Praia Grande',
+    estado: 'SP',
+    endereco: 'Rua Leblon, 493',
+    metragem: '',
+    dormitorios: '',
+    suites: '',
+    vagas: '',
+    destaque: false,
+    imagemCapa: '/images/empreendimentos/img-balboa.webp',
+    imagemFachada: '/images/empreendimentos/img-balboa.webp', 
+    galeria: [
+      '/images/empreendimentos/img-balboa.webp'
+    ],
+    descricaoCurta: '',
+    descricaoCompleta: '',
+    diferenciais: [
+      
+    ],
+    plantas: [
+      {
+        titulo: '',
+        metragem: '',
+        descricao: ''
+      }
+    ],
+    estagioObras: {
+      geral: 100,
+      fundacao: 100,
+      estrutura: 100,
+      alvenaria: 100,
+      acabamento: 100
+    }
+  },
+    {
+    id: 'edificio-atlantika',
+    ano: '2017',
+    slug: 'edificio-atlantika',
+    titulo: 'Edificio Atlantika',
+    subtitulo: '',
+    status: 'entregue',
+    statusLabel: 'Entregue',
+    hotsite: '',
+    tourVirtual: '',
+    bairro: 'Jd. Guilhermina',
+    cidade: 'Praia Grande',
+    estado: 'SP',
+    endereco: 'Ruadas Antilhas, 670',
+    metragem: '',
+    dormitorios: '',
+    suites: '',
+    vagas: '',
+    destaque: false,
+    imagemCapa: '/images/empreendimentos/img-atlantika.webp',
+    imagemFachada: '/images/empreendimentos/img-atlantika.webp', 
+    galeria: [
+      '/images/empreendimentos/img-atlantika.webp'
+    ],
+    descricaoCurta: '',
+    descricaoCompleta: '',
+    diferenciais: [
+      
+    ],
+    plantas: [
+      {
+        titulo: '',
+        metragem: '',
+        descricao: ''
+      }
+    ],
+    estagioObras: {
+      geral: 100,
+      fundacao: 100,
+      estrutura: 100,
+      alvenaria: 100,
+      acabamento: 100
+    }
+  },
+    {
+    id: 'edificio-london',
+    ano: '2006',
+    slug: 'edificio-london',
+    titulo: 'Edificio london',
+    subtitulo: '',
+    status: 'entregue',
+    statusLabel: 'Entregue',
+    hotsite: '',
+    tourVirtual: '',
+    bairro: 'Jd. Guilhermina',
+    cidade: 'Praia Grande',
+    estado: 'SP',
+    endereco: 'Ruadas Antilhas, 670',
+    metragem: '',
+    dormitorios: '',
+    suites: '',
+    vagas: '',
+    destaque: false,
+    imagemCapa: '/images/empreendimentos/img-london.webp',
+    imagemFachada: '/images/empreendimentos/img-london.webp', 
+    galeria: [
+      '/images/empreendimentos/img-london.webp'
+    ],
+    descricaoCurta: '',
+    descricaoCompleta: '',
+    diferenciais: [
+      
+    ],
+    plantas: [
+      {
+        titulo: '',
+        metragem: '',
+        descricao: ''
+      }
+    ],
+    estagioObras: {
+      geral: 100,
+      fundacao: 100,
+      estrutura: 100,
+      alvenaria: 100,
+      acabamento: 100
+    }
+  },
+    {
+    id: 'edificio-liverpool',
+    ano: '2009',
+    slug: 'edificio-liverpool',
+    titulo: 'Edificio Liverpool',
+    subtitulo: '',
+    status: 'entregue',
+    statusLabel: 'Entregue',
+    hotsite: '',
+    tourVirtual: '',
+    bairro: 'Vila Mazzei',
+    cidade: 'São Paulo',
+    estado: 'SP',
+    endereco: 'Rua Sta. Leocádia, 79',
+    metragem: '',
+    dormitorios: '',
+    suites: '',
+    vagas: '',
+    destaque: false,
+    imagemCapa: '/images/empreendimentos/img-liverpool.webp',
+    imagemFachada: '/images/empreendimentos/img-liverpool.webp', 
+    galeria: [
+      '/images/empreendimentos/img-liverpool.webp'
+    ],
+    descricaoCurta: '',
+    descricaoCompleta: '',
+    diferenciais: [
+      
+    ],
+    plantas: [
+      {
+        titulo: '',
+        metragem: '',
+        descricao: ''
+      }
+    ],
+    estagioObras: {
+      geral: 100,
+      fundacao: 100,
+      estrutura: 100,
+      alvenaria: 100,
+      acabamento: 100
+    }
+  },
+    {
+    id: 'edificio-wembley',
+    ano: '2012',
+    slug: 'edificio-wembley',
+    titulo: 'Edificio Wembley',
+    subtitulo: '',
+    status: 'entregue',
+    statusLabel: 'Entregue',
+    hotsite: '',
+    tourVirtual: '',
+    bairro: 'Vila Dom Pedro II',
+    cidade: 'São Paulo',
+    estado: 'SP',
+    endereco: 'Rua Dona Gabriela, 291 ',
+    metragem: '',
+    dormitorios: '',
+    suites: '',
+    vagas: '',
+    destaque: false,
+    imagemCapa: '/images/empreendimentos/img-wembley.webp',
+    imagemFachada: '/images/empreendimentos/img-wembley.webp', 
+    galeria: [
+      '/images/empreendimentos/img-wembley.webp'
+    ],
+    descricaoCurta: '',
+    descricaoCompleta: '',
+    diferenciais: [
+      
+    ],
+    plantas: [
+      {
+        titulo: '',
+        metragem: '',
+        descricao: ''
+      }
+    ],
+    estagioObras: {
+      geral: 100,
+      fundacao: 100,
+      estrutura: 100,
+      alvenaria: 100,
+      acabamento: 100
+    }
+  },
+    {
+    id: 'edificio-capricho',
+    ano: '2012',
+    slug: 'edificio-capricho',
+    titulo: 'Edificio Capricho',
+    subtitulo: '',
+    status: 'entregue',
+    statusLabel: 'Entregue',
+    hotsite: '',
+    tourVirtual: '',
+    bairro: 'Vila Nivi',
+    cidade: 'São Paulo',
+    estado: 'SP',
+    endereco: 'Rua Capricho, 1046',
+    metragem: '',
+    dormitorios: '',
+    suites: '',
+    vagas: '',
+    destaque: false,
+    imagemCapa: '/images/empreendimentos/img-capricho.webp',
+    imagemFachada: '/images/empreendimentos/img-capricho.webp', 
+    galeria: [
+      '/images/empreendimentos/img-capricho.webp'
+    ],
+    descricaoCurta: '',
+    descricaoCompleta: '',
+    diferenciais: [
+      
+    ],
+    plantas: [
+      {
+        titulo: '',
+        metragem: '',
+        descricao: ''
+      }
+    ],
+    estagioObras: {
+      geral: 100,
+      fundacao: 100,
+      estrutura: 100,
+      alvenaria: 100,
+      acabamento: 100
+    }
+  },
+    {
+    id: 'edificio-vista-inglesa',
+    ano: '2014',
+    slug: 'edificio-vista-inglesa',
+    titulo: 'Edificio Vista Inglesa',
+    subtitulo: '',
+    status: 'entregue',
+    statusLabel: 'Entregue',
+    hotsite: '',
+    tourVirtual: '',
+    bairro: 'Vila Dom Pedro II',
+    cidade: 'São Paulo',
+    estado: 'SP',
+    endereco: 'Rua Dona Gabriela, 175 ',
+    metragem: '',
+    dormitorios: '',
+    suites: '',
+    vagas: '',
+    destaque: false,
+    imagemCapa: '/images/empreendimentos/img-vista-inglesa.webp',
+    imagemFachada: '/images/empreendimentos/img-vista-inglesa.webp', 
+    galeria: [
+      '/images/empreendimentos/img-vista-inglesa.webp'
+    ],
+    descricaoCurta: '',
+    descricaoCompleta: '',
+    diferenciais: [
+      
+    ],
+    plantas: [
+      {
+        titulo: '',
+        metragem: '',
+        descricao: ''
+      }
+    ],
+    estagioObras: {
+      geral: 100,
+      fundacao: 100,
+      estrutura: 100,
+      alvenaria: 100,
+      acabamento: 100
+    }
+  },
+    {
+    id: 'edificio-vista-vicenza',
+    ano: '2017',
+    slug: 'edificio-vista-vicenza',
+    titulo: 'Edificio Vista Vicenza',
+    subtitulo: '',
+    status: 'entregue',
+    statusLabel: 'Entregue',
+    hotsite: '',
+    tourVirtual: '',
+    bairro: 'Vila Dom Pedro II',
+    cidade: 'São Paulo',
+    estado: 'SP',
+    endereco: 'Rua Vicenza, 136',
+    metragem: '',
+    dormitorios: '',
+    suites: '',
+    vagas: '',
+    destaque: false,
+    imagemCapa: '/images/empreendimentos/img-vista-vicenza.webp',
+    imagemFachada: '/images/empreendimentos/img-vista-vicenza.webp', 
+    galeria: [
+      '/images/empreendimentos/img-vista-vicenza.webp'
+    ],
+    descricaoCurta: '',
+    descricaoCompleta: '',
+    diferenciais: [
+      
+    ],
+    plantas: [
+      {
+        titulo: '',
+        metragem: '',
+        descricao: ''
+      }
+    ],
+    estagioObras: {
+      geral: 100,
+      fundacao: 100,
+      estrutura: 100,
+      alvenaria: 100,
+      acabamento: 100
+    }
+  },
+    {
+    id: 'edificio-manchester',
+    ano: '2020',
+    slug: 'edificio-manchester',
+    titulo: 'Edificio Manchester',
+    subtitulo: '',
+    status: 'entregue',
+    statusLabel: 'Entregue',
+    hotsite: '',
+    tourVirtual: '',
+    bairro: 'Vila Aurora',
+    cidade: 'São Paulo',
+    estado: 'SP',
+    endereco: 'Rua João de Laet, 316 ',
+    metragem: '',
+    dormitorios: '',
+    suites: '',
+    vagas: '',
+    destaque: false,
+    imagemCapa: '/images/empreendimentos/img-manchester.webp',
+    imagemFachada: '/images/empreendimentos/img-vmanchester.webp', 
+    galeria: [
+      '/images/empreendimentos/img-manchester.webp'
+    ],
+    descricaoCurta: '',
+    descricaoCompleta: '',
+    diferenciais: [
+      
+    ],
+    plantas: [
+      {
+        titulo: '',
+        metragem: '',
+        descricao: ''
+      }
+    ],
+    estagioObras: {
+      geral: 100,
+      fundacao: 100,
+      estrutura: 100,
+      alvenaria: 100,
+      acabamento: 100
+    }
+  },
+    {
+    id: 'edificio-mallet-garden',
+    ano: '2021',
+    slug: 'edificio-mallet-garden',
+    titulo: 'Edificio Mallet Garden',
+    subtitulo: '',
+    status: 'entregue',
+    statusLabel: 'Entregue',
+    hotsite: '',
+    tourVirtual: '',
+    bairro: 'Canto do Forte',
+    cidade: 'Praia Grande',
+    estado: 'SP',
+    endereco: 'Avenida Marechal Mallet, 1.457',
+    metragem: '',
+    dormitorios: '',
+    suites: '',
+    vagas: '',
+    destaque: false,
+    imagemCapa: '/images/empreendimentos/img-mallet-garden.webp',
+    imagemFachada: '/images/empreendimentos/img-vmallet-garden.webp', 
+    galeria: [
+      '/images/empreendimentos/img-mallet-garden.webp'
+    ],
+    descricaoCurta: '',
+    descricaoCompleta: '',
+    diferenciais: [
+      
+    ],
+    plantas: [
+      {
+        titulo: '',
+        metragem: '',
+        descricao: ''
+      }
+    ],
+    estagioObras: {
+      geral: 100,
+      fundacao: 100,
+      estrutura: 100,
+      alvenaria: 100,
+      acabamento: 100
+    }
+  },
+    {
+    id: 'edificio-jardim-sao-paulo',
+    ano: '2023',
+    slug: 'edificio-jardim-sao-paulo',
+    titulo: 'Residencial Jardim São Paulo',
+    subtitulo: '',
+    status: 'entregue',
+    statusLabel: 'Entregue',
+    hotsite: '',
+    tourVirtual: '',
+    bairro: 'Canto do Forte',
+    cidade: 'Praia Grande',
+    estado: 'SP',
+    endereco: 'Avenida Marechal Mallet, 1.457',
+    metragem: '',
+    dormitorios: '',
+    suites: '',
+    vagas: '',
+    destaque: false,
+    imagemCapa: '/images/empreendimentos/img-jardim-sao-paulo.webp',
+    imagemFachada: '/images/empreendimentos/img-vjardim-sao-paulo.webp', 
+    galeria: [
+      '/images/empreendimentos/img-jardim-sao-paulo.webp'
+    ],
+    descricaoCurta: '',
+    descricaoCompleta: '',
+    diferenciais: [
+      
+    ],
+    plantas: [
+      {
+        titulo: '',
+        metragem: '',
+        descricao: ''
       }
     ],
     estagioObras: {
