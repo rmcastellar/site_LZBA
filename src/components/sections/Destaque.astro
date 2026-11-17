@@ -4,7 +4,7 @@
 
 <section
   id="Destaque"
-  class="relative w-full h-[56vh] sm:h-[80vh] min-h-104 sm:min-h-130 overflow-hidden bg-[#EAE5DF]"
+  class="relative w-full min-h-[580px] sm:min-h-[680px] py-16 sm:py-24 overflow-hidden bg-[#EAE5DF] flex items-center"
 >
   <!-- Camada de Fundo com Parallax -->
   <div
@@ -40,33 +40,75 @@
       <!-- Coluna Esquerda: Espaço reservado para a Fachada visível no fundo -->
       <div class="hidden lg:block lg:col-span-6 pointer-events-none"></div>
 
-      <!-- Coluna Direita: Logo Árbore e Botão CTA centralizados -->
-      <div class="lg:col-span-6 flex flex-col items-center justify-center text-center">
-        <div
-          class="reveal-scale flex flex-col items-center justify-center text-center gap-5 sm:gap-8 lg:gap-10 max-w-xs sm:max-w-md mx-auto"
-        >
-          <!-- Frase de Topo -->
-          <div>
-            <p
-              class="text-xs sm:text-sm font-light tracking-[0.25em] text-[#08372F] uppercase font-heading"
-            >
-              CONHEÇA O
-            </p>
-          </div>
+      <!-- Coluna Direita: Conteúdo Editorial Residencial Árbore -->
+      <div class="lg:col-span-6 flex flex-col items-start text-left">
+        <div class="reveal-scale flex flex-col items-start gap-5 sm:gap-6 max-w-xl">
+          <!-- Badge Pill -->
+          <span
+            class="inline-block px-5 py-1.5 rounded-full bg-[#08372F] text-white text-[11px] sm:text-xs font-medium tracking-[0.2em] uppercase"
+          >
+            LANÇAMENTO NO JARDIM SÃO PAULO
+          </span>
 
-          <!-- Logo Arbore -->
-          <img
-            src="/images/empreendimentos/arbore/logo-arbore.svg"
-            alt="Logo Residencial Árbore"
-            class="h-20 sm:h-32 lg:h-44 w-auto object-contain drop-shadow-sm"
-          />
+          <!-- Headline -->
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold font-heading leading-[1.1] tracking-tight">
+            <span class="block text-[#08372F]">Raízes profundas.</span>
+            <span class="block text-[#B69168] mt-1">Vida em equilíbrio.</span>
+          </h2>
 
-          <!-- CTA -->
-          <div class="pt-2">
+          <!-- Subtítulo -->
+          <p class="text-sm sm:text-base text-[#1E352B]/85 leading-relaxed font-light max-w-lg">
+            A união perfeita entre{" "}
+            <strong class="font-semibold text-[#08372F]">mobilidade a 3 minutos do metrô</strong>,{" "}
+            <strong class="font-semibold text-[#8C6A43]">varanda gourmet</strong> e{" "}
+            <strong class="font-semibold text-[#08372F]">lazer nas alturas</strong>.
+          </p>
+
+          <!-- Especificações Principais -->
+          <ul class="flex flex-col gap-2.5 text-xs sm:text-sm text-[#08372F] font-medium">
+            <li class="flex items-center gap-3">
+              <svg class="w-4 h-4 text-[#B69168] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-6-5.686-6-10a6 6 0 1112 0c0 4.314-6 10-6 10z" />
+                <circle cx="12" cy="11" r="2" />
+              </svg>
+              <span>300m do Metrô Jd. São Paulo</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <svg class="w-4 h-4 text-[#B69168] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 7v11m0-4h18m0 4v-6a2 2 0 00-2-2H5a2 2 0 00-2 2" />
+              </svg>
+              <span>2 Dormitórios</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <svg class="w-4 h-4 text-[#B69168] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4h4M20 8V4h-4M4 16v4h4M20 16v4h-4" />
+              </svg>
+              <span>36 a 58 m²</span>
+            </li>
+          </ul>
+
+          <!-- Logo + Valor + CTA -->
+          <div class="w-full pt-3 flex flex-wrap items-center gap-4 sm:gap-6">
+            <img
+              src="/images/empreendimentos/arbore/logo-arbore.svg"
+              alt="Logo Residencial Árbore"
+              class="h-14 sm:h-16 w-auto object-contain drop-shadow-xs"
+            />
+
+            <div class="px-5 py-2.5 rounded-2xl border border-[#08372F]/30 bg-white/50 backdrop-blur-xs">
+              <span class="block text-[10px] uppercase tracking-[0.2em] text-[#08372F]/80 font-semibold">
+                A PARTIR DE
+              </span>
+              <span class="block text-xl sm:text-2xl font-bold text-[#08372F] font-heading leading-tight">
+                R$ 320 mil*
+              </span>
+            </div>
+
             <a
               href="https://residencialarbore.com.br/"
               target="_blank"
-              class="inline-flex items-center justify-center px-8 sm:px-10 py-3.5 sm:py-4 bg-[#08372F] hover:bg-[#0c4e43] text-white text-xs sm:text-sm font-semibold tracking-widest uppercase transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center px-8 sm:px-9 py-3.5 rounded-full bg-[#08372F] hover:bg-[#0c4e43] text-white text-xs sm:text-sm font-semibold tracking-widest uppercase transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5"
             >
               SAIBA MAIS
             </a>

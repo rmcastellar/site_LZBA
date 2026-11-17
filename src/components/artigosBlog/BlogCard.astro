@@ -9,17 +9,11 @@ interface Props {
 const { artigo, featured = false } = Astro.props;
 ---
 
-<!-- Wrapper externo com a mesma moldura e recuo (p-1.5 sm:p-2) do ProjectCard ao passar o mouse -->
-<div
-  class={`blog-card-frame group relative p-1.5 sm:p-2 border border-transparent hover:border-lzba-border transition-all duration-300 ${
-    featured ? "w-full" : "h-full"
+<article
+  class={`group flex flex-col bg-white rounded-none border border-lzba-border overflow-hidden shadow-xs hover:-translate-y-1 hover:shadow-xl transition-all duration-300 ${
+    featured ? "w-full md:grid md:grid-cols-12 md:gap-8 items-stretch" : "h-full"
   }`}
 >
-  <article
-    class={`flex flex-col bg-white border border-neutral-200/80 overflow-hidden shadow-xs group-hover:shadow-xl transition-all duration-300 h-full ${
-      featured ? "md:grid md:grid-cols-12 md:gap-8 items-stretch" : ""
-    }`}
-  >
     <!-- Imagem com efeito hover e tags sobrepostas -->
     <div
       class={`relative overflow-hidden ${featured ? "md:col-span-7 h-72 md:h-full" : "h-60"}`}
@@ -145,10 +139,3 @@ const { artigo, featured = false } = Astro.props;
       </div>
     </div>
   </article>
-</div>
-
-<style>
-  .blog-card-frame:hover {
-    border-color: var(--lzba-border);
-  }
-</style>

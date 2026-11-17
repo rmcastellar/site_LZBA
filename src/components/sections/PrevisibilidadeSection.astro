@@ -1,153 +1,166 @@
 ---
+interface Etapa {
+  numero: string;
+  tituloLinha1: string;
+  tituloLinha2: string;
+  descricao: string;
+}
 
+const etapas: Etapa[] = [
+  {
+    numero: "01",
+    tituloLinha1: "Planejamento Executivo",
+    tituloLinha2: "& Compatibilização",
+    descricao:
+      "Detalhamento de projetos hidrossanitários, estruturais e elétricos com modelagem rigorosa, mitigando retrabalhos e desvios orçamentários.",
+  },
+  {
+    numero: "02",
+    tituloLinha1: "Execução com",
+    tituloLinha2: "Auditoria Contínua",
+    descricao:
+      "Controle rigoroso de fornecedores homologados, acompanhamento in loco das etapas estruturais e relatórios periódicos de evolução física da obra para o comprador.",
+  },
+  {
+    numero: "03",
+    tituloLinha1: "Vistoria Técnica e",
+    tituloLinha2: "Entrega Personalizada",
+    descricao:
+      "Checklist minucioso de acabamentos conduzido conjuntamente com a equipe técnica antes da assinatura do termo de entrega das chaves.",
+  },
+  {
+    numero: "04",
+    tituloLinha1: "Suporte e Garantia",
+    tituloLinha2: "Pós-Chaves",
+    descricao:
+      "Atendimento estruturado para acionamento de garantias legais e manutenção preventiva, preservando o valor do ativo a longo prazo.",
+  },
+];
 ---
 
 <!-- 4. PREVISIBILIDADE / JORNADA DE COMPRA -->
-<section class="py-20 lg:py-28 bg-white text-lzba-dark">
+<section class="py-20 lg:py-28 bg-white text-lzba-dark" data-timeline-section>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Cabeçalho -->
-    <div class="reveal-up text-center max-w-3xl mx-auto">
-      <span
-        class="text-xs uppercase font-bold tracking-widest text-lzba-gold block mb-2 font-sans"
-      >
+    <div class="reveal-up max-w-3xl">
+      <span class="text-xs uppercase font-bold tracking-widest text-lzba-gold block mb-2 font-sans">
         PREVISIBILIDADE
       </span>
-      <h2
-        class="text-2xl sm:text-3xl lg:text-4xl font-bold text-lzba-dark tracking-tight font-heading leading-tight"
-      >
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-lzba-dark tracking-tight font-heading leading-tight">
         Jornada de Compra com Previsibilidade e Controle
       </h2>
-      <p
-        class="text-sm sm:text-base text-neutral-600 mt-4 leading-relaxed font-light"
-      >
+      <p class="text-sm sm:text-base text-neutral-600 mt-4 leading-relaxed font-light">
         Do planejamento de fundações ao termo de vistoria: como garantimos a
         integridade do seu investimento.
       </p>
     </div>
 
-    <!-- 4 Passos / Etapas Numeradas -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
-      <!-- Passo 01 -->
-      <div class="reveal-up delay-100 flex flex-col items-center text-center p-4">
-        <!-- Ícone -->
+    <!-- Linha do Tempo Arquitetônica: Horizontal (Desktop) / Vertical (Mobile) -->
+    <div class="relative mt-16">
+      <!-- Linha Contínua Horizontal (Desktop) -->
+      <div
+        class="hidden lg:block absolute top-6 left-0 right-0 h-px bg-lzba-border"
+        aria-hidden="true"
+      >
         <div
-          class="w-14 h-14 rounded-full bg-lzba-light flex items-center justify-center text-lzba-dark mb-5"
-        >
-          <svg
-            class="w-7 h-7"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.6"
-              d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-            ></path>
-          </svg>
-        </div>
-        <h3 class="text-base font-bold text-lzba-dark font-heading mb-2">
-          Planejamento Executivo<br />& Compatibilização
-        </h3>
-        <p
-          class="text-xs sm:text-sm text-neutral-600 leading-relaxed font-light"
-        >
-          Detalhamento de projetos hidrossanitários, estruturais e elétricos com
-          modelagem rigorosa, mitigando retrabalhos e desvios orçamentários.
-        </p>
+          class="h-full bg-lzba-gold origin-left scale-x-0 transition-transform duration-1000 ease-out"
+          data-timeline-progress-h
+        ></div>
       </div>
 
-      <!-- Passo 02 -->
-      <div class="reveal-up delay-200 flex flex-col items-center text-center p-4">
+      <!-- Linha Contínua Vertical (Mobile) -->
+      <div
+        class="lg:hidden absolute top-2 bottom-2 left-3.5 w-px bg-lzba-border"
+        aria-hidden="true"
+      >
         <div
-          class="w-14 h-14 rounded-full bg-lzba-light flex items-center justify-center text-lzba-dark mb-5"
-        >
-          <svg
-            class="w-7 h-7"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.6"
-              d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
-            ></path>
-          </svg>
-        </div>
-        <h3 class="text-base font-bold text-lzba-dark font-heading mb-2">
-          Execução com<br />Auditoria Contínua
-        </h3>
-        <p
-          class="text-xs sm:text-sm text-neutral-600 leading-relaxed font-light"
-        >
-          Controle rigoroso de fornecedores homologados, acompanhamento in loco
-          das etapas estruturais e relatórios periódicos de evolução física da
-          obra para o comprador.
-        </p>
+          class="w-full h-full bg-lzba-gold origin-top scale-y-0 transition-transform duration-1000 ease-out"
+          data-timeline-progress-v
+        ></div>
       </div>
 
-      <!-- Passo 03 -->
-      <div class="reveal-up delay-300 flex flex-col items-center text-center p-4">
-        <div
-          class="w-14 h-14 rounded-full bg-lzba-light flex items-center justify-center text-lzba-dark mb-5"
-        >
-          <svg
-            class="w-7 h-7"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.6"
-              d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"
-            ></path>
-          </svg>
-        </div>
-        <h3 class="text-base font-bold text-lzba-dark font-heading mb-2">
-          Vistoria Técnica e<br />Entrega Personalizada
-        </h3>
-        <p
-          class="text-xs sm:text-sm text-neutral-600 leading-relaxed font-light"
-        >
-          Checklist minucioso de acabamentos conduzido conjuntamente com a
-          equipe técnica antes da assinatura do termo de entrega das chaves.
-        </p>
-      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-10 lg:gap-8">
+        {
+          etapas.map((etapa, index) => (
+            <article
+              class={`reveal-up delay-${(index + 1) * 100} relative pl-10 lg:pl-0 lg:pt-12`}
+            >
+              <!-- Marcador na Linha -->
+              <span
+                class="absolute left-2.5 top-2 lg:left-0 lg:top-[21px] w-2.5 h-2.5 bg-lzba-gold ring-4 ring-white"
+                aria-hidden="true"
+              ></span>
 
-      <!-- Passo 04 -->
-      <div class="reveal-up delay-400 flex flex-col items-center text-center p-4">
-        <div
-          class="w-14 h-14 rounded-full bg-lzba-light flex items-center justify-center text-lzba-dark mb-5"
-        >
-          <svg
-            class="w-7 h-7"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.6"
-              d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-            ></path>
-          </svg>
-        </div>
-        <h3 class="text-base font-bold text-lzba-dark font-heading mb-2">
-          Suporte e Garantia<br />Pós-Chaves
-        </h3>
-        <p
-          class="text-xs sm:text-sm text-neutral-600 leading-relaxed font-light"
-        >
-          Atendimento estruturado para acionamento de garantias legais e
-          manutenção preventiva, preservando o valor do ativo a longo prazo.
-        </p>
+              <!-- Numeração Grande Alinhada à Esquerda -->
+              <span class="block font-heading text-4xl sm:text-5xl font-bold tracking-tight text-lzba-dark/15 tabular-nums leading-none mb-4">
+                {etapa.numero}
+              </span>
+
+              <h3 class="text-base sm:text-lg font-bold text-lzba-dark font-heading mb-3 leading-snug">
+                {etapa.tituloLinha1}
+                <br />
+                {etapa.tituloLinha2}
+              </h3>
+
+              <p class="text-xs sm:text-sm text-neutral-600 leading-relaxed font-light">
+                {etapa.descricao}
+              </p>
+            </article>
+          ))
+        }
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  function initPrevisibilidadeTimeline(): void {
+    const sections = document.querySelectorAll<HTMLElement>("[data-timeline-section]");
+    if (sections.length === 0) return;
+
+    sections.forEach((section) => {
+      if (section.dataset.timelineBound === "true") return;
+      section.dataset.timelineBound = "true";
+
+      const progressH = section.querySelector<HTMLElement>("[data-timeline-progress-h]");
+      const progressV = section.querySelector<HTMLElement>("[data-timeline-progress-v]");
+
+      const fillLines = () => {
+        progressH?.classList.remove("scale-x-0");
+        progressH?.classList.add("scale-x-100");
+        progressV?.classList.remove("scale-y-0");
+        progressV?.classList.add("scale-y-100");
+      };
+
+      if (
+        !("IntersectionObserver" in window) ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ) {
+        fillLines();
+        return;
+      }
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              fillLines();
+              observer.unobserve(entry.target);
+            }
+          }
+        },
+        { threshold: 0.2 },
+      );
+
+      observer.observe(section);
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initPrevisibilidadeTimeline, { once: true });
+  } else {
+    initPrevisibilidadeTimeline();
+  }
+
+  document.addEventListener("astro:page-load", initPrevisibilidadeTimeline);
+</script>

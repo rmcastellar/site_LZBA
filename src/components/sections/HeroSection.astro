@@ -3,39 +3,42 @@ import { NUMEROS_LZBA } from "../../data/empreendimentos";
 ---
 
 <!-- 1. HERO SECTION (ALINHADO AO TOPO DA TELA ATRÁS DO HEADER) -->
-<section
-  class="relative min-h-dvh flex flex-col justify-between pt-24 sm:pt-36 lg:pt-40 pb-8 sm:pb-12 overflow-hidden bg-lzba-dark"
->
+<section class="relative min-h-dvh flex flex-col justify-between pt-24 sm:pt-36 lg:pt-40 pb-8 sm:pb-12 overflow-hidden bg-lzba-dark">
   <!-- Imagem de Fundo com Overlay Quente e Arquitetônico -->
   <div class="absolute inset-0 z-0">
     <img
-      src="/images/02023-scaled-1.jpg"
+      src="/images/empreendimentos/arbore/img-arbore-gourmet.jpg"
       alt="Fachada Empreendimento LZBA"
-      class="w-full h-full object-cover object-top sm:object-center brightness-[1] scale-100"
+      class="w-full h-full object-cover object-top sm:object-center brightness-[1] hero-ken-burns"
       loading="eager"
     />
     <!-- Overlay escuro arquitetônico derivado da paleta centralizada -->
     <div class="absolute inset-0 hero-overlay"></div>
   </div>
 
-  <!-- Conteúdo Central do Hero -->
+  <!-- Ancoragem Geográfica / Arquitetônica Lateral (Desktop) -->
   <div
-    class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto"
+    class="hidden lg:flex flex-col items-center gap-4 absolute right-8 top-1/2 -translate-y-1/2 z-10 pointer-events-none select-none"
+    aria-hidden="true"
   >
+    <span class="font-mono text-[10px] tracking-[0.22em] text-white/55 uppercase [writing-mode:vertical-rl]">
+      23°29'S 46°37'W
+    </span>
+    <span class="w-px h-20 bg-linear-to-b from-lzba-gold/80 via-white/30 to-transparent hero-anchor-line"></span>
+  </div>
+
+  <!-- Conteúdo Central do Hero -->
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto">
     <div class="max-w-3xl">
       <!-- Título em Caixa Alta e Peso Firme -->
-      <h1
-        class="animate-hero-1 text-2xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight uppercase leading-[1.14] font-heading"
-      >
+      <h1 class="animate-hero-1 text-2xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight uppercase leading-[1.14] font-heading">
         Solidez técnica e <br class="hidden sm:inline" />
-        tradição que valorizam <br class="hidden sm:inline" />
-        o patrimônio da sua família.
+        tradição que valorizam <br class="hidden sm:inline" />o patrimônio da
+        sua família.
       </h1>
 
       <!-- Subtítulo / Descrição fiel -->
-      <p
-        class="animate-hero-2 text-xs sm:text-base lg:text-lg text-neutral-300 max-w-2xl mt-4 sm:mt-6 font-light leading-relaxed"
-      >
+      <p class="animate-hero-2 text-xs sm:text-base lg:text-lg text-neutral-300 max-w-2xl mt-4 sm:mt-6 font-light leading-relaxed">
         Há 34 anos transformando projetos em lares funcionais de alta
         consistência executiva. Mais de 1.340 apartamentos rigorosamente
         planejados, construídos e entregues.
@@ -45,7 +48,7 @@ import { NUMEROS_LZBA } from "../../data/empreendimentos";
       <div class="animate-hero-3 mt-6 sm:mt-10">
         <a
           href="#projetos"
-          class="inline-block px-6 sm:px-8 py-3 sm:py-3.5 border border-white/60 hover:border-lzba-gold text-xs sm:text-sm font-semibold tracking-widest uppercase text-white hover:text-lzba-gold hover:bg-white/10 transition-all duration-200"
+          class="inline-block px-6 sm:px-8 py-3 sm:py-3.5 rounded-full border border-white/60 hover:border-lzba-gold text-xs sm:text-sm font-semibold tracking-widest uppercase text-white hover:text-lzba-gold hover:bg-white/10 transition-all duration-200"
         >
           NOSSOS PROJETOS
         </a>
@@ -54,53 +57,183 @@ import { NUMEROS_LZBA } from "../../data/empreendimentos";
   </div>
 
   <!-- Barra de Métricas na Base do Hero (Separada por linha sutil) -->
-  <div
-    class="animate-hero-4 relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-6 sm:mt-16"
-  >
+  <div class="animate-hero-4 relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-6 sm:mt-16">
     <div class="border-t border-white/20 pt-4 sm:pt-8">
       <div class="grid grid-cols-3 gap-4 sm:gap-12 max-w-3xl">
         <!-- Métrica 1 -->
         <div>
-          <span
-            class="block text-[9px] sm:text-xs uppercase tracking-wider text-lzba-muted font-semibold leading-tight"
-          >
-            Anos de<br />Experiência
+          <span class="block text-[9px] sm:text-xs uppercase tracking-wider text-lzba-muted font-semibold leading-tight">
+            Anos de
+            <br />
+            Experiência
           </span>
           <span
-            class="block text-2xl sm:text-5xl font-bold text-white mt-1 sm:mt-2 font-heading"
+            class="block text-2xl sm:text-5xl font-bold text-white mt-1 sm:mt-2 font-heading tabular-nums"
+            data-hero-metric
+            data-target={NUMEROS_LZBA.anosCarreira}
+            aria-label={NUMEROS_LZBA.anosCarreira}
           >
-            {NUMEROS_LZBA.anosCarreira}
+            0
           </span>
         </div>
 
         <!-- Métrica 2 -->
         <div>
-          <span
-            class="block text-[9px] sm:text-xs uppercase tracking-wider text-lzba-muted font-semibold leading-tight"
-          >
-            Empreendimentos<br />Entregues
+          <span class="block text-[9px] sm:text-xs uppercase tracking-wider text-lzba-muted font-semibold leading-tight">
+            Empreendimentos
+            <br />
+            Entregues
           </span>
           <span
-            class="block text-2xl sm:text-5xl font-bold text-white mt-1 sm:mt-2 font-heading"
+            class="block text-2xl sm:text-5xl font-bold text-white mt-1 sm:mt-2 font-heading tabular-nums"
+            data-hero-metric
+            data-target={NUMEROS_LZBA.obrasEntregues}
+            aria-label={NUMEROS_LZBA.obrasEntregues}
           >
-            {NUMEROS_LZBA.obrasEntregues}
+            0
           </span>
         </div>
 
         <!-- Métrica 3 -->
         <div>
-          <span
-            class="block text-[9px] sm:text-xs uppercase tracking-wider text-lzba-muted font-semibold leading-tight"
-          >
-            Unidades<br />Entregues
+          <span class="block text-[9px] sm:text-xs uppercase tracking-wider text-lzba-muted font-semibold leading-tight">
+            Unidades
+            <br />
+            Entregues
           </span>
           <span
-            class="block text-2xl sm:text-5xl font-bold text-white mt-1 sm:mt-2 font-heading"
+            class="block text-2xl sm:text-5xl font-bold text-white mt-1 sm:mt-2 font-heading tabular-nums"
+            data-hero-metric
+            data-target={NUMEROS_LZBA.aptosEntregues}
+            aria-label={NUMEROS_LZBA.aptosEntregues}
           >
-            {NUMEROS_LZBA.aptosEntregues}
+            0
           </span>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  const METRIC_START_DELAY_MS = 550;
+  const METRIC_DURATION_MS = 3000;
+
+  function easeOutExpo(progress: number): number {
+    return progress >= 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+  }
+
+  function initHeroMetrics(): void {
+    const metricElements =
+      document.querySelectorAll<HTMLElement>("[data-hero-metric]");
+    if (metricElements.length === 0) return;
+
+    const formatter = new Intl.NumberFormat("pt-BR");
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    const targets = Array.from(metricElements).map((el) => {
+      const rawTarget = el.dataset.target ?? "0";
+      const numericTarget = Number.parseInt(rawTarget.replace(/\D/g, ""), 10);
+      return { el, rawTarget, numericTarget };
+    });
+
+    if (prefersReducedMotion) {
+      for (const { el, rawTarget } of targets) {
+        el.textContent = rawTarget;
+        el.dataset.animated = "true";
+      }
+      return;
+    }
+
+    const pendingTargets = targets.filter(
+      ({ el }) => el.dataset.animated !== "true",
+    );
+    if (pendingTargets.length === 0) return;
+
+    for (const { el } of pendingTargets) {
+      el.dataset.animated = "true";
+      el.textContent = "0";
+    }
+
+    window.setTimeout(() => {
+      const startTime = performance.now();
+
+      function tick(now: number): void {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / METRIC_DURATION_MS, 1);
+        const eased = easeOutExpo(progress);
+
+        for (const { el, rawTarget, numericTarget } of pendingTargets) {
+          if (!el.isConnected) continue;
+
+          if (Number.isNaN(numericTarget) || numericTarget <= 0) {
+            el.textContent = rawTarget;
+            continue;
+          }
+
+          const currentValue = Math.round(numericTarget * eased);
+          el.textContent =
+            progress >= 1 ? rawTarget : formatter.format(currentValue);
+        }
+
+        if (progress < 1 && pendingTargets.some(({ el }) => el.isConnected)) {
+          requestAnimationFrame(tick);
+        }
+      }
+
+      requestAnimationFrame(tick);
+    }, METRIC_START_DELAY_MS);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initHeroMetrics, {
+      once: true,
+    });
+  } else {
+    initHeroMetrics();
+  }
+
+  document.addEventListener("astro:page-load", initHeroMetrics);
+</script>
+
+<style>
+  @keyframes heroKenBurns {
+    0% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes heroAnchorLine {
+    0% {
+      transform: scaleY(0);
+      opacity: 0;
+    }
+    100% {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+  }
+
+  .hero-ken-burns {
+    animation: heroKenBurns 14s ease-out forwards;
+    will-change: transform;
+  }
+
+  .hero-anchor-line {
+    transform-origin: top;
+    animation: heroAnchorLine 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.6s both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-ken-burns,
+    .hero-anchor-line {
+      animation: none !important;
+      transform: none !important;
+    }
+  }
+</style>

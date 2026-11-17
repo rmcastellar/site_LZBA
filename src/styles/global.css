@@ -195,7 +195,7 @@
   transform: scale(1.04);
 }
 
-/* Estado Ativo (.is-active) - Efeito preto e branco com overlay a 80% */
+/* Estado Ativo (.is-active) - Fachada colorida com gradiente inferior para legibilidade */
 .project-card.is-active {
   border-color: var(--lzba-border);
 }
@@ -203,12 +203,15 @@
   background-color: var(--lzba-dark);
 }
 .project-card.is-active .card-img {
-  opacity: 0.8;
-  filter: grayscale(100%) contrast(1.05);
-  transform: scale(1.04);
+  transform: scale(1.03);
 }
 .project-card.is-active .card-overlay {
-  background-color: rgba(26, 26, 26, 0.8);
+  background: linear-gradient(
+    to top,
+    rgba(22, 22, 22, 0.92) 0%,
+    rgba(22, 22, 22, 0.45) 45%,
+    rgba(22, 22, 22, 0.15) 100%
+  );
 }
 .project-card.is-active .card-top-content {
   opacity: 1;
@@ -259,39 +262,52 @@
   animation: heroEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
 }
 
+/* Seleção de texto editorial */
+::selection {
+  @apply bg-lzba-gold/25 text-lzba-dark;
+}
+
+/* Arredondamento 100% (pill/circular) em todos os botões */
+button,
+[type="button"],
+[type="submit"],
+[type="reset"] {
+  border-radius: 9999px;
+}
+
 /* Base de Revelação na Rolagem (Scroll Reveal) */
 .reveal,
 .reveal-up {
   opacity: 0;
   transform: translateY(32px);
-  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1), transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
 }
 
 .reveal-left {
   opacity: 0;
   transform: translateX(-36px);
-  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1), transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
 }
 
 .reveal-right {
   opacity: 0;
   transform: translateX(36px);
-  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1), transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
 }
 
 .reveal-scale {
   opacity: 0;
   transform: scale(0.96);
-  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1), transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
 }
 
 .reveal-fade {
   opacity: 0;
-  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity;
 }
 

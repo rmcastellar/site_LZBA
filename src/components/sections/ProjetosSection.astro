@@ -5,194 +5,73 @@ import ProjectCard from "../ProjectCard.astro";
 const todosProjetos = EMPREENDIMENTOS;
 ---
 
-<!-- 3. SEÇÃO PROJETOS (LAYOUT FIEL AO MOCKUP COM PALETA OFICIAL LZBA) -->
+<!-- 3. SEÇÃO PROJETOS (DESIGN EDITORIAL COM FOCO NAS IMAGENS) -->
 <section
   id="projetos"
-  class="py-16 sm:py-20 lg:py-28 bg-lzba-light text-lzba-dark scroll-mt-20 overflow-hidden"
+  class="py-16 sm:py-20 lg:py-24 bg-lzba-light text-lzba-dark scroll-mt-20 overflow-hidden"
 >
-  <div class="max-w-360 mx-auto pl-6 sm:pl-8 lg:px-12 pr-4 sm:pr-6">
-    <!-- Layout Principal: Coluna Esquerda (Marca d'água + Filtros) e Coluna Direita (Cards) -->
-    <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-14">
-      <!-- Coluna Esquerda: Marca d'água vertical PROJETOS + Timeline com Filtros (com margem esquerda reforçada no mobile) -->
-      <div
-        class="reveal-left w-full lg:w-auto shrink-0 flex flex-col sm:flex-row items-start sm:items-center justify-start gap-4 sm:gap-10 pl-2 sm:pl-0"
-      >
-        <!-- Marca d'água PROJETOS vertical -->
-        <div
-          class="hidden sm:flex items-center justify-center select-none w-16 lg:w-20 h-75 relative shrink-0"
-        >
-          <span
-            class="text-5xl lg:text-6xl xl:text-7xl font-black tracking-[0.2em] text-lzba-border font-heading uppercase -rotate-90 origin-center whitespace-nowrap block"
-          >
-            PROJETOS
-          </span>
-        </div>
-
-        <!-- Título para dispositivos móveis pequenos com margem esquerda generosa -->
-        <div
-          class="block sm:hidden text-2xl font-black tracking-widest text-lzba-muted font-heading uppercase mb-2 pl-2"
-        >
+  <div class="max-w-[1480px] mx-auto px-3 sm:px-6 lg:px-8">
+    <!-- Cabeçalho Editorial + Filtros Horizontais -->
+    <div class="reveal-up flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8 sm:mb-10 px-1 sm:px-0">
+      <div class="max-w-2xl">
+        <span class="text-xs uppercase font-bold tracking-widest text-lzba-gold block mb-2 font-sans">
           PROJETOS
-        </div>
-
-        <!-- Linha da Timeline e Filtros -->
-        <div class="relative py-4 pl-8 sm:pl-7 select-none ml-1 sm:ml-0">
-          <!-- Linha vertical contínua conectando os pontos -->
-          <div
-            class="absolute left-0 top-0 bottom-0 w-px -translate-x-1/2 bg-lzba-border"
-          >
-          </div>
-
-          <div class="flex flex-col space-y-7" id="projects-filter-bar">
-            <!-- Item 1: Destaques (Botão com contorno, ativo por padrão) -->
-            <button
-              type="button"
-              data-filter="destaques"
-              class="project-filter-btn group relative flex items-center text-left cursor-pointer transition-colors"
-            >
-              <!-- Ponto centralizado na linha vertical -->
-              <span
-                class="absolute -left-6 sm:-left-7 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-3 h-3 z-10 pointer-events-none"
-              >
-                <span
-                  class="filter-dot w-2.5 h-2.5 rounded-full bg-lzba-gold ring-4 ring-lzba-light shrink-0 transition-all"
-                ></span>
-              </span>
-              <!-- Conector horizontal para o item ativo -->
-              <span
-                class="absolute -left-6 sm:-left-7 top-1/2 -translate-y-1/2 flex items-center pointer-events-none"
-              >
-                <span
-                  class="filter-connector w-3 h-[1.5px] bg-lzba-gold transition-all"
-                ></span>
-              </span>
-              <!-- Botão com contorno de acordo com os outros botões do site -->
-              <span
-                class="filter-outline-btn ml-2.5 px-4 py-2 border border-lzba-gold bg-lzba-gold/15 text-lzba-dark text-xs sm:text-sm font-bold tracking-widest uppercase transition-all duration-200 shadow-2xs"
-              >
-                Destaques
-              </span>
-            </button>
-
-            <!-- Item 2: Todos os Projetos -->
-            <button
-              type="button"
-              data-filter="todos"
-              class="project-filter-btn group relative flex items-center text-left cursor-pointer transition-colors"
-            >
-              <!-- Ponto centralizado na linha vertical -->
-              <span
-                class="absolute -left-6 sm:-left-7 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-3 h-3 z-10 pointer-events-none"
-              >
-                <span
-                  class="filter-dot w-2 h-2 rounded-full bg-lzba-muted ring-4 ring-lzba-light shrink-0 transition-all"
-                ></span>
-              </span>
-              <!-- Conector horizontal inativo -->
-              <span
-                class="absolute -left-6 sm:-left-7 top-1/2 -translate-y-1/2 flex items-center pointer-events-none"
-              >
-                <span
-                  class="filter-connector w-0 h-[1.5px] bg-transparent transition-all"
-                ></span>
-              </span>
-              <span
-                class="filter-text text-xs sm:text-sm font-medium text-lzba-muted hover:text-lzba-dark transition-colors ml-2.5"
-              >
-                Todos os Projetos
-              </span>
-            </button>
-
-            <!-- Item 2: Lançamentos -->
-            <button
-              type="button"
-              data-filter="lancamento"
-              class="project-filter-btn group relative flex items-center text-left cursor-pointer transition-colors"
-            >
-              <!-- Ponto centralizado na linha vertical -->
-              <span
-                class="absolute -left-6 sm:-left-7 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-3 h-3 z-10 pointer-events-none"
-              >
-                <span
-                  class="filter-dot w-2 h-2 rounded-full bg-lzba-muted ring-4 ring-lzba-light shrink-0 transition-all"
-                ></span>
-              </span>
-              <!-- Conector horizontal inativo -->
-              <span
-                class="absolute -left-6 sm:-left-7 top-1/2 -translate-y-1/2 flex items-center pointer-events-none"
-              >
-                <span
-                  class="filter-connector w-0 h-[1.5px] bg-transparent transition-all"
-                ></span>
-              </span>
-              <span
-                class="filter-text text-xs sm:text-sm font-medium text-lzba-muted hover:text-lzba-dark transition-colors ml-2.5"
-              >
-                Lançamentos
-              </span>
-            </button>
-
-            <!-- Item 3: Em obras -->
-            <button
-              type="button"
-              data-filter="em_obras"
-              class="project-filter-btn group relative flex items-center text-left cursor-pointer transition-colors"
-            >
-              <!-- Ponto centralizado na linha vertical -->
-              <span
-                class="absolute -left-6 sm:-left-7 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-3 h-3 z-10 pointer-events-none"
-              >
-                <span
-                  class="filter-dot w-2 h-2 rounded-full bg-lzba-muted ring-4 ring-lzba-light shrink-0 transition-all"
-                ></span>
-              </span>
-              <!-- Conector horizontal inativo -->
-              <span
-                class="absolute -left-6 sm:-left-7 top-1/2 -translate-y-1/2 flex items-center pointer-events-none"
-              >
-                <span
-                  class="filter-connector w-0 h-[1.5px] bg-transparent transition-all"
-                ></span>
-              </span>
-              <span
-                class="filter-text text-xs sm:text-sm font-medium text-lzba-muted hover:text-lzba-dark transition-colors ml-2.5"
-              >
-                Em obras
-              </span>
-            </button>
-
-            <!-- Item 4: Entregues -->
-            <button
-              type="button"
-              data-filter="entregue"
-              class="project-filter-btn group relative flex items-center text-left cursor-pointer transition-colors"
-            >
-              <!-- Ponto centralizado na linha vertical -->
-              <span
-                class="absolute -left-6 sm:-left-7 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-3 h-3 z-10 pointer-events-none"
-              >
-                <span
-                  class="filter-dot w-2 h-2 rounded-full bg-lzba-muted ring-4 ring-lzba-light shrink-0 transition-all"
-                ></span>
-              </span>
-              <!-- Conector horizontal inativo -->
-              <span
-                class="absolute -left-6 sm:-left-7 top-1/2 -translate-y-1/2 flex items-center pointer-events-none"
-              >
-                <span
-                  class="filter-connector w-0 h-[1.5px] bg-transparent transition-all"
-                ></span>
-              </span>
-              <span
-                class="filter-text text-xs sm:text-sm font-medium text-lzba-muted hover:text-lzba-dark transition-colors ml-2.5"
-              >
-                Entregues
-              </span>
-            </button>
-          </div>
-        </div>
+        </span>
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-lzba-dark tracking-tight font-heading leading-tight">
+          Empreendimentos que valorizam o seu patrimônio
+        </h2>
       </div>
 
+      <!-- Barra de Filtros Horizontal -->
+      <div
+        class="flex flex-wrap items-center gap-2 sm:gap-2.5"
+        id="projects-filter-bar"
+      >
+        <button
+          type="button"
+          data-filter="destaques"
+          class="project-filter-btn px-4 py-2 rounded-full border border-lzba-gold bg-lzba-gold/15 text-lzba-dark text-xs font-bold tracking-widest uppercase transition-all duration-200 cursor-pointer"
+        >
+          Destaques
+        </button>
+
+        <button
+          type="button"
+          data-filter="todos"
+          class="project-filter-btn px-4 py-2 rounded-full border border-lzba-dark/20 hover:border-lzba-dark text-lzba-muted hover:text-lzba-dark bg-transparent text-xs font-semibold tracking-widest uppercase transition-all duration-200 cursor-pointer"
+        >
+          Todos
+        </button>
+
+        <button
+          type="button"
+          data-filter="lancamento"
+          class="project-filter-btn px-4 py-2 rounded-full border border-lzba-dark/20 hover:border-lzba-dark text-lzba-muted hover:text-lzba-dark bg-transparent text-xs font-semibold tracking-widest uppercase transition-all duration-200 cursor-pointer"
+        >
+          Lançamentos
+        </button>
+
+        <button
+          type="button"
+          data-filter="em_obras"
+          class="project-filter-btn px-4 py-2 rounded-full border border-lzba-dark/20 hover:border-lzba-dark text-lzba-muted hover:text-lzba-dark bg-transparent text-xs font-semibold tracking-widest uppercase transition-all duration-200 cursor-pointer"
+        >
+          Em obras
+        </button>
+
+        <button
+          type="button"
+          data-filter="entregue"
+          class="project-filter-btn px-4 py-2 rounded-full border border-lzba-dark/20 hover:border-lzba-dark text-lzba-muted hover:text-lzba-dark bg-transparent text-xs font-semibold tracking-widest uppercase transition-all duration-200 cursor-pointer"
+        >
+          Entregues
+        </button>
+      </div>
+    </div>
+
+    <!-- Área dos Cards (Largura Total para Privilegiar as Imagens) -->
+    <div>
+            <!-- Item 1: Destaques (Botão com contorno, ativo por padrão) -->
       <!-- Coluna Direita: Trilho Horizontal de Cards de Projetos com contenção de overflow -->
       <div class="reveal-right w-full flex-1 min-w-0 max-w-full overflow-hidden">
         <!-- Controles de Navegação (Pequenos, discretos e alinhados à direita) -->
@@ -261,6 +140,18 @@ const todosProjetos = EMPREENDIMENTOS;
             ))
           }
         </div>
+
+        <!-- Barra de progresso horizontal sutil -->
+        <div
+          class="mt-4 h-px w-full bg-lzba-border overflow-hidden"
+          aria-hidden="true"
+        >
+          <div
+            id="projects-scroll-progress"
+            class="h-full bg-lzba-gold origin-left transition-transform duration-150 ease-out"
+            style="transform: scaleX(0);"
+          ></div>
+        </div>
       </div>
     </div>
   </div>
@@ -281,45 +172,12 @@ const todosProjetos = EMPREENDIMENTOS;
 
     // Atualiza classes visuais de um botão de filtro
     function setFilterButtonState(btn: HTMLButtonElement, isActive: boolean) {
-      const dot = btn.querySelector<HTMLElement>(".filter-dot");
-      const connector = btn.querySelector<HTMLElement>(".filter-connector");
-      const text = btn.querySelector<HTMLElement>(".filter-text");
-      const outlineBtn = btn.querySelector<HTMLElement>(".filter-outline-btn");
-
       if (isActive) {
-        if (dot) {
-          dot.className =
-            "filter-dot w-2.5 h-2.5 rounded-full bg-lzba-gold ring-4 ring-lzba-light shrink-0 transition-all";
-        }
-        if (connector) {
-          connector.className =
-            "filter-connector w-3 h-[1.5px] bg-lzba-gold transition-all";
-        }
-        if (text) {
-          text.className =
-            "filter-text text-xs sm:text-sm font-bold text-lzba-dark transition-colors ml-2.5";
-        }
-        if (outlineBtn) {
-          outlineBtn.className =
-            "filter-outline-btn ml-2.5 px-4 py-2 border border-lzba-gold bg-lzba-gold/15 text-lzba-dark text-xs sm:text-sm font-bold tracking-widest uppercase transition-all duration-200 shadow-2xs";
-        }
+        btn.className =
+          "project-filter-btn px-4 py-2 rounded-full border border-lzba-gold bg-lzba-gold/15 text-lzba-dark text-xs font-bold tracking-widest uppercase transition-all duration-200 cursor-pointer";
       } else {
-        if (dot) {
-          dot.className =
-            "filter-dot w-2 h-2 rounded-full bg-lzba-muted ring-4 ring-lzba-light shrink-0 transition-all";
-        }
-        if (connector) {
-          connector.className =
-            "filter-connector w-0 h-[1.5px] bg-transparent transition-all";
-        }
-        if (text) {
-          text.className =
-            "filter-text text-xs sm:text-sm font-medium text-lzba-muted hover:text-lzba-dark transition-colors ml-2.5";
-        }
-        if (outlineBtn) {
-          outlineBtn.className =
-            "filter-outline-btn ml-2.5 px-4 py-2 border border-lzba-dark/25 hover:border-lzba-dark text-lzba-muted hover:text-lzba-dark bg-transparent text-xs sm:text-sm font-semibold tracking-widest uppercase transition-all duration-200";
-        }
+        btn.className =
+          "project-filter-btn px-4 py-2 rounded-full border border-lzba-dark/20 hover:border-lzba-dark text-lzba-muted hover:text-lzba-dark bg-transparent text-xs font-semibold tracking-widest uppercase transition-all duration-200 cursor-pointer";
       }
     }
 
@@ -516,8 +374,78 @@ const todosProjetos = EMPREENDIMENTOS;
       });
     }
 
+    const progressBar = document.getElementById("projects-scroll-progress");
+
+    const updateScrollProgress = () => {
+      if (!track || !progressBar) return;
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      if (maxScroll <= 0) {
+        progressBar.style.transform = "scaleX(1)";
+        return;
+      }
+      const ratio = Math.min(Math.max(track.scrollLeft / maxScroll, 0), 1);
+      progressBar.style.transform = `scaleX(${Math.max(ratio, 0.12)})`;
+    };
+
     track?.addEventListener("scroll", updateNavButtons, { passive: true });
+    track?.addEventListener("scroll", updateScrollProgress, { passive: true });
     window.addEventListener("resize", updateNavButtons, { passive: true });
+    window.addEventListener("resize", updateScrollProgress, { passive: true });
+    updateScrollProgress();
+
+    // Drag-to-scroll com o mouse no desktop
+    if (track && track.dataset.dragBound !== "true") {
+      track.dataset.dragBound = "true";
+      track.classList.add("cursor-grab");
+
+      let isDragging = false;
+      let hasMoved = false;
+      let startX = 0;
+      let startScrollLeft = 0;
+
+      track.addEventListener("mousedown", (e: MouseEvent) => {
+        if (e.button !== 0) return;
+        isDragging = true;
+        hasMoved = false;
+        startX = e.pageX - track.offsetLeft;
+        startScrollLeft = track.scrollLeft;
+        track.classList.add("cursor-grabbing");
+        track.classList.remove("cursor-grab");
+      });
+
+      track.addEventListener("mousemove", (e: MouseEvent) => {
+        if (!isDragging) return;
+        const x = e.pageX - track.offsetLeft;
+        const walk = x - startX;
+        if (Math.abs(walk) > 5) {
+          hasMoved = true;
+        }
+        e.preventDefault();
+        track.scrollLeft = startScrollLeft - walk;
+      });
+
+      const stopDragging = () => {
+        if (!isDragging) return;
+        isDragging = false;
+        track.classList.remove("cursor-grabbing");
+        track.classList.add("cursor-grab");
+      };
+
+      track.addEventListener("mouseup", stopDragging);
+      track.addEventListener("mouseleave", stopDragging);
+
+      track.addEventListener(
+        "click",
+        (e: MouseEvent) => {
+          if (hasMoved) {
+            e.preventDefault();
+            e.stopPropagation();
+            hasMoved = false;
+          }
+        },
+        true,
+      );
+    }
 
     // Inicialização da visibilidade dos botões
     setTimeout(updateNavButtons, 200);

@@ -461,7 +461,7 @@ export const NUMEROS_LZBA = {
 export const CONTATO_LZBA = {
   telefone: '(11) 2691-9059',
   whatsapp: '(11) 99961-8125',
-  whatsappLink: 'https://wa.me/5511999618125?text=Ol%C3%A1%2C+gostaria+de+informa%C3%A7%C3%B5es+sobre+os+empreendimentos+da+LZBA',
+  whatsappLink: 'https://wa.me/5511919468027?text=Ol%C3%A1%2C+gostaria+de+informa%C3%A7%C3%B5es+sobre+os+empreendimentos+da+LZBA',
   email: 'atendimento@lzba.com.br',
   endereco: 'R. Augusto Tolle, 767 - Santana, São Paulo',
   enderecoWeb: 'https://maps.app.goo.gl/YnD1X72CRT26GNB98',

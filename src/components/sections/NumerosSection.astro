@@ -3,14 +3,12 @@ import { NUMEROS_LZBA } from "../../data/empreendimentos";
 ---
 
 <!-- 5. FAIXA ESCURA DE MÉTRICAS (MOCKUP STATS STRIP) -->
-<section class="py-14 bg-lzba-dark text-white">
+<section class="py-14 bg-lzba-dark text-white" data-numeros-section>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-8 text-center items-center divide-y md:divide-y-0 divide-white/10">
       <!-- Métrica 1: Anos de Experiência -->
       <div class="reveal-scale delay-100 space-y-2 pb-6 md:pb-0">
-        <div
-          class="w-10 h-10 mx-auto text-lzba-gold flex items-center justify-center"
-        >
+        <div class="w-10 h-10 mx-auto text-lzba-gold flex items-center justify-center">
           <svg
             class="w-7 h-7"
             fill="none"
@@ -21,26 +19,26 @@ import { NUMEROS_LZBA } from "../../data/empreendimentos";
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="1.6"
-              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+            ></path>
           </svg>
         </div>
-        <span
-          class="block text-xs uppercase tracking-wider text-lzba-muted font-medium"
-        >
+        <span class="block text-xs uppercase tracking-wider text-lzba-muted font-medium">
           Anos de Experiência
         </span>
         <span
-          class="block text-3xl sm:text-4xl font-bold text-white font-heading"
+          class="block text-3xl sm:text-4xl font-bold text-white font-heading tabular-nums"
+          data-numeros-metric
+          data-target={NUMEROS_LZBA.anosCarreira}
+          aria-label={NUMEROS_LZBA.anosCarreira}
         >
-          {NUMEROS_LZBA.anosCarreira}
+          0
         </span>
       </div>
 
       <!-- Métrica 2: Empreendimentos Entregues -->
       <div class="reveal-scale delay-200 space-y-2 py-6 md:py-0">
-        <div
-          class="w-10 h-10 mx-auto text-lzba-gold flex items-center justify-center"
-        >
+        <div class="w-10 h-10 mx-auto text-lzba-gold flex items-center justify-center">
           <svg
             class="w-7 h-7"
             fill="none"
@@ -55,23 +53,22 @@ import { NUMEROS_LZBA } from "../../data/empreendimentos";
             ></path>
           </svg>
         </div>
-        <span
-          class="block text-xs uppercase tracking-wider text-lzba-muted font-medium"
-        >
+        <span class="block text-xs uppercase tracking-wider text-lzba-muted font-medium">
           Empreendimentos Entregues
         </span>
         <span
-          class="block text-3xl sm:text-4xl font-bold text-white font-heading"
+          class="block text-3xl sm:text-4xl font-bold text-white font-heading tabular-nums"
+          data-numeros-metric
+          data-target={NUMEROS_LZBA.obrasEntregues}
+          aria-label={NUMEROS_LZBA.obrasEntregues}
         >
-          {NUMEROS_LZBA.obrasEntregues}
+          0
         </span>
       </div>
 
       <!-- Métrica 3: Unidades Entregues -->
       <div class="reveal-scale delay-300 space-y-2 pt-6 md:pt-0">
-        <div
-          class="w-10 h-10 mx-auto text-lzba-gold flex items-center justify-center"
-        >
+        <div class="w-10 h-10 mx-auto text-lzba-gold flex items-center justify-center">
           <svg
             class="w-7 h-7"
             fill="none"
@@ -86,17 +83,118 @@ import { NUMEROS_LZBA } from "../../data/empreendimentos";
             ></path>
           </svg>
         </div>
-        <span
-          class="block text-xs uppercase tracking-wider text-lzba-muted font-medium"
-        >
+        <span class="block text-xs uppercase tracking-wider text-lzba-muted font-medium">
           Unidades Entregues
         </span>
         <span
-          class="block text-3xl sm:text-4xl font-bold text-white font-heading"
+          class="block text-3xl sm:text-4xl font-bold text-white font-heading tabular-nums"
+          data-numeros-metric
+          data-target={NUMEROS_LZBA.aptosEntregues}
+          aria-label={NUMEROS_LZBA.aptosEntregues}
         >
-          {NUMEROS_LZBA.aptosEntregues}
+          0
         </span>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  const NUMEROS_DURATION_MS = 3000;
+
+  function easeOutExpo(progress: number): number {
+    return progress >= 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+  }
+
+  function initNumerosMetrics(): void {
+    const sections = document.querySelectorAll<HTMLElement>(
+      "[data-numeros-section]",
+    );
+    if (sections.length === 0) return;
+
+    const formatter = new Intl.NumberFormat("pt-BR");
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    sections.forEach((section) => {
+      if (section.dataset.numerosBound === "true") return;
+      section.dataset.numerosBound = "true";
+
+      const metricElements = section.querySelectorAll<HTMLElement>(
+        "[data-numeros-metric]",
+      );
+      if (metricElements.length === 0) return;
+
+      const targets = Array.from(metricElements).map((el) => {
+        const rawTarget = el.dataset.target ?? "0";
+        const numericTarget = Number.parseInt(rawTarget.replace(/\D/g, ""), 10);
+        return { el, rawTarget, numericTarget };
+      });
+
+      const showFinalValues = () => {
+        for (const { el, rawTarget } of targets) {
+          el.textContent = rawTarget;
+        }
+      };
+
+      if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+        showFinalValues();
+        return;
+      }
+
+      const startAnimation = () => {
+        const startTime = performance.now();
+
+        function tick(now: number): void {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / NUMEROS_DURATION_MS, 1);
+          const eased = easeOutExpo(progress);
+
+          for (const { el, rawTarget, numericTarget } of targets) {
+            if (!el.isConnected) continue;
+
+            if (Number.isNaN(numericTarget) || numericTarget <= 0) {
+              el.textContent = rawTarget;
+              continue;
+            }
+
+            const currentValue = Math.round(numericTarget * eased);
+            el.textContent =
+              progress >= 1 ? rawTarget : formatter.format(currentValue);
+          }
+
+          if (progress < 1 && targets.some(({ el }) => el.isConnected)) {
+            requestAnimationFrame(tick);
+          }
+        }
+
+        requestAnimationFrame(tick);
+      };
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              startAnimation();
+              observer.unobserve(entry.target);
+            }
+          }
+        },
+        { threshold: 0.2 },
+      );
+
+      observer.observe(section);
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initNumerosMetrics, {
+      once: true,
+    });
+  } else {
+    initNumerosMetrics();
+  }
+
+  document.addEventListener("astro:page-load", initNumerosMetrics);
+</script>

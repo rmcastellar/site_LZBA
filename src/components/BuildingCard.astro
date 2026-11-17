@@ -14,13 +14,9 @@ const statusStyles = {
 };
 ---
 
-<!-- Wrapper com a moldura e respiro arquitetônico característico da LZBA -->
-<div
-  class="building-card-frame group relative p-1.5 sm:p-2 border border-transparent hover:border-lzba-border transition-all duration-300 h-full"
+<article
+  class="group bg-white rounded-none border border-lzba-border hover:border-neutral-300 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex flex-col h-full overflow-hidden shadow-xs"
 >
-  <article
-    class="bg-white border border-lzba-border/80 group-hover:border-neutral-300 group-hover:shadow-xl transition-all duration-300 flex flex-col h-full overflow-hidden shadow-xs"
-  >
     <!-- Imagem com Badge de Status e Localização -->
     <div class="relative aspect-16/10 overflow-hidden bg-neutral-900">
       <a href={`/empreendimentos/${item.slug}`} class="block w-full h-full">
@@ -129,7 +125,7 @@ const statusStyles = {
         <div class="pt-5">
           <a
             href={`/empreendimentos/${item.slug}`}
-            class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 text-xs font-semibold uppercase tracking-wider text-neutral-900 group-hover:bg-neutral-900 group-hover:text-white border border-neutral-300 group-hover:border-neutral-900 transition-all duration-300 shadow-2xs"
+            class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-full text-xs font-semibold uppercase tracking-wider text-neutral-900 group-hover:bg-neutral-900 group-hover:text-white border border-neutral-300 group-hover:border-neutral-900 transition-all duration-300 shadow-2xs"
           >
             <span>Ver Detalhes do Projeto</span>
             <svg
@@ -149,4 +145,3 @@ const statusStyles = {
       </div>
     </div>
   </article>
-</div>
