@@ -16,6 +16,14 @@ import CtaSection from "../components/sections/CtaSection.astro";
   description="Solidez técnica e tradição que valorizam o patrimônio da sua família. Há 34 anos transformando projetos em lares funcionais de alta consistência executiva."
   currentPath="/"
 >
+  <Fragment slot="head">
+    <link
+      rel="preload"
+      as="image"
+      href="/images/empreendimentos/arbore/img-arbore-gourmet.jpg"
+      fetchpriority="high"
+    />
+  </Fragment>
   <!-- 1. Hero Principal -->
   <HeroSection />
 

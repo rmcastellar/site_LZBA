@@ -232,10 +232,12 @@ const todosProjetos = [...EMPREENDIMENTOS].sort(
       }
 
       if (track) {
-        track.scrollTo({ left: 0, behavior: "smooth" });
+        requestAnimationFrame(() => {
+          track.scrollTo({ left: 0, behavior: "smooth" });
+        });
       }
 
-      setTimeout(updateNavButtons, 150);
+      requestAnimationFrame(updateNavButtons);
     }
 
     // Eventos de clique nos botões de filtro (estável, sem piscamento)

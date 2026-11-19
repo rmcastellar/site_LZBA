@@ -251,8 +251,17 @@
   }
 }
 
+@keyframes heroTitleSlide {
+  0% {
+    transform: translateY(18px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 .animate-hero-1 {
-  animation: heroEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+  animation: heroTitleSlide 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 .animate-hero-2 {
   animation: heroEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
