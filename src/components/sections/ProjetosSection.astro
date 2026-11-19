@@ -332,36 +332,35 @@ const todosProjetos = [...EMPREENDIMENTOS].sort(
 
     function updateNavButtons() {
       if (!track || !prevBtn || !nextBtn) return;
-      const scrollLeft = Math.round(track.scrollLeft);
-      const maxScroll = Math.round(track.scrollWidth - track.clientWidth);
+      requestAnimationFrame(() => {
+        const scrollLeft = Math.round(track.scrollLeft);
+        const maxScroll = Math.round(track.scrollWidth - track.clientWidth);
 
-      // Se todo o conteúdo couber na tela sem scroll, esconde ambas as setas
-      if (maxScroll <= 5) {
-        prevBtn.classList.add("opacity-0", "pointer-events-none");
-        nextBtn.classList.add("opacity-0", "pointer-events-none");
-        return;
-      } else {
+        if (maxScroll <= 5) {
+          prevBtn.classList.add("opacity-0", "pointer-events-none");
+          nextBtn.classList.add("opacity-0", "pointer-events-none");
+          return;
+        }
+
         prevBtn.classList.remove("opacity-0");
         nextBtn.classList.remove("opacity-0");
-      }
 
-      // Seta Anterior
-      if (scrollLeft <= 10) {
-        prevBtn.disabled = true;
-        prevBtn.classList.add("opacity-25", "pointer-events-none");
-      } else {
-        prevBtn.disabled = false;
-        prevBtn.classList.remove("opacity-25", "pointer-events-none");
-      }
+        if (scrollLeft <= 10) {
+          prevBtn.disabled = true;
+          prevBtn.classList.add("opacity-25", "pointer-events-none");
+        } else {
+          prevBtn.disabled = false;
+          prevBtn.classList.remove("opacity-25", "pointer-events-none");
+        }
 
-      // Seta Próximo
-      if (scrollLeft >= maxScroll - 10) {
-        nextBtn.disabled = true;
-        nextBtn.classList.add("opacity-25", "pointer-events-none");
-      } else {
-        nextBtn.disabled = false;
-        nextBtn.classList.remove("opacity-25", "pointer-events-none");
-      }
+        if (scrollLeft >= maxScroll - 10) {
+          nextBtn.disabled = true;
+          nextBtn.classList.add("opacity-25", "pointer-events-none");
+        } else {
+          nextBtn.disabled = false;
+          nextBtn.classList.remove("opacity-25", "pointer-events-none");
+        }
+      });
     }
 
     if (prevBtn && track) {
@@ -384,13 +383,15 @@ const todosProjetos = [...EMPREENDIMENTOS].sort(
 
     const updateScrollProgress = () => {
       if (!track || !progressBar) return;
-      const maxScroll = track.scrollWidth - track.clientWidth;
-      if (maxScroll <= 0) {
-        progressBar.style.transform = "scaleX(1)";
-        return;
-      }
-      const ratio = Math.min(Math.max(track.scrollLeft / maxScroll, 0), 1);
-      progressBar.style.transform = `scaleX(${Math.max(ratio, 0.12)})`;
+      requestAnimationFrame(() => {
+        const maxScroll = track.scrollWidth - track.clientWidth;
+        if (maxScroll <= 0) {
+          progressBar.style.transform = "scaleX(1)";
+          return;
+        }
+        const ratio = Math.min(Math.max(track.scrollLeft / maxScroll, 0), 1);
+        progressBar.style.transform = `scaleX(${Math.max(ratio, 0.12)})`;
+      });
     };
 
     track?.addEventListener("scroll", updateNavButtons, { passive: true });
