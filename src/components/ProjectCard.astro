@@ -18,9 +18,7 @@ const numberFormatted = String(index + 1).padStart(2, "0");
   data-index={index}
   style={item.destaque ? "" : "display: none;"}
 >
-  <div
-    class="card-inner relative aspect-[3/4] w-full overflow-hidden flex flex-col justify-between p-6 sm:p-7 select-none transition-all duration-500 cursor-pointer"
-  >
+  <div class="card-inner relative aspect-[3/4] w-full overflow-hidden flex flex-col justify-between p-6 sm:p-7 select-none transition-all duration-500 cursor-pointer">
     <!-- Imagem de Fundo -->
     <img
       src={item.imagemFachada}
@@ -29,18 +27,15 @@ const numberFormatted = String(index + 1).padStart(2, "0");
       loading={index < 3 ? "eager" : "lazy"}
     />
     <!-- Overlay com gradiente arquitetônico -->
-    <div class="card-overlay absolute inset-0 transition-all duration-500">
-    </div>
+    <div class="card-overlay absolute inset-0 transition-all duration-500"></div>
 
     <!-- CONTEÚDO DO TOPO (Exibido no estado ATIVO) -->
     <div class="card-top-content relative z-10 transition-all duration-500">
-      <p class="text-xs text-lzba-gold font-light pb-1">
-        {item.statusLabel}
+      <p class="text-xs text-lzba-gold pb-1 font-bold">
+        {item.statusLabel} | {item.ano}
       </p>
 
-      <h3
-        class="text-lg sm:text-xl font-bold font-heading text-white leading-tight"
-      >
+      <h3 class="text-lg sm:text-xl font-bold font-heading text-white leading-tight">
         {item.titulo}
       </h3>
       <div class="text-xs text-lzba-muted font-light mt-1">
@@ -49,31 +44,23 @@ const numberFormatted = String(index + 1).padStart(2, "0");
     </div>
 
     <!-- CONTEÚDO DA BASE (Exibido no estado INATIVO - Ancorado na base do Card) -->
-    <div
-      class="card-bottom-content absolute left-6 right-6 sm:left-7 sm:right-7 bottom-6 sm:bottom-7 z-10 transition-all duration-300 pointer-events-none"
-    >
+    <div class="card-bottom-content absolute left-6 right-6 sm:left-7 sm:right-7 bottom-6 sm:bottom-7 z-10 transition-all duration-300 pointer-events-none">
       <p class="text-xs text-lzba-gold font-light pb-1">
-        {item.statusLabel}
+        {item.statusLabel} | {item.ano}
       </p>
-      <h3
-        class="text-lg sm:text-xl font-bold font-heading text-white leading-tight"
-      >
+      <h3 class="text-lg sm:text-xl font-bold font-heading text-white leading-tight">
         {item.titulo}
       </h3>
       <div class="text-xs text-lzba-muted font-light mt-1">
         {item.bairro} • {item.cidade}
       </div>
-      <div
-        class="mt-2 pt-2 border-t border-white/20 text-[11px] text-white/90 font-mono tracking-wide translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300"
-      >
+      <div class="mt-2 pt-2 border-t border-white/20 text-[11px] text-white/90 font-mono tracking-wide translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
         {item.metragem} • {item.dormitorios}
       </div>
     </div>
 
     <!-- BOTÃO COM SETA (Exibido no estado ATIVO) -->
-    <div
-      class="card-action-btn relative z-10 transition-all duration-300 mt-auto"
-    >
+    <div class="card-action-btn relative z-10 transition-all duration-300 mt-auto">
       <a
         href={`/empreendimentos/${item.slug}`}
         class="inline-flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white text-lzba-dark hover:bg-lzba-gold hover:text-white shadow-md transition-all duration-300 group/btn"
@@ -89,7 +76,8 @@ const numberFormatted = String(index + 1).padStart(2, "0");
             stroke-linecap="round"
             stroke-linejoin="round"
             stroke-width="1.8"
-            d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            d="M14 5l7 7m0 0l-7 7m7-7H3"
+          ></path>
         </svg>
       </a>
     </div>

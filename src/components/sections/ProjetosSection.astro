@@ -2,7 +2,9 @@
 import { EMPREENDIMENTOS } from "../../data/empreendimentos";
 import ProjectCard from "../ProjectCard.astro";
 
-const todosProjetos = EMPREENDIMENTOS;
+const todosProjetos = [...EMPREENDIMENTOS].sort(
+  (a, b) => (Number(b.ano) || 0) - (Number(a.ano) || 0),
+);
 ---
 
 <!-- 3. SEÇÃO PROJETOS (DESIGN EDITORIAL COM FOCO NAS IMAGENS) -->
@@ -13,7 +15,7 @@ const todosProjetos = EMPREENDIMENTOS;
   <div class="max-w-[1480px] mx-auto px-3 sm:px-6 lg:px-8">
     <!-- Cabeçalho Editorial + Filtros Horizontais -->
     <div class="reveal-up flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8 sm:mb-10 px-1 sm:px-0">
-      <div class="max-w-2xl">
+      <div class="max-w-md lg:max-w-sm xl:max-w-md shrink-0">
         <span class="text-xs uppercase font-bold tracking-widest text-lzba-gold block mb-2 font-sans">
           PROJETOS
         </span>
@@ -24,13 +26,13 @@ const todosProjetos = EMPREENDIMENTOS;
 
       <!-- Barra de Filtros Horizontal -->
       <div
-        class="flex flex-wrap items-center gap-2 sm:gap-2.5"
+        class="flex flex-wrap lg:flex-nowrap items-center gap-2 lg:justify-end"
         id="projects-filter-bar"
       >
         <button
           type="button"
           data-filter="destaques"
-          class="project-filter-btn px-4 py-2 rounded-full border border-lzba-gold bg-lzba-gold/15 text-lzba-dark text-xs font-bold tracking-widest uppercase transition-all duration-200 cursor-pointer"
+          class="project-filter-btn whitespace-nowrap px-4 py-2 rounded-full border border-lzba-gold bg-lzba-gold/15 hover:bg-lzba-gold/25 text-black hover:text-black text-xs font-bold tracking-widest uppercase transition-all duration-200 cursor-pointer"
         >
           Destaques
         </button>
@@ -38,7 +40,7 @@ const todosProjetos = EMPREENDIMENTOS;
         <button
           type="button"
           data-filter="todos"
-          class="project-filter-btn px-4 py-2 rounded-full border border-lzba-dark/20 hover:border-lzba-dark text-lzba-muted hover:text-lzba-dark bg-transparent text-xs font-semibold tracking-widest uppercase transition-all duration-200 cursor-pointer"
+          class="project-filter-btn whitespace-nowrap px-4 py-2 rounded-full border border-lzba-dark/20 hover:border-lzba-dark hover:bg-lzba-dark/5 text-lzba-muted hover:text-black bg-transparent text-xs font-semibold tracking-widest uppercase transition-all duration-200 cursor-pointer"
         >
           Todos
         </button>
@@ -46,7 +48,7 @@ const todosProjetos = EMPREENDIMENTOS;
         <button
           type="button"
           data-filter="lancamento"
-          class="project-filter-btn px-4 py-2 rounded-full border border-lzba-dark/20 hover:border-lzba-dark text-lzba-muted hover:text-lzba-dark bg-transparent text-xs font-semibold tracking-widest uppercase transition-all duration-200 cursor-pointer"
+          class="project-filter-btn whitespace-nowrap px-4 py-2 rounded-full border border-lzba-dark/20 hover:border-lzba-dark hover:bg-lzba-dark/5 text-lzba-muted hover:text-black bg-transparent text-xs font-semibold tracking-widest uppercase transition-all duration-200 cursor-pointer"
         >
           Lançamentos
         </button>
@@ -54,7 +56,7 @@ const todosProjetos = EMPREENDIMENTOS;
         <button
           type="button"
           data-filter="em_obras"
-          class="project-filter-btn px-4 py-2 rounded-full border border-lzba-dark/20 hover:border-lzba-dark text-lzba-muted hover:text-lzba-dark bg-transparent text-xs font-semibold tracking-widest uppercase transition-all duration-200 cursor-pointer"
+          class="project-filter-btn whitespace-nowrap px-4 py-2 rounded-full border border-lzba-dark/20 hover:border-lzba-dark hover:bg-lzba-dark/5 text-lzba-muted hover:text-black bg-transparent text-xs font-semibold tracking-widest uppercase transition-all duration-200 cursor-pointer"
         >
           Em obras
         </button>
@@ -62,7 +64,7 @@ const todosProjetos = EMPREENDIMENTOS;
         <button
           type="button"
           data-filter="entregue"
-          class="project-filter-btn px-4 py-2 rounded-full border border-lzba-dark/20 hover:border-lzba-dark text-lzba-muted hover:text-lzba-dark bg-transparent text-xs font-semibold tracking-widest uppercase transition-all duration-200 cursor-pointer"
+          class="project-filter-btn whitespace-nowrap px-4 py-2 rounded-full border border-lzba-dark/20 hover:border-lzba-dark hover:bg-lzba-dark/5 text-lzba-muted hover:text-black bg-transparent text-xs font-semibold tracking-widest uppercase transition-all duration-200 cursor-pointer"
         >
           Entregues
         </button>
@@ -70,7 +72,7 @@ const todosProjetos = EMPREENDIMENTOS;
         <button
           type="button"
           data-filter="futuros"
-          class="project-filter-btn px-4 py-2 rounded-full border border-lzba-dark/20 hover:border-lzba-dark text-lzba-muted hover:text-lzba-dark bg-transparent text-xs font-semibold tracking-widest uppercase transition-all duration-200 cursor-pointer"
+          class="project-filter-btn whitespace-nowrap px-4 py-2 rounded-full border border-lzba-dark/20 hover:border-lzba-dark hover:bg-lzba-dark/5 text-lzba-muted hover:text-black bg-transparent text-xs font-semibold tracking-widest uppercase transition-all duration-200 cursor-pointer"
         >
           Empreendimentos futuros
         </button>
@@ -182,10 +184,10 @@ const todosProjetos = EMPREENDIMENTOS;
     function setFilterButtonState(btn: HTMLButtonElement, isActive: boolean) {
       if (isActive) {
         btn.className =
-          "project-filter-btn px-4 py-2 rounded-full border border-lzba-gold bg-lzba-gold/15 text-lzba-dark text-xs font-bold tracking-widest uppercase transition-all duration-200 cursor-pointer";
+          "project-filter-btn whitespace-nowrap px-4 py-2 rounded-full border border-lzba-gold bg-lzba-gold/15 hover:bg-lzba-gold/25 text-black hover:text-black text-xs font-bold tracking-widest uppercase transition-all duration-200 cursor-pointer";
       } else {
         btn.className =
-          "project-filter-btn px-4 py-2 rounded-full border border-lzba-dark/20 hover:border-lzba-dark text-lzba-muted hover:text-lzba-dark bg-transparent text-xs font-semibold tracking-widest uppercase transition-all duration-200 cursor-pointer";
+          "project-filter-btn whitespace-nowrap px-4 py-2 rounded-full border border-lzba-dark/20 hover:border-lzba-dark hover:bg-lzba-dark/5 text-lzba-muted hover:text-black bg-transparent text-xs font-semibold tracking-widest uppercase transition-all duration-200 cursor-pointer";
       }
     }
 

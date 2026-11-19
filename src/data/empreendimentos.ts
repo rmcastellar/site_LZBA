@@ -986,10 +986,10 @@ export const EMPREENDIMENTOS: Empreendimento[] = [
     suites: '',
     vagas: '',
     destaque: false,
-    imagemCapa: '/images/empreendimentos/img-balboa.webp',
-    imagemFachada: '/images/empreendimentos/img-balboa.webp', 
+    imagemCapa: '',
+    imagemFachada: '', 
     galeria: [
-      '/images/empreendimentos/img-balboa.webp'
+      ''
     ],
     descricaoCurta: '',
     descricaoCompleta: '',
@@ -1339,7 +1339,7 @@ export const EMPREENDIMENTOS: Empreendimento[] = [
     vagas: '',
     destaque: false,
     imagemCapa: '/images/empreendimentos/img-manchester.webp',
-    imagemFachada: '/images/empreendimentos/img-vmanchester.webp', 
+    imagemFachada: '/images/empreendimentos/img-manchester.webp', 
     galeria: [
       '/images/empreendimentos/img-manchester.webp'
     ],
@@ -1426,10 +1426,10 @@ export const EMPREENDIMENTOS: Empreendimento[] = [
     suites: '',
     vagas: '',
     destaque: false,
-    imagemCapa: '/images/empreendimentos/img-jardim-sao-paulo.webp',
-    imagemFachada: '/images/empreendimentos/img-vjardim-sao-paulo.webp', 
+    imagemCapa: '',
+    imagemFachada: '', 
     galeria: [
-      '/images/empreendimentos/img-jardim-sao-paulo.webp'
+      ''
     ],
     descricaoCurta: '',
     descricaoCompleta: '',

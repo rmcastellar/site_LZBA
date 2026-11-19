@@ -65,7 +65,7 @@ const plantasComImagem = (item.plantas || []).filter(
               {item.statusLabel}
             </span>
             <span class="text-xs uppercase tracking-widest text-neutral-300 font-medium">
-              {item.bairro}, {item.cidade} - {item.estado}
+              {item.ano} | {item.bairro}, {item.cidade} - {item.estado}
             </span>
           </div>
 
@@ -127,40 +127,49 @@ const plantasComImagem = (item.plantas || []).filter(
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14">
         <!-- Coluna Esquerda: Descrição, Galeria, Diferenciais, Plantas, Evolução, Localização -->
         <div class="lg:col-span-8 space-y-16">
-          <div class="animate-hero-4 flex flex-wrap items-center gap-3 shrink-0">
-            <a
-              href={item.hotsite}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="px-6 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest text-lzba-dark bg-white hover:bg-lzba-light transition-all duration-300 shadow-md flex items-center gap-2.5 border border-lzba-gold cursor-pointer"
-            >
-              <span>HOTSITE</span>
-            </a>
-            <a
-              href={item.tourVirtual}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="px-6 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest text-lzba-dark bg-white hover:bg-lzba-light transition-all duration-300 shadow-md flex items-center gap-2.5 border border-lzba-gold cursor-pointer"
-            >
-              Tour Virtual
-            </a>
-          </div>
+          {(item.hotsite || item.tourVirtual) && (
+            <div class="animate-hero-4 flex flex-wrap items-center gap-3 shrink-0">
+              {item.hotsite && (
+                <a
+                  href={item.hotsite}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="px-6 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest text-lzba-dark bg-white hover:bg-lzba-light transition-all duration-300 shadow-md flex items-center gap-2.5 border border-lzba-gold cursor-pointer"
+                >
+                  <span>HOTSITE</span>
+                </a>
+              )}
+              {item.tourVirtual && (
+                <a
+                  href={item.tourVirtual}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="px-6 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest text-lzba-dark bg-white hover:bg-lzba-light transition-all duration-300 shadow-md flex items-center gap-2.5 border border-lzba-gold cursor-pointer"
+                >
+                  Tour Virtual
+                </a>
+              )}
+            </div>
+          )}
 
           <!-- Descrição -->
-          <div class="reveal-up space-y-4">
-            <span class="text-xs uppercase font-bold tracking-widest text-lzba-gold block font-sans">
-              CONCEITO & PROJETO
-            </span>
-            <h2 class="text-2xl sm:text-3xl font-bold text-lzba-dark font-heading tracking-tight">
-              Sobre o Empreendimento
-            </h2>
-            <div class="w-12 h-0.5 bg-lzba-gold my-2"></div>
-            <p class="text-neutral-700 text-base sm:text-lg leading-relaxed font-light">
-              {item.descricaoCompleta}
-            </p>
-          </div>
+          {item.descricaoCompleta?.trim() && (
+            <div class="reveal-up space-y-4">
+              <span class="text-xs uppercase font-bold tracking-widest text-lzba-gold block font-sans">
+                CONCEITO & PROJETO
+              </span>
+              <h2 class="text-2xl sm:text-3xl font-bold text-lzba-dark font-heading tracking-tight">
+                Sobre o Empreendimento
+              </h2>
+              <div class="w-12 h-0.5 bg-lzba-gold my-2"></div>
+              <p class="text-neutral-700 text-base sm:text-lg leading-relaxed font-light">
+                {item.descricaoCompleta}
+              </p>
+            </div>
+          )}
 
           <!-- Galeria de Imagens -->
+          {item.galeria && item.galeria.length > 0 && (
           <div class="reveal-up space-y-6">
             <div class="flex items-center justify-between">
               <div>
@@ -214,8 +223,10 @@ const plantasComImagem = (item.plantas || []).filter(
               ))}
             </div>
           </div>
+          )}
 
           <!-- Diferenciais Exclusivos -->
+          {item.diferenciais && item.diferenciais.length > 0 && (
           <div class="reveal-up space-y-6">
             <div>
               <span class="text-xs uppercase font-bold tracking-widest text-lzba-gold block font-sans">
@@ -251,6 +262,7 @@ const plantasComImagem = (item.plantas || []).filter(
               ))}
             </div>
           </div>
+          )}
 
           <!-- Galeria de Plantas Humanizadas Disponíveis -->
           {plantasComImagem.length > 0 && (
@@ -270,7 +282,7 @@ const plantasComImagem = (item.plantas || []).filter(
                     <!-- Imagem da Planta com Gatilho de Zoom -->
                     <button
                       type="button"
-                      class="gallery-trigger group relative p-3 bg-neutral-50/80 border-b border-lzba-border overflow-hidden cursor-zoom-in text-left block w-full focus:outline-none focus:ring-2 focus:ring-lzba-gold"
+                      class="gallery-trigger rounded-none! group relative p-3 bg-neutral-50/80 border-b border-lzba-border overflow-hidden cursor-zoom-in text-left block w-full focus:outline-none focus:ring-2 focus:ring-lzba-gold"
                       data-gallery="plantas"
                       data-index={idx}
                       data-src={planta.imagem}

@@ -87,29 +87,31 @@
    Permitem aplicar as cores diretamente com classes semânticas.
    ========================================================================== */
 
-/* Planos de Fundo */
-.bg-lzba-red { background-color: var(--lzba-red); }
-.bg-lzba-gold { background-color: var(--lzba-gold); }
-.bg-lzba-light { background-color: var(--lzba-light); }
-.bg-lzba-border { background-color: var(--lzba-border); }
-.bg-lzba-muted { background-color: var(--lzba-muted); }
-.bg-lzba-dark { background-color: var(--lzba-dark); }
+@layer utilities {
+  /* Planos de Fundo */
+  .bg-lzba-red { background-color: var(--lzba-red); }
+  .bg-lzba-gold { background-color: var(--lzba-gold); }
+  .bg-lzba-light { background-color: var(--lzba-light); }
+  .bg-lzba-border { background-color: var(--lzba-border); }
+  .bg-lzba-muted { background-color: var(--lzba-muted); }
+  .bg-lzba-dark { background-color: var(--lzba-dark); }
 
-/* Cores de Texto */
-.text-lzba-red { color: var(--lzba-red); }
-.text-lzba-gold { color: var(--lzba-gold); }
-.text-lzba-light { color: var(--lzba-light); }
-.text-lzba-border { color: var(--lzba-border); }
-.text-lzba-muted { color: var(--lzba-muted); }
-.text-lzba-dark { color: var(--lzba-dark); }
+  /* Cores de Texto */
+  .text-lzba-red { color: var(--lzba-red); }
+  .text-lzba-gold { color: var(--lzba-gold); }
+  .text-lzba-light { color: var(--lzba-light); }
+  .text-lzba-border { color: var(--lzba-border); }
+  .text-lzba-muted { color: var(--lzba-muted); }
+  .text-lzba-dark { color: var(--lzba-dark); }
 
-/* Cores de Borda */
-.border-lzba-red { border-color: var(--lzba-red); }
-.border-lzba-gold { border-color: var(--lzba-gold); }
-.border-lzba-light { border-color: var(--lzba-light); }
-.border-lzba-border { border-color: var(--lzba-border); }
-.border-lzba-muted { border-color: var(--lzba-muted); }
-.border-lzba-dark { border-color: var(--lzba-dark); }
+  /* Cores de Borda */
+  .border-lzba-red { border-color: var(--lzba-red); }
+  .border-lzba-gold { border-color: var(--lzba-gold); }
+  .border-lzba-light { border-color: var(--lzba-light); }
+  .border-lzba-border { border-color: var(--lzba-border); }
+  .border-lzba-muted { border-color: var(--lzba-muted); }
+  .border-lzba-dark { border-color: var(--lzba-dark); }
+}
 
 /* Efeitos Especiais de Gradiente e Overlays */
 .lzba-dark-overlay {
