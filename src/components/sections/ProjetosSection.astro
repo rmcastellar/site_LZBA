@@ -32,7 +32,7 @@ const todosProjetos = [...EMPREENDIMENTOS].sort(
         <button
           type="button"
           data-filter="destaques"
-          class="project-filter-btn whitespace-nowrap px-4 py-2 rounded-full border border-lzba-gold bg-lzba-gold/15 hover:bg-lzba-gold/25 text-black hover:text-black text-xs font-bold tracking-widest uppercase transition-all duration-200 cursor-pointer"
+          class="project-filter-btn sm:whitespace-nowrap px-4 py-2 rounded-full border border-lzba-gold bg-lzba-gold/15 hover:bg-lzba-gold/25 text-black hover:text-black text-xs font-bold tracking-widest uppercase transition-all duration-200 cursor-pointer"
         >
           Destaques
         </button>
@@ -40,7 +40,7 @@ const todosProjetos = [...EMPREENDIMENTOS].sort(
         <button
           type="button"
           data-filter="todos"
-          class="project-filter-btn whitespace-nowrap px-4 py-2 rounded-full border border-lzba-dark/20 hover:border-lzba-dark hover:bg-lzba-dark/5 text-lzba-muted hover:text-black bg-transparent text-xs font-semibold tracking-widest uppercase transition-all duration-200 cursor-pointer"
+          class="project-filter-btn sm:whitespace-nowrap px-4 py-2 rounded-full border border-lzba-dark/20 hover:border-lzba-dark hover:bg-lzba-dark/5 text-lzba-muted hover:text-black bg-transparent text-xs font-semibold tracking-widest uppercase transition-all duration-200 cursor-pointer"
         >
           Todos
         </button>
@@ -48,7 +48,7 @@ const todosProjetos = [...EMPREENDIMENTOS].sort(
         <button
           type="button"
           data-filter="lancamento"
-          class="project-filter-btn whitespace-nowrap px-4 py-2 rounded-full border border-lzba-dark/20 hover:border-lzba-dark hover:bg-lzba-dark/5 text-lzba-muted hover:text-black bg-transparent text-xs font-semibold tracking-widest uppercase transition-all duration-200 cursor-pointer"
+          class="project-filter-btn sm:whitespace-nowrap px-4 py-2 rounded-full border border-lzba-dark/20 hover:border-lzba-dark hover:bg-lzba-dark/5 text-lzba-muted hover:text-black bg-transparent text-xs font-semibold tracking-widest uppercase transition-all duration-200 cursor-pointer"
         >
           Lançamentos
         </button>
@@ -56,7 +56,7 @@ const todosProjetos = [...EMPREENDIMENTOS].sort(
         <button
           type="button"
           data-filter="em_obras"
-          class="project-filter-btn whitespace-nowrap px-4 py-2 rounded-full border border-lzba-dark/20 hover:border-lzba-dark hover:bg-lzba-dark/5 text-lzba-muted hover:text-black bg-transparent text-xs font-semibold tracking-widest uppercase transition-all duration-200 cursor-pointer"
+          class="project-filter-btn sm:whitespace-nowrap px-4 py-2 rounded-full border border-lzba-dark/20 hover:border-lzba-dark hover:bg-lzba-dark/5 text-lzba-muted hover:text-black bg-transparent text-xs font-semibold tracking-widest uppercase transition-all duration-200 cursor-pointer"
         >
           Em obras
         </button>
@@ -64,7 +64,7 @@ const todosProjetos = [...EMPREENDIMENTOS].sort(
         <button
           type="button"
           data-filter="entregue"
-          class="project-filter-btn whitespace-nowrap px-4 py-2 rounded-full border border-lzba-dark/20 hover:border-lzba-dark hover:bg-lzba-dark/5 text-lzba-muted hover:text-black bg-transparent text-xs font-semibold tracking-widest uppercase transition-all duration-200 cursor-pointer"
+          class="project-filter-btn sm:whitespace-nowrap px-4 py-2 rounded-full border border-lzba-dark/20 hover:border-lzba-dark hover:bg-lzba-dark/5 text-lzba-muted hover:text-black bg-transparent text-xs font-semibold tracking-widest uppercase transition-all duration-200 cursor-pointer"
         >
           Entregues
         </button>
@@ -72,7 +72,7 @@ const todosProjetos = [...EMPREENDIMENTOS].sort(
         <button
           type="button"
           data-filter="futuros"
-          class="project-filter-btn whitespace-nowrap px-4 py-2 rounded-full border border-lzba-dark/20 hover:border-lzba-dark hover:bg-lzba-dark/5 text-lzba-muted hover:text-black bg-transparent text-xs font-semibold tracking-widest uppercase transition-all duration-200 cursor-pointer"
+          class="project-filter-btn sm:whitespace-nowrap px-4 py-2 rounded-full border border-lzba-dark/20 hover:border-lzba-dark hover:bg-lzba-dark/5 text-lzba-muted hover:text-black bg-transparent text-xs font-semibold tracking-widest uppercase transition-all duration-200 cursor-pointer"
         >
           Empreendimentos futuros
         </button>
@@ -259,7 +259,7 @@ const todosProjetos = [...EMPREENDIMENTOS].sort(
       });
 
       card.addEventListener("click", (e) => {
-        const target = e.target as HTMLElement;
+        const target = e.target;
         if (target.closest("a")) return; // Link navega normalmente
         const slug = card.getAttribute("data-slug");
         if (slug) {
@@ -325,12 +325,8 @@ const todosProjetos = [...EMPREENDIMENTOS].sort(
       applyFilter("destaques");
     }
     // Botões de navegação do carrossel
-    const prevBtn = document.getElementById(
-      "projects-prev-btn",
-    ) as HTMLButtonElement | null;
-    const nextBtn = document.getElementById(
-      "projects-next-btn",
-    ) as HTMLButtonElement | null;
+    const prevBtn = document.getElementById("projects-prev-btn");
+    const nextBtn = document.getElementById("projects-next-btn");
 
     function updateNavButtons() {
       if (!track || !prevBtn || !nextBtn) return;
