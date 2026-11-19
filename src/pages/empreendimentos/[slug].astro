@@ -20,10 +20,11 @@ interface Props {
 
 const { item } = Astro.props;
 
-const statusStyles = {
+const statusStyles: Record<Empreendimento["status"], string> = {
   lancamento: "bg-lzba-gold/20 text-lzba-gold border-lzba-gold/50",
   em_obras: "bg-sky-500/20 text-sky-300 border-sky-400/40",
   entregue: "bg-emerald-500/20 text-emerald-300 border-emerald-400/40",
+  futuros: "bg-lzba-gold/15 text-lzba-gold border-lzba-gold/40",
 };
 
 const whatsappText = encodeURIComponent(
@@ -34,13 +35,69 @@ const whatsappCustomLink = `https://wa.me/5511999618125?text=${whatsappText}`;
 const plantasComImagem = (item.plantas || []).filter(
   (planta) => typeof planta.imagem === "string" && planta.imagem.trim() !== "",
 );
+
+const siteOrigin = (Astro.site?.toString() || "https://lzba.com.br").replace(/\/$/, "");
+const pageUrl = `${siteOrigin}/empreendimentos/${item.slug}/`;
+const imageUrl = new URL(item.imagemFachada || item.imagemCapa, siteOrigin).toString();
+
+const seoDescription = [
+  `${item.titulo} em ${item.bairro}, ${item.cidade}`,
+  item.metragem,
+  item.dormitorios,
+  item.vagas,
+]
+  .filter(Boolean)
+  .join(" • ");
+
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "ApartmentComplex",
+    name: item.titulo,
+    description: item.descricaoCompleta || item.descricaoCurta || seoDescription,
+    url: pageUrl,
+    image: imageUrl,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: item.endereco || item.bairro,
+      addressLocality: item.cidade,
+      addressRegion: item.estado,
+      addressCountry: "BR",
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Início",
+        item: `${siteOrigin}/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Empreendimentos",
+        item: `${siteOrigin}/empreendimentos/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: item.titulo,
+        item: pageUrl,
+      },
+    ],
+  },
+];
 ---
 
 <Layout
   title={`${item.titulo} | LZBA Construtora e Incorporadora`}
-  description={`${item.titulo} em ${item.bairro}: ${item.metragem}, ${item.dormitorios}, ${item.vagas}. Conheça plantas, diferenciais e status da obra.`}
+  description={`${seoDescription}. Conheça detalhes, localização e diferenciais.`}
   currentPath={`/empreendimentos/${item.slug}`}
-  image={item.imagemCapa}
+  image={item.imagemFachada || item.imagemCapa}
+  structuredData={structuredData}
 >
   <!-- 1. HERO DO EMPREENDIMENTO (PADRÃO ESTÉTICO DA HOME) -->
   <section class="relative min-h-[60vh] sm:min-h-[68vh] flex flex-col justify-end pt-16 pb-16 sm:pb-20 overflow-hidden bg-lzba-dark text-white">

@@ -33,6 +33,7 @@ const artigosRelacionados = ARTIGOS_BLOG.filter(
   description={artigo.metaDescription}
   currentPath={`/blog/${artigo.slug}`}
   image={artigo.imagemCapa}
+  type="article"
 >
   <!-- Metadados de SEO Local & GEO + JSON-LD Schema.org -->
   <Fragment slot="head">

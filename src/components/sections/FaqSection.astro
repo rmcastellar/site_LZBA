@@ -26,7 +26,22 @@ const faqs = [
       "Todos os empreendimentos contam com garantia legal estrutural e operacional alinhada à ABNT NBR 15575 e ao Código Civil, amparados por um canal técnico ágil e estruturado para vistorias e assistência durante toda a fase pós-ocupação.",
   },
 ];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+};
 ---
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
 <!-- 6. DÚVIDAS FREQUENTES (FOTO + ESCLARECIMENTOS TÉCNICOS E CONTRATUAIS) -->
 <section id="faq" class="py-20 lg:py-28 bg-white text-lzba-dark">

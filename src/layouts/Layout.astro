@@ -1,7 +1,7 @@
 ---
-import { ClientRouter } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { CONTATO_LZBA } from '../data/empreendimentos';
 import '../styles/global.css';
 
 interface Props {
@@ -9,16 +9,69 @@ interface Props {
   description?: string;
   currentPath?: string;
   image?: string;
+  type?: 'website' | 'article';
+  noindex?: boolean;
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
-  title = 'LZBA Incorporadora e Construtora | 34 Anos de Excelência',
+  title = 'LZBA Construtora e Incorporadora | 35 Anos de Excelência na Zona Norte de SP',
   description = 'Com mais de 3 décadas de expertise no mercado imobiliário, a LZBA consolida-se como referência em inovação, qualidade e pontualidade na entrega de apartamentos.',
   currentPath = '/',
   image = '/images/hero-building.jpg',
+  type = 'website',
+  noindex = false,
+  structuredData,
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://lzba.com.br');
+const siteOrigin = (Astro.site?.toString() || 'https://lzba.com.br').replace(/\/$/, '');
+const canonicalURL = new URL(Astro.url.pathname, siteOrigin).toString();
+const absoluteImage = new URL(image, siteOrigin).toString();
+
+const baseSchemas: Record<string, unknown>[] = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'RealEstateAgent',
+    '@id': `${siteOrigin}/#organization`,
+    name: 'LZBA Construtora e Incorporadora',
+    url: siteOrigin,
+    logo: new URL('/images/logo.png', siteOrigin).toString(),
+    image: absoluteImage,
+    telephone: CONTATO_LZBA.telefone,
+    email: CONTATO_LZBA.email,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'R. Augusto Tolle, 767',
+      addressLocality: 'São Paulo',
+      addressRegion: 'SP',
+      addressCountry: 'BR',
+    },
+    areaServed: {
+      '@type': 'City',
+      name: 'São Paulo',
+    },
+    openingHours: 'Mo-Fr 09:00-18:00',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${siteOrigin}/#website`,
+    url: siteOrigin,
+    name: 'LZBA Construtora e Incorporadora',
+    inLanguage: 'pt-BR',
+    publisher: {
+      '@id': `${siteOrigin}/#organization`,
+    },
+  },
+];
+
+const extraSchemas = structuredData
+  ? Array.isArray(structuredData)
+    ? structuredData
+    : [structuredData]
+  : [];
+
+const allSchemas = [...baseSchemas, ...extraSchemas];
 ---
 
 <!doctype html>
@@ -26,38 +79,56 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://lzba.com
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <ClientRouter />
+    <meta name="theme-color" content="#161616" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href={canonicalURL} />
+    <link rel="sitemap" href="/sitemap.xml" />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- Google Fonts: Inter (300 Light para parágrafos, 700 Bold para títulos) -->
+    <!-- Google Fonts: Inter (carregamento assíncrono não bloqueante) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      />
+    </noscript>
 
     <!-- SEO Primário -->
     <title>{title}</title>
     <meta name="title" content={title} />
     <meta name="description" content={description} />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'} />
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={type} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
+    <meta property="og:image" content={absoluteImage} />
     <meta property="og:site_name" content="LZBA Construtora e Incorporadora" />
     <meta property="og:locale" content="pt_BR" />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={canonicalURL} />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={image} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={absoluteImage} />
+
+    <!-- Dados Estruturados (JSON-LD) -->
+    {allSchemas.map((schema) => (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
+    <slot name="head" />
   </head>
   <body class="min-h-screen flex flex-col bg-white text-neutral-900 overflow-x-clip max-w-full">
     <Header currentPath={currentPath} />

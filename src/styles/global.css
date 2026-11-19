@@ -264,6 +264,11 @@
   animation: heroEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
 }
 
+/* Transição nativa suave entre páginas (Zero-JS View Transitions) */
+@view-transition {
+  navigation: auto;
+}
+
 /* Seleção de texto editorial */
 ::selection {
   @apply bg-lzba-gold/25 text-lzba-dark;
