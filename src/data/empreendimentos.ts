@@ -1382,10 +1382,10 @@ export const EMPREENDIMENTOS: Empreendimento[] = [
     suites: '',
     vagas: '',
     destaque: false,
-    imagemCapa: '/images/empreendimentos/img-mallet-garden.webp',
-    imagemFachada: '/images/empreendimentos/img-vmallet-garden.webp', 
+    imagemCapa: '/images/empreendimentos/img-mallet-garden1.webp',
+    imagemFachada: '/images/empreendimentos/img-mallet-garden1.webp', 
     galeria: [
-      '/images/empreendimentos/img-mallet-garden.webp'
+      '/images/empreendimentos/img-mallet-garden1.webp', '/images/empreendimentos/img-mallet-garden2.webp'
     ],
     descricaoCurta: '',
     descricaoCompleta: '',
