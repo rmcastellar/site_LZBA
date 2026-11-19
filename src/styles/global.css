@@ -264,20 +264,15 @@
   .animate-hero-1 {
     animation: heroTitleSlide 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
-}
-.animate-hero-2 {
-  animation: heroEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
-}
-.animate-hero-3 {
-  animation: heroEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
-}
-.animate-hero-4 {
-  animation: heroEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
-}
-
-/* Transição nativa suave entre páginas (Zero-JS View Transitions) */
-@view-transition {
-  navigation: auto;
+  .animate-hero-2 {
+    animation: heroEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+  }
+  .animate-hero-3 {
+    animation: heroEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+  }
+  .animate-hero-4 {
+    animation: heroEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+  }
 }
 
 /* Seleção de texto editorial */
