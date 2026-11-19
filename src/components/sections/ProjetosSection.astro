@@ -168,20 +168,18 @@ const todosProjetos = [...EMPREENDIMENTOS].sort(
 </section>
 
 <!-- Script de interatividade encapsulado da seção Projetos -->
-<script>
+<script is:inline>
   function setupProjects() {
     const filterBar = document.getElementById("projects-filter-bar");
-    const filterButtons = document.querySelectorAll<HTMLButtonElement>(
-      ".project-filter-btn",
-    );
-    const cards = document.querySelectorAll<HTMLElement>(".project-card");
+    const filterButtons = document.querySelectorAll(".project-filter-btn");
+    const cards = document.querySelectorAll(".project-card");
     const track = document.getElementById("projects-track");
 
     // Filtro ativo padrão: 'destaques'
     let activeFilter = "destaques";
 
     // Atualiza classes visuais de um botão de filtro
-    function setFilterButtonState(btn: HTMLButtonElement, isActive: boolean) {
+    function setFilterButtonState(btn, isActive) {
       if (isActive) {
         btn.className =
           "project-filter-btn whitespace-nowrap px-4 py-2 rounded-full border border-lzba-gold bg-lzba-gold/15 hover:bg-lzba-gold/25 text-black hover:text-black text-xs font-bold tracking-widest uppercase transition-all duration-200 cursor-pointer";
@@ -194,7 +192,7 @@ const todosProjetos = [...EMPREENDIMENTOS].sort(
     const emptyMsg = document.getElementById("projects-empty-message");
 
     // Ativar um filtro específico
-    function applyFilter(filter: string) {
+    function applyFilter(filter) {
       filterButtons.forEach((btn) => {
         const isCurrent = btn.getAttribute("data-filter") === filter;
         setFilterButtonState(btn, isCurrent);
@@ -278,7 +276,7 @@ const todosProjetos = [...EMPREENDIMENTOS].sort(
     }
 
     // Interceptar cliques no botão Oportunidades (Header, Drawer ou Footer)
-    const oportunidadeTriggers = document.querySelectorAll<HTMLAnchorElement>(
+    const oportunidadeTriggers = document.querySelectorAll(
       '[data-filter-trigger], #header-btn-oportunidades',
     );
     oportunidadeTriggers.forEach((trigger) => {
@@ -370,7 +368,7 @@ const todosProjetos = [...EMPREENDIMENTOS].sort(
 
     if (prevBtn && track) {
       prevBtn.addEventListener("click", () => {
-        const firstCard = track.querySelector<HTMLElement>(".project-card");
+        const firstCard = track.querySelector(".project-card");
         const scrollAmount = firstCard ? firstCard.offsetWidth + 24 : 340;
         track.scrollBy({ left: -scrollAmount, behavior: "smooth" });
       });
@@ -378,7 +376,7 @@ const todosProjetos = [...EMPREENDIMENTOS].sort(
 
     if (nextBtn && track) {
       nextBtn.addEventListener("click", () => {
-        const firstCard = track.querySelector<HTMLElement>(".project-card");
+        const firstCard = track.querySelector(".project-card");
         const scrollAmount = firstCard ? firstCard.offsetWidth + 24 : 340;
         track.scrollBy({ left: scrollAmount, behavior: "smooth" });
       });
@@ -413,7 +411,7 @@ const todosProjetos = [...EMPREENDIMENTOS].sort(
       let startX = 0;
       let startScrollLeft = 0;
 
-      track.addEventListener("mousedown", (e: MouseEvent) => {
+      track.addEventListener("mousedown", (e) => {
         if (e.button !== 0) return;
         isDragging = true;
         hasMoved = false;
@@ -423,7 +421,7 @@ const todosProjetos = [...EMPREENDIMENTOS].sort(
         track.classList.remove("cursor-grab");
       });
 
-      track.addEventListener("mousemove", (e: MouseEvent) => {
+      track.addEventListener("mousemove", (e) => {
         if (!isDragging) return;
         const x = e.pageX - track.offsetLeft;
         const walk = x - startX;
@@ -446,7 +444,7 @@ const todosProjetos = [...EMPREENDIMENTOS].sort(
 
       track.addEventListener(
         "click",
-        (e: MouseEvent) => {
+        (e) => {
           if (hasMoved) {
             e.preventDefault();
             e.stopPropagation();
